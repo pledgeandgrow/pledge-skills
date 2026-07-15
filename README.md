@@ -2,7 +2,7 @@
 
 [![skills.sh](https://skills.sh/b/mehdi-berel/pledge-skills)](https://www.skills.sh/mehdi-berel/pledge-skills)
 
-A comprehensive, production-ready collection of agent skills covering Next.js 16.2.7, React 19.x, TypeScript 5.x, and Tailwind CSS v4. Built from official documentation — every API, hook, component, type, and utility class.
+A comprehensive, production-ready collection of agent skills covering Next.js 16.2.7, React 19.x, TypeScript 5.x, Tailwind CSS v4, and Zig 0.16.0. Built from official documentation — every API, hook, component, type, utility class, and language feature.
 
 ```bash
 npx pledge-skills add all
@@ -14,6 +14,7 @@ npx pledge-skills add all
 - **16 TypeScript modular reference files** (2,371+ lines)
 - **17 Tailwind CSS modular reference files** (3,092+ lines)
 - **15 React modular reference files** (2,744+ lines)
+- **22 Zig modular reference files** (5,600+ lines)
 - Every official docs page analyzed and covered
 
 ## Skills
@@ -23,6 +24,7 @@ npx pledge-skills add all
 | `nextjs/` | 34 | Next.js 16.2.7 — App Router, Server Components, caching, deployment |
 | `typescript/` | 16 | TypeScript 5.x — types, generics, narrowing, TSConfig, JSX, migration |
 | `tailwindcss/` | 17 | Tailwind CSS v4 — utility classes, responsive, customization, v4 CSS-first config |
+| `zig/` | 22 | Zig 0.16.0 — types, pointers, structs, enums, unions, control flow, comptime, builtins, memory, C interop, assembly, std library |
 
 ## Install
 
@@ -39,6 +41,7 @@ npx pledge-skills add nextjs
 npx pledge-skills add react
 npx pledge-skills add typescript
 npx pledge-skills add tailwindcss
+npx pledge-skills add zig
 ```
 
 ### List available skills
@@ -49,7 +52,7 @@ npx pledge-skills list
 
 ### Manual install (copy folders)
 
-Copy individual skill folders (`nextjs/`, `typescript/`, `tailwindcss/`, `react/`) into your agent's skills directory (`.claude/skills/` or `.agents/skills/`).
+Copy individual skill folders (`nextjs/`, `typescript/`, `tailwindcss/`, `react/`, `zig/`) into your agent's skills directory (`.claude/skills/` or `.agents/skills/`).
 
 ## Skill Index
 
@@ -95,7 +98,7 @@ Copy individual skill folders (`nextjs/`, `typescript/`, `tailwindcss/`, `react/
 - **Next.js**: 16.2.7
 - **React**: 19.2 (Canary)
 - **Tailwind CSS**: v4 (default in new projects)
-- **Turbopack**: Stable, default bundler
+- **Zig**: 0.16.0
 
 ## Usage
 

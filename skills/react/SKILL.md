@@ -17,6 +17,8 @@ description: |
 
 # React Expert (v19.x)
 
+**Official Documentation:** https://react.dev/reference
+
 ## Quick Reference
 
 | Topic | File |

@@ -17,6 +17,8 @@ description: |
 
 # TypeScript Expert (v5.x)
 
+**Official Documentation:** https://www.typescriptlang.org/docs/
+
 ## Quick Reference
 
 | Topic | File |

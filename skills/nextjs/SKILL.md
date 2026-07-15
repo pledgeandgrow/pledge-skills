@@ -25,6 +25,8 @@ compatibility:
 
 # Next.js 16.2.7 Reference Skill
 
+**Official Documentation:** https://nextjs.org/docs
+
 This skill ensures Claude always uses the latest Next.js 16.2.7 patterns, APIs, and best practices.
 
 ## Version Context

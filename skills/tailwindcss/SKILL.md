@@ -17,6 +17,8 @@ description: |
 
 # Tailwind CSS Expert (v4.x)
 
+**Official Documentation:** https://tailwindcss.com/docs
+
 ## Quick Reference
 
 | Topic | File |

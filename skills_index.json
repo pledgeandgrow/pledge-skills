@@ -1,13 +1,37 @@
 {
   "name": "pledge-skills",
   "version": "1.0.0",
-  "description": "Comprehensive agent skills for Next.js, React, TypeScript, and Tailwind CSS.",
+  "description": "Comprehensive agent skills for Astro, Express, Next.js, React, React Native, Redis, TypeScript, Tailwind CSS, Rust, OXC, Vite, and Zig.",
   "repository": "https://github.com/mehdi-berel/pledge-skills",
   "format": "skill-md",
   "skills": [
     {
+      "id": "express",
+      "name": "express-docs",
+      "version": "5.x",
+      "description": "Express.js 5.x — getting started, routing, middleware, error handling, Application/Request/Response/Router API, template engines, debugging, database integration, security, performance, production patterns, and migration guides.",
+      "tags": ["express", "nodejs", "web-framework", "backend", "api", "middleware", "routing", "rest"],
+      "path": "skills/express",
+      "entry": "skills/express/SKILL.md",
+      "files": 18,
+      "lines": 9000,
+      "triggers": ["express", "expressjs", "node.js web server", "rest api", "middleware", "nodejs framework", "express router", "express middleware", "express app", "express 5"]
+    },
+    {
+      "id": "astro",
+      "name": "astro-docs",
+      "version": "5.x",
+      "description": "Astro 5.x — components, pages, routing, layouts, styling, content collections, islands architecture, server islands, actions, middleware, endpoints, data fetching, view transitions, integrations, deployment, and configuration.",
+      "tags": ["astro", "web-framework", "static-site-generator", "islands-architecture", "content-driven", "react", "vue", "svelte", "markdown"],
+      "path": "skills/astro",
+      "entry": "skills/astro/SKILL.md",
+      "files": 29,
+      "lines": 10000,
+      "triggers": ["astro", "astrojs", "islands architecture", "content collections", "view transitions", "mdx", "static site", "content-driven", "client islands", "server islands"]
+    },
+    {
       "id": "nextjs",
-      "name": "Next.js Expert",
+      "name": "nextjs-docs",
       "version": "16.2.7",
       "description": "Next.js 16.2.7 with React 19.2 — App Router, Server Components, caching, deployment, and all modern patterns.",
       "tags": ["nextjs", "react", "app-router", "server-components", "full-stack", "framework"],
@@ -19,7 +43,7 @@
     },
     {
       "id": "react",
-      "name": "React Expert",
+      "name": "react-docs",
       "version": "19.x",
       "description": "React 19 reference — hooks, concurrent features, Server Components, React Compiler, Suspense, and advanced patterns.",
       "tags": ["react", "hooks", "jsx", "components", "frontend", "ui"],
@@ -31,7 +55,7 @@
     },
     {
       "id": "typescript",
-      "name": "TypeScript Expert",
+      "name": "typescript-docs",
       "version": "5.x",
       "description": "TypeScript 5.x — types, generics, narrowing, TSConfig, JSX, decorators, declaration files, and migration.",
       "tags": ["typescript", "types", "generics", "tsconfig", "compiler", "javascript"],
@@ -43,7 +67,7 @@
     },
     {
       "id": "tailwindcss",
-      "name": "Tailwind CSS Expert",
+      "name": "tailwindcss-docs",
       "version": "4.x",
       "description": "Tailwind CSS v4 — utility classes, responsive design, customization, v4 CSS-first config, and all utilities.",
       "tags": ["tailwindcss", "css", "styling", "responsive", "design", "utility-classes"],
@@ -52,6 +76,90 @@
       "files": 17,
       "lines": 3092,
       "triggers": ["tailwind", "tailwindcss", "utility classes", "css", "styling", "responsive", "flexbox", "grid", "dark mode"]
+    },
+    {
+      "id": "zig",
+      "name": "zig-docs",
+      "version": "0.16.0",
+      "description": "Zig 0.16.0 — primitive types, arrays, slices, pointers, structs, enums, unions, control flow, functions, errors, optionals, casting, comptime, builtins, memory management, build system, C interop, standard library, testing, targets, and style guide.",
+      "tags": ["zig", "systems-programming", "low-level", "memory-management", "comptime", "safety", "c-interop"],
+      "path": "skills/zig",
+      "entry": "skills/zig/SKILL.md",
+      "files": 22,
+      "lines": 5100,
+      "triggers": ["zig", "ziglang", "comptime", "systems programming", "memory safety", "no gc", "c interop", "cross-compilation", "allocators", "build.zig", "wasm", "wasi"]
+    },
+    {
+      "id": "react-native",
+      "name": "react-native-docs",
+      "version": "0.86",
+      "description": "React Native 0.86 — core components, APIs, styling, flexbox, navigation, networking, animations, platform-specific code, debugging, performance, TypeScript, testing, publishing, New Architecture (Fabric, JSI, TurboModules, Hermes), and security.",
+      "tags": ["react-native", "mobile", "ios", "android", "react", "javascript", "typescript", "expo", "fabric", "jsi"],
+      "path": "skills/react-native",
+      "entry": "skills/react-native/SKILL.md",
+      "files": 62,
+      "lines": 18000,
+      "triggers": ["react native", "reactnative", "mobile app", "ios app", "android app", "expo", "flatlist", "pressable", "view component", "textinput", "hermes", "fabric", "jsi", "scrollview", "navigation", "animated"]
+    },
+    {
+      "id": "rust",
+      "name": "rust-docs",
+      "version": "1.97.0",
+      "description": "Rust 1.97.0 (Edition 2024) — ownership, borrowing, lifetimes, types, control flow, functions, closures, structs, enums, traits, generics, error handling, collections, strings, concurrency, async/await, modules, macros, smart pointers, unsafe Rust, FFI, standard library, testing, and Cargo.",
+      "tags": ["rust", "systems-programming", "memory-safety", "ownership", "borrow-checker", "concurrency", "traits", "generics"],
+      "path": "skills/rust",
+      "entry": "skills/rust/SKILL.md",
+      "files": 17,
+      "lines": 22000,
+      "triggers": ["rust", "ownership", "borrowing", "lifetimes", "traits", "generics", "async/await", "cargo", "unsafe rust", "ffi", "smart pointers", "macros"]
+    },
+    {
+      "id": "oxc",
+      "name": "oxc-docs",
+      "version": "latest",
+      "description": "JavaScript Oxidation Compiler (Oxc) — high-performance JavaScript tools in Rust. Covers parser design, lexer, AST, semantic analysis, architecture, linter, formatter, transformer, minifier, resolver, ECMAScript specification, and performance optimization.",
+      "tags": ["oxc", "javascript", "typescript", "parser", "linter", "oxlint", "rust", "compiler", "ast", "ecmascript"],
+      "path": "skills/oxc",
+      "entry": "skills/oxc/SKILL.md",
+      "files": 6,
+      "lines": 5000,
+      "triggers": ["oxc", "oxlint", "oxfmt", "javascript parsing", "ast", "ecmascript", "linter", "formatter", "transformer", "minifier"]
+    },
+    {
+      "id": "redis",
+      "name": "redis-docs",
+      "version": "8.x",
+      "description": "Redis 8.x — getting started, all data types (strings, hashes, lists, sets, sorted sets, streams, JSON, geospatial, probabilistic, time series, vector sets, arrays), pub/sub, keyspace notifications, commands reference, client libraries (Python, JavaScript, Java, C#, PHP), keys and patterns, persistence (RDB, AOF), security (ACL, TLS), clustering, replication, sentinel, performance tuning, AI vector search, full-text search and query, Lua scripting and functions, monitoring (Prometheus, Grafana, Datadog), deployment (Redis Cloud, Kubernetes, Docker), RIOT data tool, and full configuration reference.",
+      "tags": ["redis", "database", "in-memory", "cache", "pubsub", "streams", "vector-search", "nosql", "key-value", "lua", "full-text-search"],
+      "path": "skills/redis",
+      "entry": "skills/redis/SKILL.md",
+      "files": 29,
+      "lines": 12000,
+      "triggers": ["redis", "redis-cli", "in-memory database", "redis cluster", "redis pubsub", "redis streams", "redis json", "redis vector search", "redis bloom filter", "redis timeseries", "redis geospatial", "redis persistence", "redis acl", "redis sentinel", "redisvl", "redis-om", "redis-py", "node-redis", "ioredis", "jedis", "lettuce", "stackexchange.redis", "redis lua scripting", "redis functions", "redis full-text search", "redis search and query", "redis arrays", "redis vector sets", "redis riot", "redis monitoring", "redis deployment", "redis configuration"]
+    },
+    {
+      "id": "vite",
+      "name": "vite-docs",
+      "version": "8.x",
+      "description": "Vite 8.x (Rolldown + Oxc) — getting started, philosophy, features (HMR, CSS, TypeScript, JSX, Web Workers, WASM), CLI, plugins, dependency pre-bundling, static assets, production build (chunking, multi-page, library mode), deployment (GitHub Pages, Netlify, Vercel, Cloudflare), env variables and modes, SSR, backend integration, troubleshooting, performance, migration from v7, Plugin API, HMR API, JavaScript API, full config reference, and Environment API.",
+      "tags": ["vite", "build-tool", "dev-server", "hmr", "rolldown", "oxc", "frontend", "bundler", "esm"],
+      "path": "skills/vite",
+      "entry": "skills/vite/SKILL.md",
+      "files": 21,
+      "lines": 5380,
+      "triggers": ["vite", "vitejs", "vite dev server", "vite build", "vite plugin", "vite hmr", "vite ssr", "vite config", "vite cli", "rolldown", "oxc transformer", "vite environment api", "vite library mode", "vite multi-page", "vite deploy", "import.meta.hot", "defineConfig", "vite preview", "vite optimize", "create-vite", "vite migration"]
+    },
+    {
+      "id": "npm",
+      "name": "npm-docs",
+      "version": "12.x",
+      "description": "npm 12.x — about npm, registry, packages and modules, scopes, public/private packages, user accounts, 2FA, profile, billing, local environment setup, package.json fields, dependencies (dependencies, devDependencies, peerDependencies, optionalDependencies), semantic versioning, Node.js modules, creating and publishing unscoped/scoped/private/org packages, dist-tags, managing published packages (updating, deprecating, transferring, unpublishing, visibility, collaborators), installing packages (searching, local/global, updating, uninstalling, EACCES), security (audit, provenance, OIDC, staged publishing, ECDSA signatures, 2FA, malware), integrations (access tokens, CI/CD, Docker, private registries), organizations (creating, managing, billing, members, teams, org packages), full CLI commands reference (all npm commands), configuring npm (.npmrc, package-lock.json, folders, install), using npm (registry, package spec, config, logging, scope, scripts, workspaces, dependency selectors), troubleshooting (common errors, debug logs), and policies (terms, conduct, disputes, license, privacy, unpublish, DMCA, security).",
+      "tags": ["npm", "package-manager", "nodejs", "registry", "cli", "packages", "semver", "publishing", "workspaces", "organizations"],
+      "path": "skills/npm",
+      "entry": "skills/npm/SKILL.md",
+      "files": 15,
+      "lines": 4261,
+      "triggers": ["npm", "npm install", "npm publish", "npm ci", "npm audit", "npm run", "npm init", "npm config", "npm login", "npm token", "npx", "package.json", "package-lock.json", ".npmrc", "npm registry", "npm scope", "npm organization", "npm publish", "npm unpublish", "npm deprecate", "npm dist-tag", "npm workspaces", "npm scripts", "npm semver", "npm access token", "npm provenance", "npm 2fa", "npm troubleshooting", "npm security"]
     }
   ]
 }

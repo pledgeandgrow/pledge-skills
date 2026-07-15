@@ -1,7 +1,7 @@
 {
   "name": "pledge-skills",
   "version": "1.0.0",
-  "description": "Installable GitHub library of comprehensive agent skills for Next.js, React, TypeScript, Tailwind CSS, and more.",
+  "description": "Installable GitHub library of comprehensive agent skills for Next.js, React, TypeScript, Tailwind CSS, Zig, and more.",
   "main": "skills_index.json",
   "bin": {
     "pledge-skills": "./bin/cli.js"
@@ -16,6 +16,8 @@
     "react",
     "typescript",
     "tailwindcss",
+    "zig",
+    "ziglang",
     "claude",
     "ai",
     "cursor",
