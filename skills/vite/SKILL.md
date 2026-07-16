@@ -1,5 +1,5 @@
 ---
-name: Vite Expert
+name: vite-docs
 version: "8.x"
 tags:
   - vite

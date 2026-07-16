@@ -1,5 +1,5 @@
 ---
-name: Next.js Expert
+name: nextjs-docs
 version: "16.2.7"
 tags:
   - nextjs

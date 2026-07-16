@@ -1,5 +1,5 @@
 ---
-name: Zig Expert
+name: zig-docs
 version: "0.16.0"
 tags:
   - zig

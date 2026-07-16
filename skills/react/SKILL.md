@@ -1,5 +1,5 @@
 ---
-name: React Expert
+name: react-docs
 version: "19.x"
 tags:
   - react

@@ -1,5 +1,5 @@
 ---
-name: Redis Expert
+name: redis-docs
 version: "8.x"
 tags:
   - redis

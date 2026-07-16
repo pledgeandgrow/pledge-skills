@@ -1,5 +1,5 @@
 ---
-name: npm Expert
+name: npm-docs
 version: "12.x"
 tags:
   - npm

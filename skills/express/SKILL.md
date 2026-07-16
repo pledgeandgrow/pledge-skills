@@ -1,5 +1,5 @@
 ---
-name: Express Expert
+name: express-docs
 version: "5.x"
 tags:
   - express

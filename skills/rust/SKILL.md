@@ -1,5 +1,5 @@
 ---
-name: Rust Expert
+name: rust-docs
 version: "1.97.0"
 edition: "2024"
 tags:

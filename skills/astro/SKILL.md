@@ -1,5 +1,5 @@
 ---
-name: Astro Expert
+name: astro-docs
 version: "5.x"
 tags:
   - astro

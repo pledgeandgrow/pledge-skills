@@ -1,5 +1,5 @@
 ---
-name: Oxc Expert
+name: oxc-docs
 version: "latest"
 tags:
   - oxc

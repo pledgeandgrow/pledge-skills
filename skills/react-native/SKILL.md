@@ -1,5 +1,5 @@
 ---
-name: React Native Docs
+name: react-native-docs
 version: "0.86"
 tags:
   - react-native

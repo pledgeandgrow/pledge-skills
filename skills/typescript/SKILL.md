@@ -1,5 +1,5 @@
 ---
-name: TypeScript Expert
+name: typescript-docs
 version: "5.x"
 tags:
   - typescript

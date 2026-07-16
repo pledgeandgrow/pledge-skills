@@ -1,5 +1,5 @@
 ---
-name: Tailwind CSS Expert
+name: tailwindcss-docs
 version: "4.x"
 tags:
   - tailwindcss
