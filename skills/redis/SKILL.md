@@ -1,3 +1,26 @@
+---
+name: Redis Expert
+version: "8.x"
+tags:
+  - redis
+  - database
+  - in-memory
+  - cache
+  - pubsub
+  - streams
+  - vector-search
+  - nosql
+  - key-value
+  - lua
+description: >
+  Use this skill whenever the user asks about Redis, in-memory databases, caching,
+  pub/sub, streams, vector search, or NoSQL. Covers Redis 8.x including all data types
+  (strings, hashes, lists, sets, sorted sets, streams, JSON, geospatial, probabilistic,
+  time series, vector sets), clustering, replication, sentinel, persistence, security,
+  Lua scripting, and full configuration. Use it for code generation, architecture decisions,
+  debugging, or any Redis-related task.
+---
+
 # Redis
 
 Redis is an in-memory data store used as a database, cache, message broker, and streaming engine. It supports multiple data structures, pub/sub, streaming, vector search, and more.

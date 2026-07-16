@@ -1,3 +1,25 @@
+---
+name: Vite Expert
+version: "8.x"
+tags:
+  - vite
+  - build-tool
+  - dev-server
+  - hmr
+  - rolldown
+  - oxc
+  - frontend
+  - bundler
+  - esm
+description: >
+  Use this skill whenever the user asks about Vite, build tools, dev servers, HMR,
+  production builds, or frontend tooling. Covers Vite 8.x with Rolldown and Oxc,
+  including plugins, SSR, Environment API, library mode, deployment, and configuration.
+  Use it for code generation, architecture decisions, debugging, migration from v7,
+  or any Vite-related task. Make sure to use this skill whenever the user mentions
+  Vite, Vite config, import.meta.hot, defineConfig, create-vite, or Rolldown.
+---
+
 # Vite
 
 Vite is a next-generation frontend build tool that provides a fast development server and optimized production builds. It uses native ES modules for dev and Rolldown for production bundling.

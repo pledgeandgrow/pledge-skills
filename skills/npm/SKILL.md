@@ -1,3 +1,25 @@
+---
+name: npm Expert
+version: "12.x"
+tags:
+  - npm
+  - package-manager
+  - nodejs
+  - registry
+  - cli
+  - packages
+  - semver
+  - publishing
+  - workspaces
+  - organizations
+description: >
+  Use this skill whenever the user asks about npm, package management, publishing packages,
+  semantic versioning, npm CLI commands, or Node.js dependencies. Covers npm 12.x including
+  the registry, scopes, organizations, security (audit, provenance, 2FA), CI/CD integration,
+  workspaces, scripts, .npmrc configuration, and the full CLI reference. Use it for any
+  npm-related task including publishing, troubleshooting, or configuration.
+---
+
 # npm Documentation
 
 ## Quick Reference
