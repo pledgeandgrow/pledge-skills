@@ -5,7 +5,7 @@
 - **Target Version**: Bun 1.2.x
 - **Source**: [bun.sh/docs](https://bun.sh/docs)
 - **Files**: 9
-- **Lines**: ~2,800
+- **Lines**: ~4,350
 
 ---
 
@@ -15,9 +15,9 @@
 |-------|------|-------------|
 | Getting Started (installation, quickstart, TypeScript, bun init) | `getting-started.md` | Install Bun, create projects, run TS/JSX |
 | Runtime (execution, watch mode, REPL, bunfig, modules, plugins) | `runtime.md` | `bun run`, file types, module resolution, auto-install |
-| Package Manager (bun install, add, remove, workspaces, lockfile) | `package-manager.md` | Fast installs, workspaces, overrides, global packages |
+| Package Manager (bun install, add, remove, update, publish, outdated, why, audit, info, link, patch, workspaces, catalogs, filter, scopes, npmrc, security scanner, global cache, isolated installs) | `package-manager.md` | Full PM: install, update, publish, audit, patch, catalogs, isolated installs |
 | HTTP Server (Bun.serve, routing, HTML imports, WebSockets, TLS) | `http-server.md` | Built-in HTTP server, file-system routing, hot reload |
-| APIs (File I/O, SQLite, Streams, Fetch, Workers, Shell, utilities) | `apis.md` | `Bun.file`, `Bun.write`, `bun:sqlite`, `Bun.spawn`, Workers |
+| APIs (File I/O, SQLite, Streams, Fetch, Workers, Shell, Utils, Globals, Web APIs, Bun APIs reference) | `apis.md` | `Bun.file`, `Bun.write`, `bun:sqlite`, `Bun.spawn`, Workers, utils, compression, globals |
 | Advanced APIs (SQL, S3, Redis, TCP/UDP, Cron, FFI, Image, Archive, WebView, Cookies, CSRF, JSON5, Transpiler, Node.js compat) | `advanced-apis.md` | PostgreSQL/MySQL, S3 storage, Redis, TCP/UDP sockets, cron jobs, FFI, image processing, tar archives |
 | Testing (bun test, assertions, mocks, snapshots, watch mode) | `testing.md` | Jest-compatible test runner, TypeScript-first |
 | Bundler (bun build, targets, plugins, executables, HTML imports) | `bundler.md` | Native bundler for browser/bun/node, single-file executables |

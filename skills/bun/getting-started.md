@@ -210,6 +210,64 @@ bun add -d @types/bun
 import { foo } from "@/utils";  // resolves to ./src/utils.ts
 ```
 
+### TypeScript 6 and 7
+
+TypeScript 6.0 and 7.0 no longer auto-discover `@types/*` packages. You must explicitly add `"types": ["bun"]` to your `tsconfig.json`:
+
+```json
+{
+  "compilerOptions": {
+    "types": ["bun"]
+  }
+}
+```
+
+To include additional type packages:
+
+```json
+{
+  "compilerOptions": {
+    "types": ["bun", "react"]
+  }
+}
+```
+
+Or install `@types/bun` as a dev dependency:
+
+```bash
+bun add -d @types/bun
+```
+
+#### Full recommended tsconfig.json (TypeScript 6+)
+
+```json
+{
+  "compilerOptions": {
+    "lib": ["ESNext"],
+    "target": "ESNext",
+    "module": "Preserve",
+    "moduleDetection": "force",
+    "jsx": "react-jsx",
+    "allowJs": true,
+    "types": ["bun"],
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "verbatimModuleSyntax": true,
+    "noEmit": true,
+    "strict": true,
+    "skipLibCheck": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUncheckedIndexedAccess": true,
+    "noImplicitOverride": true,
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
+    "noPropertyAccessFromIndexSignature": false
+  }
+}
+```
+
+This applies to both TypeScript 6 and 7.
+
 ---
 
 ## bun init

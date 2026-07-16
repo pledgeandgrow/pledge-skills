@@ -508,3 +508,219 @@ console.log("Hello");
 console.table([{ a: 1, b: 2 }, { a: 3, b: 4 }]);
 console.dir(obj, { depth: 5 });
 ```
+
+---
+
+## Utils (Bun utility functions)
+
+### Bun.version
+
+```typescript
+Bun.version;  // => "1.3.3"
+```
+
+### Bun.revision
+
+```typescript
+Bun.revision;  // => "f02561530fda1ee9396f51c8bc99b38716e38296"
+```
+
+### Bun.env
+
+```typescript
+Bun.env;  // alias for process.env
+```
+
+### Bun.main
+
+```typescript
+Bun.main;  // => "/path/to/script.ts"
+
+if (import.meta.path === Bun.main) {
+  // this script is being directly executed
+}
+```
+
+### Bun.sleep() / Bun.sleepSync()
+
+```typescript
+await Bun.sleep(1000);           // async, Promise-based
+await Bun.sleep(new Date(Date.now() + 1000));  // sleep until Date
+
+Bun.sleepSync(1000);             // sync, blocks thread
+```
+
+### Bun.which()
+
+```typescript
+const ls = Bun.which("ls");  // => "/usr/bin/ls"
+
+// With custom PATH
+const ls = Bun.which("ls", {
+  PATH: "/usr/local/bin:/usr/bin:/bin",
+});
+```
+
+### Bun.randomUUIDv7()
+
+```typescript
+import { randomUUIDv7 } from "bun";
+
+const id = randomUUIDv7();  // => "0192ce11-26d5-7dc3-9305-1426de888c5a"
+const buffer = randomUUIDv7("buffer");  // 16-byte Buffer
+const base64 = randomUUIDv7("base64");
+const base64url = randomUUIDv7("base64url");
+```
+
+### Bun.deepEquals()
+
+```typescript
+Bun.deepEquals({ a: 1, b: 2 }, { a: 1, b: 2 });  // true
+
+// Strict mode (3rd arg)
+Bun.deepEquals({ a: 1 }, { a: 1, b: undefined }, true);  // false
+```
+
+### Bun.escapeHTML()
+
+```typescript
+Bun.escapeHTML('<script>alert("xss")</script>');
+// => "&lt;script&gt;alert(&quot;xss&quot;)&lt;/script&gt;"
+```
+
+Escapes: `"` → `&quot;`, `&` → `&amp;`, `'` → `&#x27;`, `<` → `&lt;`, `>` → `&gt;`
+
+### Bun.stringWidth()
+
+```typescript
+Bun.stringWidth("hello");  // => 5
+Bun.stringWidth("你好");    // => 4 (wide characters)
+```
+
+### Bun.fileURLToPath() / Bun.pathToFileURL()
+
+```typescript
+Bun.fileURLToPath(new URL("file:///foo/bar.ts"));  // => "/foo/bar.ts"
+Bun.pathToFileURL("/foo/bar.ts");  // => URL "file:///foo/bar.ts"
+```
+
+### Bun.inspect()
+
+```typescript
+const str = Bun.inspect({ foo: "bar" });
+// => '{\n  foo: "bar"\n}'
+
+Bun.inspect(new Uint8Array([1, 2, 3]));
+// => "Uint8Array(3) [ 1, 2, 3 ]"
+
+Bun.inspect.custom;  // Symbol for custom inspect
+
+Bun.inspect.table([{ a: 1 }, { a: 2 }]);
+```
+
+### Bun.stripANSI() / Bun.wrapAnsi()
+
+```typescript
+Bun.stripANSI("\x1b[31mred\x1b[0m");  // => "red"
+
+Bun.wrapAnsi("long text here", 20, {
+  start: 0,
+  end: 0,
+});
+```
+
+### Compression
+
+```typescript
+// Gzip
+const compressed = Bun.gzipSync(Buffer.from("hello".repeat(100)));
+const decompressed = Bun.gunzipSync(compressed);
+
+// Deflate
+const deflated = Bun.deflateSync(data);
+const inflated = Bun.inflateSync(deflated);
+
+// Zstd
+const zstd = Bun.zstdCompressSync(data);
+const decompressed = Bun.zstdDecompressSync(zstd);
+
+// Async variants
+const zstdAsync = await Bun.zstdCompress(data);
+const decompressedAsync = await Bun.zstdDecompress(zstdAsync);
+```
+
+### Bun.nanoseconds()
+
+```typescript
+Bun.nanoseconds();  // high-resolution timestamp in nanoseconds
+```
+
+### Bun.readableStreamTo*()
+
+```typescript
+const bytes = await Bun.readableStreamToBytes(stream);
+const blob = await Bun.readableStreamToBlob(stream);
+const json = await Bun.readableStreamToJSON(stream);
+const formData = await Bun.readableStreamToFormData(stream);
+const array = await Bun.readableStreamToArray(stream);
+```
+
+### Bun.resolveSync()
+
+```typescript
+Bun.resolveSync("./foo", "/path/to/dir");  // => "/path/to/dir/foo.ts"
+```
+
+### bun:jsc
+
+```typescript
+import { serialize, deserialize, estimateShallowMemoryUsageOf } from "bun:jsc";
+
+const serialized = serialize({ foo: "bar" });
+const obj = deserialize(serialized);
+estimateShallowMemoryUsageOf(obj);  // bytes
+```
+
+---
+
+## Globals
+
+Bun implements all standard Web globals and Node.js globals:
+
+**Web globals**: `AbortController`, `AbortSignal`, `Blob`, `ByteLengthQueuingStrategy`, `CountQueuingStrategy`, `Crypto`, `SubtleCrypto`, `CryptoKey`, `CustomEvent`, `DOMException`, `Event`, `EventTarget`, `ErrorEvent`, `CloseEvent`, `MessageEvent`, `MessageChannel`, `MessagePort`, `PerformanceEntry`, `PerformanceMark`, `PerformanceMeasure`, `PerformanceObserver`, `performance`, `ReadableStream`, `ReadableStreamBYOBReader`, `ReadableStreamDefaultReader`, `WritableStream`, `WritableStreamDefaultWriter`, `TransformStream`, `CompressionStream`, `DecompressionStream`, `TextDecoder`, `TextEncoder`, `TextDecoderStream`, `TextEncoderStream`, `URL`, `URLSearchParams`, `FormData`, `Headers`, `Request`, `Response`, `fetch`, `queueMicrotask`, `structuredClone`, `reportError`, `ShadowRealm`, `BroadcastChannel`, `confirm`, `prompt`, `WebAssembly`, `Atomics`
+
+**Node.js globals**: `Buffer`, `process`, `global`, `globalThis`, `__dirname`, `__filename`, `require()`, `module`, `exports`, `setImmediate()`, `clearImmediate()`, `setInterval()`, `clearInterval()`, `setTimeout()`, `clearTimeout()`, `atob()`, `btoa()`
+
+---
+
+## Bun APIs Reference
+
+All APIs available on the `Bun` global object:
+
+**Core**: `Bun.serve`, `Bun.file`, `Bun.write`, `Bun.listen`, `Bun.connect`, `Bun.udpSocket`, `Bun.dns`, `Bun.cron`, `Bun.WebView`, `Bun.Transpiler`, `Bun.spawn`, `Bun.spawnSync`, `Bun.shell`, `Bun.peek`
+
+**Data**: `bun:sqlite`, `sql` (PostgreSQL/MySQL), `Bun.S3Client`, `Bun.s3`, `Bun.RedisClient`, `Bun.Archive`, `Bun.Image`, `Bun.CookieMap`, `Bun.Cookie`, `Bun.CSRF`
+
+**Utilities**: `Bun.version`, `Bun.revision`, `Bun.env`, `Bun.main`, `Bun.sleep`, `Bun.sleepSync`, `Bun.which`, `Bun.randomUUIDv7`, `Bun.deepEquals`, `Bun.escapeHTML`, `Bun.stringWidth`, `Bun.inspect`, `Bun.stripANSI`, `Bun.wrapAnsi`, `Bun.nanoseconds`, `Bun.resolveSync`, `Bun.fileURLToPath`, `Bun.pathToFileURL`
+
+**Compression**: `Bun.gzipSync`, `Bun.gunzipSync`, `Bun.deflateSync`, `Bun.inflateSync`, `Bun.zstdCompress`, `Bun.zstdCompressSync`, `Bun.zstdDecompress`, `Bun.zstdDecompressSync`
+
+**Streams**: `Bun.readableStreamToBytes`, `Bun.readableStreamToBlob`, `Bun.readableStreamToJSON`, `Bun.readableStreamToFormData`, `Bun.readableStreamToArray`
+
+**Parsing**: `Bun.TOML`, `Bun.YAML`, `Bun.Markdown`, `Bun.JSON5`, `Bun.JSONL`, `Bun.HTMLRewriter`
+
+**Other**: `Bun.semver`, `Bun.color`, `Bun.mmap`, `Bun.gc`, `Bun.generateHeapSnapshot`, `Bun.ArrayBufferSink`, `Bun.allocUnsafe`, `Bun.concatArrayBuffers`, `bun:ffi`, `bun:jsc`, `bun:sqlite`
+
+---
+
+## Web APIs
+
+Bun implements Web-standard APIs for server-side JavaScript:
+
+- **confirm()** / **prompt()** — interactive prompts (terminal)
+- **ShadowRealm** — JavaScript sandbox with no access to host objects
+- **EventTarget** / **Event** — DOM event system
+- **ErrorEvent** / **CloseEvent** / **MessageEvent** — typed events
+- **EventSource** — Server-Sent Events (SSE) client
+- **CustomEvent** — events with custom data
+- **BroadcastChannel** — cross-tab/cross-worker communication

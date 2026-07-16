@@ -37,7 +37,7 @@ npx skills add pledgeandgrow/pledge-skills
 - **Python** — 15 files (20,000+ lines)
 - **SWR** — 17 files (5,200+ lines)
 - **Ruby on Rails** — 22 files (6,800+ lines)
-- **Bun** — 9 files (2,800+ lines)
+- **Bun** — 9 files (4,350+ lines)
 - **OXC** — 6 files (5,000+ lines)
 - Every official docs page analyzed and covered
 
@@ -62,7 +62,7 @@ npx skills add pledgeandgrow/pledge-skills
 | `python/` | 15 | 20,000 | Python 3.13 — types, functions, classes, dataclasses, enums, collections, async/asyncio, typing, stdlib (core, I/O, extended: all modules including threading, multiprocessing, socket, sqlite3, hashlib, ctypes, ssl, http, email, XML, tkinter, curses, pdb, profiling, dis, ast, tokenize, compileall, removed modules), testing, idioms, descriptors, GIL |
 | `swr/` | 17 | 5,200 | SWR 2.3 — useSWR, mutation, pagination, prefetching, cache, middleware, suspense, subscription, error handling, TypeScript, Next.js, advanced |
 | `rails/` | 22 | 6,800 | Ruby on Rails 8.1 — Active Record, Action View, Action Controller, routing, Active Support, Action Mailer/Mailbox/Text, Active Job, Active Storage, Action Cable, I18n, testing, security, caching, API apps, configuration, debugging, performance, advanced AR, extending Rails, upgrading |
-| `bun/` | 9 | 2,800 | Bun 1.2 — runtime, package manager, HTTP server, APIs (File I/O, SQLite, Streams, Workers, Shell), advanced APIs (SQL, S3, Redis, TCP/UDP, Cron, FFI, Image, Archive, WebView, Cookies, CSRF, JSON5), test runner, bundler |
+| `bun/` | 9 | 4,346 | Bun 1.2 — runtime, package manager (install, update, publish, outdated, why, audit, info, link, patch, catalogs, filter, scopes, npmrc, security scanner, global cache, isolated installs), HTTP server, APIs (File I/O, SQLite, Streams, Workers, Shell, Utils, Globals, Web APIs), advanced APIs (SQL, S3, Redis, TCP/UDP, Cron, FFI, Image, Archive, WebView, Cookies, CSRF, JSON5), test runner, bundler, TypeScript 6/7 |
 | `npm/` | 15 | 4,261 | npm 12.x — registry, publishing, security, organizations, CLI reference |
 | `oxc/` | 6 | 5,000 | OXC — parser, linter (oxlint), formatter, transformer, minifier, AST |
 
