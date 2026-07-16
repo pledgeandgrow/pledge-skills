@@ -2,7 +2,7 @@
   "name": "pledge-skills",
   "version": "1.0.0",
   "description": "Comprehensive agent skills for Astro, Express, Next.js, React, React Native, Redis, TypeScript, Tailwind CSS, Rust, OXC, Vite, and Zig.",
-  "repository": "https://github.com/mehdi-berel/pledge-skills",
+  "repository": "https://github.com/pledgeandgrow/pledge-skills",
   "format": "skill-md",
   "skills": [
     {

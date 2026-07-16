@@ -27,7 +27,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/yourusername/pledge-skills.git"
+    "url": "git+https://github.com/pledgeandgrow/pledge-skills.git"
   },
   "files": [
     "skills/",

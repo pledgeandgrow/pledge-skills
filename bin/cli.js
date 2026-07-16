@@ -164,8 +164,8 @@ Examples:
   npx pledge-skills add tailwindcss
   npx pledge-skills add all
 
-  npx pledge-skills add https://github.com/yourusername/pledge-skills --skill nextjs
-  npx pledge-skills add https://github.com/yourusername/pledge-skills --skill all
+  npx pledge-skills add https://github.com/pledgeandgrow/pledge-skills --skill nextjs
+  npx pledge-skills add https://github.com/pledgeandgrow/pledge-skills --skill all
 `);
 }
 

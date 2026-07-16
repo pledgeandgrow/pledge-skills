@@ -1,30 +1,56 @@
 # Pledge Skills — Installable Agent Skill Library
 
-[![skills.sh](https://skills.sh/b/mehdi-berel/pledge-skills)](https://www.skills.sh/mehdi-berel/pledge-skills)
+[![skills.sh](https://skills.sh/b/pledgeandgrow/pledge-skills)](https://www.skills.sh/pledgeandgrow/pledge-skills)
 
-A comprehensive, production-ready collection of agent skills covering Next.js 16.2.7, React 19.x, TypeScript 5.x, Tailwind CSS v4, and Zig 0.16.0. Built from official documentation — every API, hook, component, type, utility class, and language feature.
+A comprehensive, production-ready collection of 13 agent skills covering Next.js, React, React Native, TypeScript, Tailwind CSS, Astro, Express, Rust, Zig, OXC, Vite, Redis, and npm. Built from official documentation — every API, hook, component, type, utility class, and language feature.
+
+## Quick Install
 
 ```bash
 npx pledge-skills add all
 ```
 
+Or via [skills.sh](https://www.skills.sh/pledgeandgrow/pledge-skills):
+
+```bash
+npx skills add pledgeandgrow/pledge-skills
+```
+
 ## Stats
 
-- **34 Next.js modular reference files** (6,892+ lines)
-- **16 TypeScript modular reference files** (2,371+ lines)
-- **17 Tailwind CSS modular reference files** (3,092+ lines)
-- **15 React modular reference files** (2,744+ lines)
-- **22 Zig modular reference files** (5,600+ lines)
+- **13 skills** — 301 files, ~98,000+ lines total
+- **Next.js** — 34 files (6,892+ lines)
+- **React Native** — 62 files (18,000+ lines)
+- **Astro** — 29 files (10,000+ lines)
+- **Redis** — 29 files (12,000+ lines)
+- **Zig** — 22 files (5,100+ lines)
+- **Vite** — 21 files (5,380+ lines)
+- **Express** — 18 files (9,000+ lines)
+- **Rust** — 17 files (22,000+ lines)
+- **Tailwind CSS** — 17 files (3,092+ lines)
+- **TypeScript** — 16 files (2,371+ lines)
+- **React** — 15 files (2,744+ lines)
+- **npm** — 15 files (4,261+ lines)
+- **OXC** — 6 files (5,000+ lines)
 - Every official docs page analyzed and covered
 
 ## Skills
 
-| Skill | Files | Description |
-|-------|-------|-------------|
-| `nextjs/` | 34 | Next.js 16.2.7 — App Router, Server Components, caching, deployment |
-| `typescript/` | 16 | TypeScript 5.x — types, generics, narrowing, TSConfig, JSX, migration |
-| `tailwindcss/` | 17 | Tailwind CSS v4 — utility classes, responsive, customization, v4 CSS-first config |
-| `zig/` | 22 | Zig 0.16.0 — types, pointers, structs, enums, unions, control flow, comptime, builtins, memory, C interop, assembly, std library |
+| Skill | Files | Lines | Description |
+|-------|-------|-------|-------------|
+| `nextjs/` | 34 | 6,892 | Next.js 16.2.7 — App Router, Server Components, caching, deployment |
+| `react-native/` | 62 | 18,000 | React Native 0.86 — core components, APIs, New Architecture, Hermes |
+| `astro/` | 29 | 10,000 | Astro 5.x — components, routing, content collections, islands, view transitions |
+| `redis/` | 29 | 12,000 | Redis 8.x — all data types, pub/sub, streams, vector search, clustering, Lua |
+| `zig/` | 22 | 5,100 | Zig 0.16.0 — types, pointers, structs, comptime, builtins, memory, C interop |
+| `vite/` | 21 | 5,380 | Vite 8.x — HMR, plugins, SSR, build config, Environment API, Rolldown |
+| `express/` | 18 | 9,000 | Express 5.x — routing, middleware, error handling, security, production |
+| `rust/` | 17 | 22,000 | Rust 1.97.0 (Edition 2024) — ownership, traits, async, Cargo, unsafe, FFI |
+| `tailwindcss/` | 17 | 3,092 | Tailwind CSS v4 — utility classes, responsive, CSS-first config |
+| `typescript/` | 16 | 2,371 | TypeScript 5.x — types, generics, narrowing, TSConfig, JSX, migration |
+| `react/` | 15 | 2,744 | React 19.x — hooks, concurrent features, Server Components, React Compiler |
+| `npm/` | 15 | 4,261 | npm 12.x — registry, publishing, security, organizations, CLI reference |
+| `oxc/` | 6 | 5,000 | OXC — parser, linter (oxlint), formatter, transformer, minifier, AST |
 
 ## Install
 
@@ -39,9 +65,25 @@ npx pledge-skills add all
 ```bash
 npx pledge-skills add nextjs
 npx pledge-skills add react
+npx pledge-skills add react-native
 npx pledge-skills add typescript
 npx pledge-skills add tailwindcss
+npx pledge-skills add astro
+npx pledge-skills add express
+npx pledge-skills add rust
 npx pledge-skills add zig
+npx pledge-skills add oxc
+npx pledge-skills add vite
+npx pledge-skills add redis
+npx pledge-skills add npm
+```
+
+### Via skills.sh
+
+```bash
+npx skills add pledgeandgrow/pledge-skills --all
+npx skills add pledgeandgrow/pledge-skills --skill nextjs
+npx skills add pledgeandgrow/pledge-skills --skill rust --skill zig
 ```
 
 ### List available skills
@@ -52,67 +94,40 @@ npx pledge-skills list
 
 ### Manual install (copy folders)
 
-Copy individual skill folders (`nextjs/`, `typescript/`, `tailwindcss/`, `react/`, `zig/`) into your agent's skills directory (`.claude/skills/` or `.agents/skills/`).
-
-## Skill Index
-
-| File | Topic |
-|------|-------|
-| `SKILL.md` | Main index — quick reference and file map |
-| `project-structure.md` | File conventions, routing, layouts, dynamic routes, parallel/intercepted routes |
-| `server-client-components.md` | Server Components, Client Components, `'use client'`, composition, serialization |
-| `data-fetching.md` | Fetching in Server Components, `async` pages, `generateStaticParams` |
-| `server-functions.md` | Server Actions, Server Functions, `'use server'`, progressive enhancement |
-| `caching.md` | `'use cache'`, `cacheLife`, `cacheTag`, `cacheComponents`, revalidation internals |
-| `streaming.md` | `<Suspense>`, `loading.js`, `use()` promise, streaming Route Handlers |
-| `error-handling.md` | `error.js`, `not-found.js`, `forbidden()`, `unauthorized()`, `global-error.tsx` |
-| `forms-validation.md` | Server Actions forms, `useActionState`, `useFormStatus`, optimistic updates |
-| `styling.md` | Tailwind CSS v4, CSS Modules, Global CSS, Sass |
-| `css-in-js.md` | styled-components, styled-jsx, Emotion status |
-| `image-font-optimization.md` | `next/image`, `next/font`, `getImageProps`, config, browser bugs |
-| `metadata-seo.md` | `generateMetadata`, `generateViewport`, OG images, sitemap, robots |
-| `navigation-hooks.md` | `useRouter`, `usePathname`, `useSearchParams`, `useLinkStatus` |
-| `redirecting.md` | `redirect()`, `permanentRedirect()`, `NextResponse.redirect`, bulk redirects |
-| `components-next.md` | `Form`, `Script`, `Link` (onNavigate, transitionTypes), `ViewTransition` |
-| `prefetching-ppr.md` | `<Link>` prefetching, manual prefetch, Partial Prerendering (PPR) |
-| `preserving-ui-state.md` | React `<Activity>`, state preservation across navigations |
-| `authentication-security.md` | Sessions, OAuth, JWT, middleware auth, CSP, tainting, rate limiting |
-| `environment-variables.md` | `.env` files, `NEXT_PUBLIC_`, runtime variables, load order |
-| `advanced-apis.md` | `after`, `connection`, `cacheTag`, `draftMode`, `cacheLife` |
-| `lazy-loading.md` | `next/dynamic`, `React.lazy()`, `ssr: false`, magic comments |
-| `custom-server.md` | Express integration, custom routing, existing backend proxy |
-| `internationalization.md` | i18n routing, dictionaries, RTL, locale detection |
-| `mdx.md` | MDX setup, custom components, frontmatter, remark/rehype plugins |
-| `testing.md` | Vitest, Playwright, Cypress, Jest — unit, component, E2E |
-| `advanced-deployment.md` | Multi-tenant, multi-zones, bundle analyzer, PWA, video |
-| `static-exports.md` | `output: 'export'`, Docker self-hosting, production checklist |
-| `third-party-backend.md` | `@next/third-parties`, BFF, Route Handlers, webhooks, rate limiting |
-| `debugging-memory.md` | VS Code debugger, DevTools, heap profiles, memory optimization |
-| `edge-runtime.md` | Edge Runtime APIs, `proxy.ts`, `NextRequest`/`NextResponse`, Adapters |
-| `turbopack-config.md` | Turbopack, React Compiler, `next.config.ts`, all config options, CLI |
-| `instrumentation-mcp.md` | `instrumentation.ts`, OpenTelemetry, Speed Insights, Analytics |
-| `breaking-changes.md` | Full migration guide from Next.js 15 to 16.2.7 |
+Copy individual skill folders into your agent's skills directory (`.claude/skills/`, `.agents/skills/`, `.cursor/skills/`, etc.).
 
 ## Target Versions
 
 - **Next.js**: 16.2.7
-- **React**: 19.2 (Canary)
-- **Tailwind CSS**: v4 (default in new projects)
+- **React**: 19.x
+- **React Native**: 0.86
+- **TypeScript**: 5.x
+- **Tailwind CSS**: v4
+- **Astro**: 5.x
+- **Express**: 5.x
+- **Rust**: 1.97.0 (Edition 2024)
 - **Zig**: 0.16.0
+- **OXC**: latest
+- **Vite**: 8.x
+- **Redis**: 8.x
+- **npm**: 12.x
 
 ## Usage
 
-Point your AI agent to `nextjs/SKILL.md` as the entry point. It contains a condensed index with links to all modular files.
+Point your AI agent to any `<skill>/SKILL.md` as the entry point. Each contains a condensed index with links to all modular files.
 
 ```
 Agent: "I need to know about Next.js caching"
 → Read nextjs/caching.md
 
-Agent: "How do I set up OpenTelemetry?"
-→ Read nextjs/instrumentation-mcp.md
+Agent: "How do Rust ownership and borrowing work?"
+→ Read rust/ownership-borrowing.md
 
-Agent: "What's the difference between Server and Client Components?"
-→ Read nextjs/server-client-components.md
+Agent: "Set up Redis vector search"
+→ Read redis/vector-search.md
+
+Agent: "What's new in Vite 8?"
+→ Read vite/migration.md
 ```
 
 ## License
