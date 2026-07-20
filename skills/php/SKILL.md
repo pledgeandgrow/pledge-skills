@@ -23,6 +23,7 @@ description: |
 
 | Topic | File |
 |-------|------|
+| Installation (Linux, macOS, Windows, Docker), php.ini config, web server setup, SAPI types | `getting-started.md` |
 | PHP tags, escaping HTML, instruction separation, comments | `basics-syntax.md` |
 | Types (null, bool, int, float, string, array, object, callable, iterable, mixed, void, never, resource), type declarations, type juggling | `types.md` |
 | Variables, scope, predefined variables, variable variables, external sources | `variables.md` |
@@ -51,6 +52,7 @@ description: |
 | Standard library: SPL (datastructures, iterators, exceptions, functions), reflection, fileinfo, filesystem, directories | `stdlib-spl-io.md` |
 | Standard library: compression (Phar, Zip, Zlib, Bzip2, Rar, LZF), intl, iconv, mbstring, gettext, GD, ImageMagick, Exif | `stdlib-extended.md` |
 | Standard library: PCNTL, POSIX, program execution, FFI, OPcache, session, filter, ctype, FTP, IMAP, mail, SOAP, OAuth, readline, APCu | `stdlib-services.md` |
+| Standard library: server-specific (Apache, LiteSpeed, FPM), Solr, FDF, GnuPG, wkhtmltox, PS, XLSWriter, Radius, GeoIP, FANN, Igbinary, Lua, CommonMark, Event, Yar, Eio, Ev, Expect, Enchant, Gender, Quickhash, dBase, Firebird, CUBRID, IBM DB2, Componere | `stdlib-misc.md` |
 | Composer, PIE, PECL, autoloading, dependency management, packaging | `composer.md` |
 | PHP 8.5 new features, 8.4/8.3/8.2/8.1/8.0 migration, deprecated features, backward incompatible changes | `whats-new.md` |
 
