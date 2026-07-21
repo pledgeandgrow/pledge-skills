@@ -1,3 +1,35 @@
+---
+name: Biome
+version: "2.x"
+tags:
+  - biome
+  - formatter
+  - linter
+  - code-quality
+  - linting
+  - formatting
+  - javascript
+  - typescript
+  - jsx
+  - tsx
+  - json
+  - css
+  - graphql
+  - gritql
+  - eslint-migration
+  - prettier-migration
+  - code-assist
+  - import-organizer
+  - ci
+  - editor-integration
+  - vcs-integration
+  - monorepo
+  - rust
+  - web-toolchain
+description: |
+  Biome 2.x — fast all-in-one web toolchain in Rust. Formats, lints, assists. Replaces Prettier + ESLint.
+---
+
 # Biome — Skill Overview
 
 > **Source**: [biomejs.dev](https://biomejs.dev/) | [Getting Started](https://biomejs.dev/guides/getting-started/) | [Formatter](https://biomejs.dev/formatter/) | [Linter](https://biomejs.dev/linter/) | [CLI](https://biomejs.dev/reference/cli/) | [Configuration](https://biomejs.dev/reference/configuration/)

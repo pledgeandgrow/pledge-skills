@@ -1,3 +1,84 @@
+---
+name: dioxus-docs
+version: "0.7"
+tags:
+  - dioxus
+  - rust
+  - cross-platform
+  - web
+  - desktop
+  - mobile
+  - fullstack
+  - ssr
+  - wasm
+  - react
+  - jsx
+  - rsx
+  - signals
+  - reactivity
+  - hooks
+  - router
+  - server-functions
+  - hydration
+  - hot-reload
+  - blitz
+  - wgpu
+  - webview
+  - tauri
+  - freya
+  - subsecond
+  - manganis
+  - asset-bundling
+  - css
+  - tailwind
+  - scss
+  - stores
+  - context
+  - global-signals
+  - custom-renderer
+  - lenses
+  - suspense
+  - data-fetching
+  - effects
+  - memos
+  - hoisting
+  - error-handling
+  - error-boundaries
+  - testing
+  - playwright
+  - optimizing
+  - antipatterns
+  - logging
+  - tracing
+  - middleware
+  - websockets
+  - streaming
+  - use_server_future
+  - use_server_cached
+  - ServerFnError
+  - anyhow
+  - CapturedError
+  - RenderError
+  - use_resource
+  - use_loader
+  - use_memo
+  - use_effect
+  - use_websocket
+  - reqwest
+  - dioxus-query
+  - pretty-assertions
+  - dioxus-ssr
+  - wasm-opt
+  - UPX
+  - thiserror
+  - tower-http
+  - axum
+  - CborEncoding
+  - JsonEncoding
+description: |
+  Dioxus 0.7 — fullstack cross-platform Rust app framework. Web, Desktop, Mobile, SSR. RSX, signals, hooks, router.
+---
+
 # Dioxus 0.7
 
 > **Source:** [https://dioxuslabs.com/learn/0.7/](https://dioxuslabs.com/learn/0.7/)

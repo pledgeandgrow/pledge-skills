@@ -1,3 +1,253 @@
+---
+name: prisma-docs
+version: "7.x"
+tags:
+  - prisma
+  - prisma orm
+  - prisma client
+  - prisma schema
+  - prisma migrate
+  - prisma studio
+  - prisma postgres
+  - prisma cli
+  - orm
+  - database
+  - postgresql
+  - mysql
+  - sqlite
+  - mongodb
+  - sql server
+  - cockroachdb
+  - typescript
+  - type-safe
+  - query builder
+  - migrations
+  - schema
+  - datasource
+  - generator
+  - model
+  - enum
+  - relation
+  - one-to-one
+  - one-to-many
+  - many-to-many
+  - self-relation
+  - referential actions
+  - cascade
+  - index
+  - view
+  - composite type
+  - introspection
+  - db pull
+  - db push
+  - migrate dev
+  - migrate deploy
+  - migrate reset
+  - migrate status
+  - migrate diff
+  - prisma generate
+  - prisma init
+  - prisma format
+  - prisma validate
+  - prisma seed
+  - createMany
+  - createManyAndReturn
+  - findUnique
+  - findFirst
+  - findMany
+  - updateMany
+  - updateManyAndReturn
+  - upsert
+  - deleteMany
+  - where
+  - orderBy
+  - filter
+  - sort
+  - pagination
+  - offset
+  - cursor
+  - select
+  - include
+  - nested reads
+  - nested writes
+  - fluent api
+  - connect
+  - disconnect
+  - connectOrCreate
+  - aggregation
+  - groupBy
+  - count
+  - distinct
+  - transaction
+  - $transaction
+  - interactive transaction
+  - isolation level
+  - serializable
+  - raw sql
+  - $queryRaw
+  - $executeRaw
+  - TypedSQL
+  - client extension
+  - model extension
+  - query extension
+  - result extension
+  - shared extension
+  - json fields
+  - scalar lists
+  - composite id
+  - omit
+  - driver adapter
+  - prisma.config.ts
+  - connection pooling
+  - pgbouncer
+  - read replicas
+  - prisma 7
+  - esm
+  - prisma compute
+  - prisma mcp
+  - ai tools
+  - prisma next
+  - data contract
+  - psl
+  - prisma console
+  - management api
+  - query insights
+  - table inheritance
+  - external tables
+  - read replicas
+  - safeql
+  - permit
+  - aws deployment
+  - create-db
+  - pgvector
+  - ollama
+  - ai prompt
+  - cursor
+  - windsurf
+  - copilot
+  - deployment
+  - vercel
+  - netlify
+  - docker
+  - cloudflare workers
+  - deno deploy
+  - fly.io
+  - turborepo
+  - next.js
+  - nuxt
+  - sveltekit
+  - astro
+  - hono
+  - nestjs
+  - elysia
+  - solidstart
+  - tanstack start
+  - react rout
+  - prisma next reference
+  - orm client
+  - sql query builder
+  - pipeline builder
+  - raw queries
+  - prisma next middleware
+  - budgets middleware
+  - cache middleware
+  - lints middleware
+  - migration graph
+  - rollbacks
+  - contract capabilities
+  - contract artifact
+  - prepared statements
+  - telemetry
+  - asynciterable
+  - polymorphic relations
+  - embed vs reference
+  - content hashes
+  - execution options
+  - withTransaction
+  - rawCommand
+  - MongoFieldFilter
+  - ResultType
+  - distinctOn
+  - lateralJoin
+  - cacheAnnotation
+  - BUDGET.ROWS_EXCEEDED
+  - LINT.DELETE_WITHOUT_WHERE
+  - prisma-next contract emit
+  - prisma-next migration plan
+  - prisma-next migrate
+  - prisma-next migration graph
+  - prisma-next migration ref
+  - prisma-next db sign
+  - prisma-next db verifyer 7
+  - authjs
+  - better auth
+  - clerk
+  - seeding
+  - baselining
+  - squashing
+  - expand and contract
+  - upgrade
+  - drizzle
+  - mongoose
+  - sequelize
+  - typeorm
+  - observability
+  - opentelemetry
+  - logging
+  - error handling
+  - error reference
+  - unit testing
+  - integration testing
+  - prisma dev
+  - create-db
+  - prisma accelerate
+  - prisma next orm client
+  - prisma next sql builder
+  - prisma next pipeline builder
+  - prisma next raw queries
+  - prisma next transactions
+  - prisma next middleware
+  - prisma next budgets
+  - prisma next cache
+  - prisma next lints
+  - prisma next migration graph
+  - prisma next rollbacks
+  - prisma next capabilities
+  - prisma next contract artifact
+  - prisma next prepared statements
+  - prisma next telemetry
+  - prisma next data modeling
+  - prisma next polymorphic
+  - prisma next embed vs reference
+  - prisma next AsyncIterableResult
+  - prisma next MongoFieldFilter
+  - prisma next withTransaction
+  - prisma next rawCommand
+  - prisma next cacheAnnotation
+  - prisma next distinctOn
+  - prisma next lateralJoin
+  - prisma next groupBy having
+  - prisma next upsert conflictOn
+  - prisma next variant
+  - prisma next cursor pagination
+  - prisma next streaming
+  - prisma-next contract emit
+  - prisma-next migration plan
+  - prisma-next migrate
+  - prisma-next migration status
+  - prisma-next migration ref
+  - prisma-next db sign
+  - prisma-next db verify
+  - BUDGET.ROWS_EXCEEDED
+  - LINT.DELETE_WITHOUT_WHERE
+  - LINT.UPDATE_WITHOUT_WHERE
+  - LINT.NO_LIMIT
+  - LINT.SELECT_STAR
+  - RUNTIME.MIDDLEWARE_FAMILY_MISMATCH
+description: |
+  Prisma ORM 7.x — schema, Prisma Client CRUD, migrations, introspection, relations, transactions, TypeScript.
+---
+
 # Prisma ORM Documentation Skill
 
 > **Prisma changes frequently — verify against the changelog and current docs before implementing.**

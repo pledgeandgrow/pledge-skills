@@ -1,3 +1,45 @@
+---
+name: powershell-docs
+version: "7.6"
+tags:
+  - powershell
+  - windows
+  - scripting
+  - automation
+  - shell
+  - cmdlet
+  - module
+  - pipeline
+  - remoting
+  - dsc
+  - desired-state-configuration
+  - cim
+  - wmi
+  - winrm
+  - ssh
+  - psresourceget
+  - powershellget
+  - psgallery
+  - jea
+  - execution-policy
+  - securestring
+  - runspace
+  - pssession
+  - jobs
+  - classes
+  - hashtable
+  - array
+  - error-handling
+  - splatting
+  - pscustomobject
+  - providers
+  - psdrive
+  - psscriptanalyzer
+  - platyps
+description: |
+  PowerShell 7.6 + Windows PowerShell 5.1 — variables, arrays, hashtables, functions, classes, remoting, modules, DSC.
+---
+
 # PowerShell Skill
 
 > **PowerShell** — Task-based command-line shell and scripting language for system administration.

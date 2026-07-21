@@ -1,3 +1,27 @@
+---
+name: git-docs
+version: "Git 2.49"
+tags:
+  - git
+  - version-control
+  - vcs
+  - distributed
+  - branching
+  - merging
+  - rebase
+  - submodules
+  - github
+  - hooks
+  - gitignore
+  - gitattributes
+  - plumbing
+  - porcelain
+  - ci-cd
+  - collaboration
+description: |
+  Git 2.49 — repositories, branching, merging, rebasing, remotes, submodules, hooks, internals, workflows.
+---
+
 # Git
 
 > Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency.

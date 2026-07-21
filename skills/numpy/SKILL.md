@@ -1,3 +1,44 @@
+---
+name: numpy-docs
+version: "NumPy 2.5"
+tags:
+  - numpy
+  - python
+  - scientific-computing
+  - ndarray
+  - array
+  - vectorization
+  - broadcasting
+  - data-types
+  - dtype
+  - indexing
+  - slicing
+  - ufunc
+  - structured-arrays
+  - io
+  - genfromtxt
+  - loadtxt
+  - interoperability
+  - c-api
+  - f2py
+  - fortran
+  - performance
+  - multiprocessing
+  - numba
+  - cython
+  - subclassing
+  - byte-swapping
+  - memory-alignment
+  - migration
+  - nep50
+  - linear-algebra
+  - random
+  - histogram
+  - matlab
+description: |
+  NumPy 2.5 — array creation, data types, indexing, broadcasting, ufuncs, structured arrays, I/O, C-API.
+---
+
 # NumPy
 
 > NumPy is the fundamental package for scientific computing in Python, providing a powerful N-dimensional array object, broadcasting functions, and tools for integrating C/C++ and Fortran code.

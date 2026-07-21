@@ -1,3 +1,24 @@
+---
+name: ruff-docs
+version: "latest"
+tags:
+  - ruff
+  - python
+  - linter
+  - formatter
+  - flake8
+  - isort
+  - black
+  - pyupgrade
+  - linting
+  - code-quality
+  - rust
+  - cli
+  - pyproject.toml
+description: |
+  Ruff — fast Python linter and formatter in Rust. 900+ rules, Black-compatible formatter, LSP, CI/CD.
+---
+
 # Ruff — Extremely Fast Python Linter & Formatter
 
 ## Overview

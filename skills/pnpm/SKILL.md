@@ -1,3 +1,143 @@
+---
+name: pnpm
+version: "11.x"
+tags:
+  - pnpm
+  - package manager
+  - npm
+  - node
+  - node.js
+  - javascript
+  - monorepo
+  - workspace
+  - lockfile
+  - pnpm-lock.yaml
+  - content-addressable store
+  - hard links
+  - symlinks
+  - node_modules
+  - hoisting
+  - isolated
+  - hoisted
+  - pnp
+  - plug and play
+  - catalogs
+  - catalog protocol
+  - filtering
+  - pnpmfile
+  - hooks
+  - overrides
+  - peer dependencies
+  - autoInstallPeers
+  - dedupe
+  - side effects cache
+  - frozen lockfile
+  - offline
+  - audit
+  - vulnerabilities
+  - patch
+  - patchedDependencies
+  - publish
+  - sbom
+  - licenses
+  - import
+  - corepack
+  - devEngines
+  - runtime
+  - node version
+  - trust policy
+  - minimum release age
+  - build script security
+  - allowBuilds
+  - strictDepBuilds
+  - verifyDepsBeforeRun
+  - resolutionMode
+  - time-based
+  - lowest-direct
+  - gitBranchLockfile
+  - virtualStoreDir
+  - packageImportMethod
+  - clone
+  - copy-on-write
+  - shamefullyHoist
+  - publicHoistPattern
+  - hoistPattern
+  - linkWorkspacePackages
+  - injectWorkspacePackages
+  - sharedWorkspaceLockfile
+  - saveWorkspaceProtocol
+  - workspace protocol
+  - changesets
+  - rush
+  - pnx
+  - pnpm dlx
+  - pnpx
+  - dynamic package execution
+  - npm migration
+  - package-lock.json
+  - yarn.lock
+  - npm-shrinkwrap.json
+  - XDG
+  - PNPM_HOME
+  - npmrc
+  - registry
+  - JSR
+  - proxy
+  - SSL
+  - child concurrency
+  - unsafePerm
+  - nodeOptions
+  - engineStrict
+  - pmOnFail
+  - recursiveInstall
+  - scriptShell
+  - shellEmulator
+  - enablePrePostScripts
+  - optimisticRepeatInstall
+  - dedupeDirectDeps
+  - extendNodePath
+  - deployAllFiles
+  - requiredScripts
+  - updateNotifier
+  - ignoreCompatibilityDb
+  - registrySupportsTimeField
+  - savePrefix
+  - globalDir
+  - cacheDir
+  - stateDir
+  - continuous integration
+  - CI
+  - GitHub Actions
+  - GitLab CI
+  - CircleCI
+  - Azure Pipelines
+  - config dependencies
+  - configDependencies
+  - package sources
+  - JSR
+  - git
+  - tarball
+  - aliases
+  - npm: protocol
+  - pnpm link
+  - pnpm rebuild
+  - pnpm pack
+  - pnpm deploy
+  - pnpm doctor
+  - pnpm test
+  - configuring
+  - global config
+  - FAQ
+  - finders
+  - global packages
+  - tab-completion
+  - pnpr
+  - registry server
+  - install-test
+description: |
+  pnpm 11.x — fast, disk-efficient package manager. Workspaces, catalogs, filtering, hooks, .npmrc, CLI.
+---
+
 # pnpm Documentation Skill
 
 ## Overview

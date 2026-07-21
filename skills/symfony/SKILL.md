@@ -1,3 +1,55 @@
+---
+name: symfony-docs
+version: "Symfony 8.x"
+tags:
+  - symfony
+  - php
+  - framework
+  - doctrine
+  - orm
+  - twig
+  - routing
+  - controller
+  - forms
+  - validation
+  - security
+  - authentication
+  - authorization
+  - voters
+  - csrf
+  - ldap
+  - console
+  - mailer
+  - messenger
+  - scheduler
+  - notifier
+  - serializer
+  - translation
+  - i18n
+  - http-client
+  - session
+  - cache
+  - logging
+  - monolog
+  - workflow
+  - webhook
+  - asset-mapper
+  - webpack-encore
+  - dependency-injection
+  - service-container
+  - event-dispatcher
+  - bundles
+  - testing
+  - phpunit
+  - deployment
+  - performance
+  - http-cache
+  - ai
+  - best-practices
+description: |
+  Symfony 8.x — routing, controllers, Twig, service container, Doctrine ORM, forms, validation, security, testing.
+---
+
 # Symfony
 
 > Symfony is a set of reusable PHP components and a PHP framework for web applications. It provides a full-stack framework, standalone components, and a philosophy of best practices.

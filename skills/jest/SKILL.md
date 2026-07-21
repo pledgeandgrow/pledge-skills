@@ -1,3 +1,47 @@
+---
+name: jest-docs
+version: "30.x"
+tags:
+  - jest
+  - testing
+  - unit testing
+  - javascript testing
+  - test runner
+  - mock
+  - spy
+  - snapshot
+  - coverage
+  - assertion
+  - expect
+  - describe
+  - test
+  - it
+  - beforeEach
+  - afterEach
+  - beforeAll
+  - afterAll
+  - jest.fn
+  - jest.mock
+  - jest.spyOn
+  - jest.useFakeTimers
+  - babel-jest
+  - ts-jest
+  - jsdom
+  - code coverage
+  - watch mode
+  - parallel testing
+  - e2e testing
+  - puppeteer
+  - react testing
+  - async testing
+  - matchers
+  - fake timers
+  - esm
+  - webpack
+description: |
+  Jest 30.x — JavaScript testing framework. Matchers, async, mocks, snapshots, fake timers, coverage, watch mode.
+---
+
 # Jest Skill
 
 > **Jest** — A delightful JavaScript testing framework with a focus on simplicity.

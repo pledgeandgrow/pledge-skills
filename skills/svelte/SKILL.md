@@ -1,3 +1,179 @@
+---
+name: svelte-docs
+version: "5.x"
+tags:
+  - svelte
+  - svelte 5
+  - sveltekit
+  - sveltekit 2
+  - runes
+  - $state
+  - $derived
+  - $effect
+  - $props
+  - $bindable
+  - $inspect
+  - $host
+  - compiler
+  - svelte component
+  - svelte file
+  - .svelte
+  - reactive state
+  - computed
+  - snippet
+  - render tag
+  - transition
+  - animation
+  - store
+  - writable
+  - readable
+  - derived store
+  - context
+  - lifecycle
+  - onMount
+  - onDestroy
+  - tick
+  - mount
+  - unmount
+  - hydrate
+  - custom elements
+  - typeScript
+  - testing
+  - vitest
+  - playwright
+  - storybook
+  - sv
+  - sv create
+  - sv add
+  - sv check
+  - sv migrate
+  - adapter
+  - routing
+  - load function
+  - form actions
+  - page options
+  - ssr
+  - ssg
+  - spa
+  - prerender
+  - hooks
+  - error handling
+  - service worker
+  - packaging
+  - auth
+  - performance
+  - accessibility
+  - seo
+  - images
+  - vite
+  - vitePreprocess
+  - tailwindcss
+  - eslint
+  - prettier
+  - mdsvex
+  - paraglide
+  - drizzle
+  - better-auth
+  - mcp
+  - ai tools
+  - flip
+  - fade
+  - fly
+  - slide
+  - blur
+  - scale
+  - draw
+  - crossfade
+  - easing
+  - spring
+  - tweened
+  - svelte/reactivity
+  - SvelteMap
+  - SvelteSet
+  - SvelteDate
+  - MediaQuery
+  - createSubscriber
+  - createContext
+  - setContext
+  - getContext
+  - bind:
+  - use:
+  - animate:
+  - style:
+  - class:
+  - await expressions
+  - svelte:boundary
+  - svelte:window
+  - svelte:document
+  - svelte:body
+  - svelte:head
+  - svelte:element
+  - svelte:options
+  - error boundary
+  - progressive enhancement
+  - use:enhance
+  - goto
+  - invalidate
+  - invalidateAll
+  - pushState
+  - replaceState
+  - afterNavigate
+  - beforeNavigate
+  - preloadData
+  - preloadCode
+  - $app/environment
+  - $app/forms
+  - $app/navigation
+  - $app/paths
+  - $app/server
+  - $app/state
+  - $app/stores
+  - $env
+  - $lib
+  - $service-worker
+  - svelte.config.js
+  - svelte-kit sync
+  - app.d.ts
+  - remote functions
+  - query
+  - command
+  - form
+  - single-flight mutations
+  - shallow routing
+  - snapshots
+  - observability
+  - opentelemetry
+  - svelte 4 migration
+  - svelte 5 migration
+  - sveltekit v2 migration
+  - sapper migration
+  - glossary
+  - compiler errors
+  - compiler warnings
+  - runtime errors
+  - runtime warnings
+  - svelte/easing
+  - svelte/motion
+  - svelte/transition
+  - svelte/store
+  - svelte/server
+  - svelte/compiler
+  - svelte/events
+  - svelte/action
+  - svelte/animate
+  - svelte/attachments
+  - svelte/legacy
+  - svelte/reactivity
+  - createRawSnippet
+  - flushSync
+  - fork
+  - untrack
+  - getAbortSignal
+  - settled
+description: |
+  Svelte 5.x + SvelteKit 2.x — runes, components, stores, transitions, SSR, routing, TypeScript.
+---
+
 # Svelte 5 + SvelteKit — Skill Documentation
 
 > **Source**: [svelte.dev/docs](https://svelte.dev/docs) | [svelte.dev/docs/kit](https://svelte.dev/docs/kit)

@@ -1,3 +1,29 @@
+---
+name: swift-docs
+version: "Swift 6.0"
+tags:
+  - swift
+  - programming-language
+  - type-safe
+  - protocol-oriented
+  - concurrency
+  - arc
+  - generics
+  - server-side
+  - cross-platform
+  - swift-package-manager
+  - vapor
+  - hummingbird
+  - swiftnio
+  - docc
+  - cxx-interop
+  - async-await
+  - actors
+  - sendable
+description: |
+  Swift 6.0 — syntax, strings, collections, closures, enums, structs, concurrency, protocols, generics, package manager.
+---
+
 # Swift
 
 > Swift is a general-purpose programming language built using a modern approach to safety, performance, and software design patterns.

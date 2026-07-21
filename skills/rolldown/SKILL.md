@@ -1,3 +1,50 @@
+---
+name: rolldown-docs
+version: "1.x"
+tags:
+  - rolldown
+  - bundler
+  - rust
+  - javascript bundler
+  - vite
+  - rollup compatible
+  - esbuild
+  - oxc
+  - code splitting
+  - tree shaking
+  - minification
+  - sourcemap
+  - plugin api
+  - hook filters
+  - define
+  - inject
+  - cjs
+  - esm
+  - module resolution
+  - typescript
+  - jsx
+  - syntax lowering
+  - platform presets
+  - module types
+  - manual code splitting
+  - external modules
+  - rolldown cli
+  - rolldown config
+  - defineConfig
+  - rolldown()
+  - build()
+  - watch()
+  - bundle-analyzer
+  - replacePlugin
+  - esmExternalRequirePlugin
+  - oxc-resolver
+  - oxc minifier
+  - napi-rs
+  - voidzero
+description: |
+  Rolldown 1.x — Rust-based JS bundler with Rollup-compatible API. Treeshaking, plugins, code splitting, minification.
+---
+
 # Rolldown
 
 > Blazing fast Rust-based bundler for JavaScript with Rollup-compatible API and esbuild feature parity.

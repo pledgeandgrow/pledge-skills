@@ -1,3 +1,78 @@
+---
+name: actix-web-docs
+version: "4.x"
+tags:
+  - actix
+  - actix-web
+  - rust
+  - web-framework
+  - http-server
+  - async
+  - tokio
+  - middleware
+  - routing
+  - extractors
+  - responders
+  - websockets
+  - http2
+  - tls
+  - https
+  - cors
+  - sessions
+  - static-files
+  - error-handling
+  - testing
+  - actor-model
+  - actix-actor
+  - arbiter
+  - url-dispatch
+  - json
+  - serde
+  - fromrequest
+  - responder
+  - httpresponse
+  - app
+  - scope
+  - state
+  - mutex
+  - data
+  - guard
+  - normalize-path
+  - compress
+  - logging
+  - rustls
+  - openssl
+  - graceful-shutdown
+  - keep-alive
+  - workers
+  - multipart
+  - urlencoded
+  - streaming
+  - either
+  - namedfile
+  - actix-ws
+  - actix-files
+  - actix-cors
+  - actix-session
+  - actix-multipart
+  - actix-http
+  - actix-rt
+  - derive_more
+  - thiserror
+  - responseerror
+  - watchexec
+  - sqlx
+  - sea-orm
+  - diesel
+  - mongodb
+  - syncarbiter
+  - recipient
+  - context
+  - mailbox
+description: |
+  Actix Web 4.x — fast Rust web framework. Routing, extractors, middleware, WebSocket, testing, actors.
+---
+
 # Actix Web — Rust Web Framework
 
 > **Version:** actix-web 4.x | **MSRV:** Rust 1.72+ | **Source:** [https://actix.rs/docs](https://actix.rs/docs)

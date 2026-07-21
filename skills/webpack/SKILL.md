@@ -1,3 +1,48 @@
+---
+name: webpack-docs
+version: "5.x"
+tags:
+  - webpack
+  - bundler
+  - module bundler
+  - javascript
+  - build tool
+  - entry
+  - output
+  - loaders
+  - plugins
+  - devtool
+  - devserver
+  - optimization
+  - split chunks
+  - tree shaking
+  - hmr
+  - hot module replacement
+  - module federation
+  - code splitting
+  - cache
+  - resolve
+  - tapable
+  - compiler hooks
+  - compilation hooks
+  - webpack cli
+  - webpack config
+  - webpack 5
+  - asset modules
+  - source maps
+  - webpack-dev-server
+  - terser
+  - mini-css-extract
+  - html-webpack-plugin
+  - babel-loader
+  - css-loader
+  - ts-loader
+  - sass-loader
+  - vue-loader
+description: |
+  webpack 5.x — entry, output, loaders, plugins, HMR, module federation, optimization, devServer, configuration.
+---
+
 # webpack Skill
 
 > **webpack** — Static module bundler for modern JavaScript applications.

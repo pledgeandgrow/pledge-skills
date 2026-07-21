@@ -1,3 +1,41 @@
+---
+name: spring-ecosystem-docs
+version: "4.1.0"
+tags:
+  - spring
+  - spring boot
+  - spring framework
+  - spring security
+  - spring data
+  - java
+  - kotlin
+  - ioc
+  - dependency injection
+  - aop
+  - auto-configuration
+  - actuator
+  - web mvc
+  - webflux
+  - reactive
+  - jpa
+  - hibernate
+  - mongodb
+  - redis
+  - oauth2
+  - jwt
+  - authentication
+  - authorization
+  - csrf
+  - repository pattern
+  - rest api
+  - microservices
+  - enterprise
+  - graalvm
+  - native image
+description: |
+  Spring Boot 4.x + Framework 7.x — auto-configuration, DI, AOP, MVC, WebFlux, Security, Data JPA/MongoDB/Redis.
+---
+
 # Spring Framework Ecosystem
 
 ## Overview

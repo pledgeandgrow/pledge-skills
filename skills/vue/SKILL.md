@@ -1,3 +1,70 @@
+---
+name: vue-docs
+version: "3.x"
+tags:
+  - vue
+  - vuejs
+  - vue 3
+  - progressive framework
+  - composition api
+  - options api
+  - reactivity
+  - ref
+  - reactive
+  - computed
+  - watch
+  - watchEffect
+  - components
+  - props
+  - emits
+  - slots
+  - provide inject
+  - composables
+  - custom directives
+  - plugins
+  - transition
+  - transition group
+  - keep alive
+  - teleport
+  - suspense
+  - sfc
+  - single-file components
+  - script setup
+  - scoped css
+  - css modules
+  - vite
+  - vue router
+  - pinia
+  - ssr
+  - typescript
+  - volar
+  - vitest
+  - cypress
+  - playwright
+  - defineCustomElement
+  - render function
+  - h()
+  - style guide
+  - accessibility
+  - performance
+  - security
+  - nuxt
+  - defineProps
+  - defineEmits
+  - defineModel
+  - defineExpose
+  - defineOptions
+  - useTemplateRef
+  - useId
+  - nextTick
+  - effectScope
+  - shallowRef
+  - markRaw
+  - toRaw
+description: |
+  Vue.js 3.x — Composition API, reactivity, components, slots, directives, routing, Pinia, SSR.
+---
+
 # Vue.js — The Progressive JavaScript Framework
 
 > **Version**: Vue 3.x (latest) | **Source**: [vuejs.org](https://vuejs.org/)

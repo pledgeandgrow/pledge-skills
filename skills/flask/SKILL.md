@@ -1,3 +1,53 @@
+---
+name: flask-docs
+version: "3.1.x"
+tags:
+  - flask
+  - python
+  - web-framework
+  - wsgi
+  - jinja2
+  - routing
+  - templates
+  - blueprints
+  - sessions
+  - cookies
+  - rest-api
+  - middleware
+  - testing
+  - pytest
+  - error-handling
+  - signals
+  - class-based-views
+  - cli
+  - click
+  - security
+  - async
+  - debugging
+  - logging
+  - configuration
+  - context
+  - werkzeug
+  - tutorial
+  - extensions
+  - development-server
+  - shell
+  - patterns
+  - deploying
+  - gevent
+  - celery
+  - sqlalchemy
+  - sqlite
+  - mongodb
+  - wtforms
+  - file-uploads
+  - caching
+  - streaming
+  - spa
+description: |
+  Flask 3.1.x — routing, templates (Jinja2), blueprints, testing, contexts, signals, CLI, security, deployment.
+---
+
 # Flask Skill
 
 Flask is a lightweight WSGI web application framework for Python. It provides configuration and conventions with sensible defaults to get started quickly. This skill covers the Flask 3.1.x User Guide.

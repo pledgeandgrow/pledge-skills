@@ -1,3 +1,70 @@
+---
+name: terraform-docs
+version: "1.15.x"
+tags:
+  - terraform
+  - iac
+  - infrastructure-as-code
+  - hcl
+  - providers
+  - resources
+  - modules
+  - state
+  - backends
+  - variables
+  - outputs
+  - locals
+  - expressions
+  - functions
+  - plan
+  - apply
+  - destroy
+  - init
+  - validate
+  - fmt
+  - import
+  - workspace
+  - hcp-terraform
+  - terraform-enterprise
+  - sentinel
+  - plugin-development
+  - terraform-registry
+  - aws
+  - azure
+  - gcp
+  - multi-cloud
+  - declarative
+  - automation
+  - devops
+  - provisioning
+  - provisioners
+  - local-exec
+  - remote-exec
+  - file-provisioner
+  - ephemeral-resources
+  - write-only-arguments
+  - sensitive-data
+  - terraform-remote-state
+  - terraform-test
+  - override-files
+  - cli-configuration
+  - terraformrc
+  - style-guide
+  - tflint
+  - import-blocks
+  - removed-blocks
+  - check-blocks
+  - terraform-data
+  - hcp-api
+  - hcp-projects
+  - opa
+  - rbac
+  - variable-precedence
+  - hcp-cli-integration
+description: |
+  Terraform 1.15.x — configuration language, resources, variables, modules, state, backends, providers, functions.
+---
+
 # Terraform
 
 > **Version**: Latest (1.15.x) | **Source**: [developer.hashicorp.com/terraform](https://developer.hashicorp.com/terraform/docs)

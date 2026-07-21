@@ -1,3 +1,67 @@
+---
+name: nginx-docs
+version: "1.29.x"
+tags:
+  - nginx
+  - web-server
+  - reverse-proxy
+  - load-balancer
+  - http
+  - ssl
+  - tls
+  - http2
+  - http3
+  - quic
+  - proxy
+  - fastcgi
+  - stream
+  - tcp
+  - udp
+  - mail-proxy
+  - imap
+  - pop3
+  - smtp
+  - load-balancing
+  - caching
+  - compression
+  - security
+  - rate-limiting
+  - websocket
+  - njs
+  - configuration
+  - devops
+  - infrastructure
+  - performance-tuning
+  - ssl-certificates
+  - ocsp
+  - sni
+  - health-checks
+  - session-persistence
+  - dynamic-configuration
+  - access-control
+  - authentication
+  - ddos-protection
+  - open-file-cache
+  - thread-pools
+  - logging
+  - variables
+  - rewrite
+  - upstream
+  - location-matching
+  - server-names
+  - event-driven
+  - epoll
+  - kqueue
+  - acme
+  - opentelemetry
+  - grpc
+  - memcached
+  - gzip
+  - brotli
+description: |
+  NGINX 1.29.x — web server, reverse proxy, load balancing, HTTP/stream/mail modules, SSL, HTTP/2, HTTP/3.
+---
+
 # NGINX
 
 > **Version**: Latest (1.29.x) | **Source**: [nginx.org/en/docs](https://nginx.org/en/docs/index.html)

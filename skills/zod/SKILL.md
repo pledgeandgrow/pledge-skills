@@ -1,3 +1,133 @@
+---
+name: Zod
+version: "4.x"
+tags:
+  - zod
+  - zod 4
+  - validation
+  - schema validation
+  - typescript
+  - type inference
+  - z.infer
+  - z.input
+  - z.output
+  - z.object
+  - z.string
+  - z.number
+  - z.array
+  - z.tuple
+  - z.union
+  - z.discriminatedUnion
+  - z.intersection
+  - z.record
+  - z.map
+  - z.set
+  - z.enum
+  - z.literal
+  - z.date
+  - z.boolean
+  - z.bigint
+  - z.file
+  - z.instanceof
+  - z.custom
+  - z.function
+  - z.json
+  - z.templateLiteral
+  - z.coerce
+  - z.optional
+  - z.nullable
+  - z.nullish
+  - z.any
+  - z.unknown
+  - z.never
+  - z.nan
+  - z.email
+  - z.uuid
+  - z.url
+  - z.httpUrl
+  - z.e164
+  - z.iso.datetime
+  - z.iso.date
+  - z.iso.time
+  - z.ipv4
+  - z.ipv6
+  - z.cidrv4
+  - z.cidrv6
+  - z.mac
+  - z.jwt
+  - z.hash
+  - z.base64
+  - z.base64url
+  - z.hex
+  - z.nanoid
+  - z.cuid
+  - z.cuid2
+  - z.ulid
+  - z.stringFormat
+  - z.codec
+  - z.decode
+  - z.encode
+  - z.invertCodec
+  - z.transform
+  - z.preprocess
+  - z.pipe
+  - z.refine
+  - z.superRefine
+  - z.check
+  - z.property
+  - z.stringbool
+  - z.strictObject
+  - z.looseObject
+  - z.partialRecord
+  - z.looseRecord
+  - z.config
+  - z.locales
+  - z.NEVER
+  - safeParse
+  - parseAsync
+  - safeParseAsync
+  - ZodError
+  - ZodMiniType
+  - $ZodType
+  - $ZodCheck
+  - $ZodError
+  - $ZodIssue
+  - branded types
+  - readonly
+  - defaults
+  - prefaults
+  - catch
+  - refinements
+  - transforms
+  - pipes
+  - codecs
+  - error customization
+  - error map
+  - internationalization
+  - i18n
+  - locales
+  - tree-shaking
+  - zod mini
+  - zod core
+  - standard schema
+  - library authors
+  - peer dependencies
+  - migration
+  - zod 3 to 4
+  - codemod
+  - trpc
+  - react hook form
+  - superforms
+  - conform
+  - nestjs-zod
+  - express zod api
+  - eslint-plugin-zod
+  - zod-openapi
+  - prisma-zod-generator
+description: |
+  Zod 4.x — TypeScript-first schema validation with static type inference. Primitives, strings, objects, refinements.
+---
+
 # Zod
 
 > TypeScript-first schema validation with static type inference.

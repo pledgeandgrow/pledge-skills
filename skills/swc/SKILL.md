@@ -1,3 +1,46 @@
+---
+name: swc-docs
+version: "1.x"
+tags:
+  - swc
+  - speedy-web-compiler
+  - rust
+  - compiler
+  - transpiler
+  - typescript
+  - javascript
+  - jsx
+  - tsx
+  - minification
+  - babel
+  - nextjs
+  - parcel
+  - deno
+  - webpack
+  - jest
+  - wasm
+  - plugins
+  - swcrc
+  - preset-env
+  - core-js
+  - browserslist
+  - spack
+  - swcpack
+  - flow
+  - react
+  - transform
+  - bundle
+  - tree-shaking
+  - swc-loader
+  - swc-core
+  - swc-cli
+  - swc-jest
+  - swc-html
+  - swc-wasm
+description: |
+  SWC 1.x — Rust-based JS/TS compiler. @swc/cli, @swc/core, .swcrc config, preset-env, minification, plugins.
+---
+
 # SWC (Speedy Web Compiler)
 
 > SWC (Speedy Web Compiler) is an extensible Rust-based platform for the next generation of fast developer tools. It's used by tools like Next.js, Parcel, and Deno, as well as companies like Vercel, ByteDance, Tencent, Shopify, Trip.com, and more.

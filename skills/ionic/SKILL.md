@@ -1,3 +1,31 @@
+---
+name: ionic-framework-docs
+version: "8.x"
+tags:
+  - ionic
+  - ionic framework
+  - mobile
+  - hybrid
+  - web components
+  - angular
+  - react
+  - vue
+  - capacitor
+  - cross-platform
+  - ios
+  - android
+  - pwa
+  - ui components
+  - theming
+  - cli
+  - ionicons
+  - adaptive styling
+  - shadow dom
+  - css variables
+description: |
+  Ionic Framework 8.x — UI components, Angular/React/Vue integrations, theming, CLI, Capacitor, navigation.
+---
+
 # Ionic Framework
 
 > **Source:** https://ionicframework.com/docs

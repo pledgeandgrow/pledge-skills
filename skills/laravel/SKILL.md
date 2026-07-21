@@ -1,3 +1,55 @@
+---
+name: laravel-docs
+version: "Laravel 13.x"
+tags:
+  - laravel
+  - php
+  - framework
+  - eloquent
+  - blade
+  - artisan
+  - routing
+  - middleware
+  - queues
+  - broadcasting
+  - authentication
+  - authorization
+  - validation
+  - migrations
+  - seeding
+  - redis
+  - mongodb
+  - testing
+  - dusk
+  - octane
+  - passport
+  - sanctum
+  - cashier
+  - horizon
+  - telescope
+  - scout
+  - socialite
+  - vite
+  - livewire
+  - inertia
+  - reverb
+  - pennant
+  - pulse
+  - sail
+  - valet
+  - fortify
+  - folio
+  - envoy
+  - pint
+  - prompts
+  - precognition
+  - ai
+  - mcp
+  - boost
+description: |
+  Laravel 13.x — routing, Eloquent ORM, Blade, middleware, queues, broadcasting, auth, testing, Artisan, packages.
+---
+
 # Laravel
 
 > Laravel is a PHP web application framework with expressive, elegant syntax. The clean stack for Artisans and agents.

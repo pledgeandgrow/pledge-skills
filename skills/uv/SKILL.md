@@ -1,3 +1,49 @@
+---
+name: uv-docs
+version: "0.11.x"
+tags:
+  - uv
+  - astral
+  - python
+  - package-manager
+  - project-manager
+  - pip
+  - pip-tools
+  - pipx
+  - poetry
+  - pyenv
+  - virtualenv
+  - twine
+  - lockfile
+  - venv
+  - virtual-environment
+  - dependency-management
+  - python-versions
+  - pypy
+  - cpython
+  - workspaces
+  - scripts
+  - tools
+  - uvx
+  - docker
+  - caching
+  - ruff
+  - rust
+  - pep-723
+  - pep-735
+  - pyproject-toml
+  - uv-lock
+  - uv-build
+  - uv-publish
+  - uv-sync
+  - uv-run
+  - uv-init
+  - uv-add
+  - uv-remove
+description: |
+  Astral uv 0.11.x — fast Python package and project manager in Rust. Projects, scripts, tools, Python versions, pip interface.
+---
+
 # uv — Extremely Fast Python Package & Project Manager
 
 > **Version:** uv 0.11.x | **Source:** [https://docs.astral.sh/uv/](https://docs.astral.sh/uv/)

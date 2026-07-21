@@ -1,3 +1,42 @@
+---
+name: fastapi-docs
+version: "FastAPI 0.115+"
+tags:
+  - fastapi
+  - python
+  - web-framework
+  - api
+  - rest-api
+  - async
+  - pydantic
+  - starlette
+  - openapi
+  - swagger
+  - redoc
+  - dependency-injection
+  - oauth2
+  - jwt
+  - security
+  - middleware
+  - cors
+  - websocket
+  - sqlalchemy
+  - docker
+  - testing
+  - uvicorn
+  - deployment
+  - forms
+  - file-upload
+  - validation
+  - type-hints
+  - jinja2
+  - background-tasks
+  - lifespan
+  - router
+description: |
+  FastAPI 0.115+ — path/query params, Pydantic, dependency injection, OAuth2/JWT, middleware, WebSocket, testing.
+---
+
 # FastAPI Skill
 
 - **Version**: FastAPI 0.115+ (latest)

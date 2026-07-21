@@ -1,3 +1,102 @@
+---
+name: electron-docs
+version: "43.x"
+tags:
+  - electron
+  - desktop
+  - cross-platform
+  - chromium
+  - node.js
+  - ipc
+  - main-process
+  - renderer-process
+  - preload
+  - context-bridge
+  - context-isolation
+  - browserwindow
+  - security
+  - sandbox
+  - performance
+  - testing
+  - playwright
+  - webdriver
+  - native-modules
+  - distribution
+  - code-signing
+  - auto-updater
+  - forge
+  - fuses
+  - breaking-changes
+  - dark-mode
+  - notifications
+  - web-embeds
+  - keyboard-shortcuts
+  - spellchecker
+  - progress-bar
+  - dock
+  - taskbar
+  - window-customization
+  - accessibility
+  - multithreading
+  - message-ports
+  - menu
+  - dialog
+  - shell
+  - session
+  - webcontents
+  - tray
+  - nativeimage
+  - crashreporter
+  - powermonitor
+  - screen
+  - clipboard
+  - globalshortcut
+  - basewindow
+  - webcontentsview
+  - utilityprocess
+  - net
+  - inapppurchase
+  - menus
+  - context-menu
+  - menu-roles
+  - menu-item
+  - deep-links
+  - recent-documents
+  - online-offline
+  - windows-arm
+  - contributing
+  - build-instructions
+  - patches
+  - coding-style
+  - clang-tidy
+  - reclient
+  - debugging-main-process
+  - menuitem
+  - view
+  - contenttracing
+  - desktopcapturer
+  - powersaveblocker
+  - process
+  - protocol
+  - pushnotifications
+  - sharemenu
+  - touchbar
+  - webrequest
+  - commandline
+  - clientrequest
+  - cookies
+  - downloaditem
+  - notification
+  - safestorage
+  - webframe
+  - webframemain
+  - serviceworkers
+  - faq
+  - glossary
+description: |
+  Electron 43.x — process model, IPC, security, performance, distribution, auto-updater, Forge, native modules.
+---
+
 # Electron Skill
 
 Electron is a framework for building desktop applications using JavaScript, HTML, and CSS. By embedding Chromium and Node.js into its binary, Electron allows you to maintain one JavaScript codebase and create cross-platform apps that work on Windows, macOS, and Linux. This skill covers the Electron latest documentation.

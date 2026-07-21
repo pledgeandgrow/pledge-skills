@@ -1,3 +1,246 @@
+---
+name: jquery-docs
+version: "3.7.x"
+tags:
+  - jquery
+  - javascript library
+  - dom manipulation
+  - dom traversal
+  - event handling
+  - animation
+  - ajax
+  - selectors
+  - css selectors
+  - chaining
+  - document ready
+  - noconflict
+  - jquery object
+  - effects
+  - fading
+  - sliding
+  - animate
+  - queue
+  - dequeue
+  - deferred
+  - promise
+  - jqxhr
+  - serialize
+  - jsonp
+  - cors
+  - plugins
+  - jquery ui
+  - jquery mobile
+  - qunit
+  - sizzle
+  - jquery migrate
+  - cross-browser
+  - javascript
+  - frontend
+  - web development
+  - cdn
+  - npm
+  - class selector
+  - id selector
+  - attribute selector
+  - form selector
+  - pseudo selector
+  - child filter
+  - addClass
+  - removeClass
+  - toggleClass
+  - hasClass
+  - attr
+  - prop
+  - val
+  - html
+  - text
+  - append
+  - prepend
+  - after
+  - before
+  - wrap
+  - clone
+  - remove
+  - detach
+  - empty
+  - replaceWith
+  - find
+  - children
+  - parent
+  - parents
+  - siblings
+  - next
+  - prev
+  - closest
+  - filter
+  - not
+  - eq
+  - first
+  - last
+  - slice
+  - css
+  - height
+  - width
+  - offset
+  - position
+  - scrollTop
+  - scrollLeft
+  - on
+  - off
+  - one
+  - trigger
+  - click
+  - hover
+  - ready
+  - event object
+  - preventDefault
+  - stopPropagation
+  - fadeIn
+  - fadeOut
+  - slideDown
+  - slideUp
+  - toggle
+  - stop
+  - delay
+  - finish
+  - $.ajax
+  - $.get
+  - $.post
+  - $.getJSON
+  - $.getScript
+  - load
+  - ajaxSetup
+  - ajaxPrefilter
+  - param
+  - each
+  - extend
+  - grep
+  - map
+  - merge
+  - inArray
+  - type
+  - parseJSON
+  - parseHTML
+  - parseXML
+  - proxy
+  - noop
+  - trim
+  - Deferred
+  - promise
+  - done
+  - fail
+  - always
+  - then
+  - resolve
+  - reject
+  - when
+  - pushStack
+  - Callbacks
+  - callbacks.add
+  - callbacks.remove
+  - callbacks.fire
+  - callbacks.fireWith
+  - callbacks.disable
+  - callbacks.disabled
+  - callbacks.empty
+  - callbacks.has
+  - callbacks.fired
+  - callbacks.lock
+  - callbacks.locked
+  - $.Callbacks
+  - once
+  - memory
+  - unique
+  - stopOnFalse
+  - $ vs $()
+  - $.fn
+  - document ready
+  - window load
+  - noConflict
+  - IIFE
+  - selecting elements
+  - pseudo-selectors
+  - :visible
+  - :hidden
+  - saving selections
+  - refining selections
+  - getters
+  - setters
+  - chaining
+  - .end()
+  - manipulating elements
+  - creating elements
+  - cloning
+  - detach
+  - jQuery object
+  - not live
+  - .get()
+  - .eq()
+  - traversing
+  - parents
+  - children
+  - siblings
+  - closest
+  - parentsUntil
+  - nextUntil
+  - prevUntil
+  - data methods
+  - .data()
+  - utility methods
+  - $.trim
+  - $.inArray
+  - $.extend
+  - $.proxy
+  - iterating
+  - .each()
+  - $.each()
+  - .map()
+  - .index()
+  - implicit iteration
+  - deprecated
+  - deprecated methods
+  - live
+  - die
+  - bind
+  - unbind
+  - delegate
+  - undelegate
+  - size
+  - andSelf
+  - jQuery.browser
+  - jQuery.boxModel
+  - jQuery.support
+  - jQuery.parseJSON
+  - jQuery.unique
+  - jQuery.isArray
+  - jQuery.isFunction
+  - jQuery.isNumeric
+  - jQuery.isWindow
+  - jQuery.now
+  - jQuery.proxy
+  - jQuery.type
+  - jQuery.trim
+  - jQuery.holdReady
+  - jQuery.fx.interval
+  - deferred.pipe
+  - deferred.isRejected
+  - deferred.isResolved
+  - hover
+  - toggle event
+  - error shorthand
+  - load event
+  - unload
+  - ajaxComplete
+  - ajaxError
+  - ajaxSend
+  - ajaxStart
+  - ajaxStop
+  - ajaxSuccess
+  - jQuery Migrate
+description: |
+  jQuery 3.7.x — selectors, DOM manipulation, traversal, events, effects, AJAX, Deferred, utilities, plugins.
+---
+
 # jQuery Skill
 
 > **jQuery** — A fast, small, and feature-rich JavaScript library for DOM traversal, manipulation, event handling, animation, and Ajax.

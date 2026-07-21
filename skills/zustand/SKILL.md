@@ -1,3 +1,25 @@
+---
+name: zustand-docs
+version: "latest"
+tags:
+  - zustand
+  - react
+  - state management
+  - store
+  - hooks
+  - middleware
+  - persist
+  - devtools
+  - immer
+  - redux
+  - typescript
+  - nextjs
+  - ssr
+  - testing
+description: |
+  Zustand — small, fast, scalable state management for React. Store creation, hooks, middleware, TypeScript.
+---
+
 # Zustand — React State Management
 
 ## Overview

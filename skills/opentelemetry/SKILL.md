@@ -1,3 +1,24 @@
+---
+name: opentelemetry-docs
+version: "latest"
+tags:
+  - opentelemetry
+  - otel
+  - observability
+  - tracing
+  - metrics
+  - logs
+  - otlp
+  - collector
+  - instrumentation
+  - distributed-tracing
+  - sampling
+  - semantic-conventions
+  - kubernetes
+description: |
+  OpenTelemetry — vendor-neutral observability: traces, metrics, logs, OTLP, Collector, SDKs, semantic conventions.
+---
+
 # OpenTelemetry
 
 ## Overview

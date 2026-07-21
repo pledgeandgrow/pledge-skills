@@ -1,3 +1,24 @@
+---
+name: ty-docs
+version: "latest"
+tags:
+  - ty
+  - python
+  - type checker
+  - language server
+  - lsp
+  - type checking
+  - mypy replacement
+  - pyright replacement
+  - rust
+  - astral
+  - cli
+  - pyproject.toml
+  - ty.toml
+description: |
+  ty — fast Python type checker and language server in Rust by Astral. 80+ rules, LSP, mypy/pyright migration.
+---
+
 # ty — Python Type Checker and Language Server
 
 ## Overview

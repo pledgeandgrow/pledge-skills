@@ -1,3 +1,70 @@
+---
+name: auth0-docs
+version: "latest"
+tags:
+  - auth0
+  - authentication
+  - authorization
+  - identity
+  - oauth
+  - oauth2
+  - oidc
+  - openid-connect
+  - saml
+  - jwt
+  - sso
+  - single-sign-on
+  - mfa
+  - multi-factor-authentication
+  - passwordless
+  - social-login
+  - enterprise-sso
+  - rbac
+  - role-based-access-control
+  - tokens
+  - access-token
+  - id-token
+  - refresh-token
+  - security
+  - breached-passwords
+  - attack-protection
+  - actions
+  - rules
+  - hooks
+  - universal-login
+  - custom-domains
+  - organizations
+  - b2b
+  - user-management
+  - user-metadata
+  - tenant
+  - management-api
+  - authentication-api
+  - sdk
+  - cli
+  - terraform
+  - deployment
+  - monitoring
+  - logs
+  - log-streams
+  - compliance
+  - gdpr
+  - hipaa
+  - soc2
+  - ai-agents
+  - mcp-server
+  - ciba
+  - pkce
+  - mtls
+  - token-exchange
+  - sessions
+  - cookies
+  - branding
+  - localization
+description: |
+  Auth0 — identity platform: auth flows, Universal Login, SSO, identity providers, MFA, RBAC, Actions, tokens.
+---
+
 # Auth0 Skill
 
 > **Auth0** — Identity platform for authentication, authorization, and user management.

@@ -1,3 +1,57 @@
+---
+name: axum-docs
+version: "0.8.9"
+tags:
+  - axum
+  - rust
+  - web
+  - framework
+  - http
+  - routing
+  - handler
+  - extractor
+  - middleware
+  - tower
+  - tower-http
+  - hyper
+  - tokio
+  - async
+  - rest
+  - api
+  - websocket
+  - sse
+  - server-sent-events
+  - multipart
+  - json
+  - state
+  - router
+  - into-response
+  - from-request
+  - serve
+  - graceful-shutdown
+  - axum-extra
+  - typed-header
+  - cookie
+  - protobuf
+  - json-lines
+  - redirect
+  - compression
+  - cors
+  - tracing
+  - error-handling
+  - method-router
+  - path-params
+  - query-params
+  - form-data
+  - body
+  - response-builder
+  - fallback
+  - nesting
+  - merging
+description: |
+  Axum 0.8.9 — Rust web framework. Routing, extractors, middleware (Tower), state, WebSocket, SSE, testing.
+---
+
 # Axum 0.8.x — Rust Web Framework
 
 ## Overview

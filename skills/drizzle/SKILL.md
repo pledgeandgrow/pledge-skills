@@ -1,3 +1,33 @@
+---
+name: drizzle-orm
+version: "0.40.x"
+tags:
+  - drizzle
+  - orm
+  - typescript
+  - postgresql
+  - mysql
+  - sqlite
+  - database
+  - sql
+  - migrations
+  - schema
+  - drizzle-kit
+  - serverless
+  - neon
+  - supabase
+  - turso
+  - vercel
+  - zod
+  - valibot
+  - typebox
+  - arktype
+  - effect
+  - graphql
+description: |
+  Drizzle ORM — TypeScript SQL ORM. Schema definition, queries, migrations, transactions, RQB, extensions.
+---
+
 # Drizzle ORM
 
 ## Overview

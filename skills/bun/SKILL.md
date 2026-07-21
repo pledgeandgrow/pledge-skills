@@ -1,3 +1,21 @@
+---
+name: bun-docs
+version: "1.2"
+tags:
+  - bun
+  - javascript
+  - typescript
+  - runtime
+  - bundler
+  - package-manager
+  - test-runner
+  - sqlite
+  - websockets
+  - javascriptcore
+description: |
+  Bun 1.2 — runtime, package manager, HTTP server, SQLite, test runner, bundler, TypeScript, FFI, shell API.
+---
+
 # Bun — Skill Documentation
 
 ## Metadata

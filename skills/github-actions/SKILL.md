@@ -1,3 +1,88 @@
+---
+name: github-actions-docs
+version: "2026"
+tags:
+  - github-actions
+  - ci
+  - cd
+  - ci-cd
+  - automation
+  - workflow
+  - yaml
+  - runners
+  - github-hosted-runners
+  - self-hosted-runners
+  - larger-runners
+  - actions-runner-controller
+  - arc
+  - secrets
+  - oidc
+  - security
+  - artifact-attestations
+  - github-token
+  - permissions
+  - custom-actions
+  - javascript-actions
+  - composite-actions
+  - docker-actions
+  - action-yml
+  - metadata-syntax
+  - reusable-workflows
+  - workflow-call
+  - workflow-dispatch
+  - events
+  - triggers
+  - push
+  - pull-request
+  - pull-request-target
+  - schedule
+  - cron
+  - contexts
+  - expressions
+  - matrix
+  - strategy
+  - concurrency
+  - caching
+  - actions-cache
+  - artifacts
+  - upload-artifact
+  - download-artifact
+  - environment-variables
+  - github-env
+  - github-output
+  - github-path
+  - github-step-summary
+  - workflow-commands
+  - annotations
+  - filter-patterns
+  - deployment
+  - azure
+  - aws
+  - gke
+  - aks
+  - limits
+  - metrics
+  - status-badge
+  - environments
+  - protection-rules
+  - required-reviewers
+  - wait-timer
+  - debug-logging
+  - billing
+  - rest-api
+  - migration
+  - jenkins
+  - circleci
+  - gitlab-ci
+  - azure-pipelines
+  - service-containers
+  - postgresql
+  - redis
+  - database-testing
+description: |
+  GitHub Actions — workflows, events, jobs, runners, contexts, expressions, secrets, caching, reusable workflows.
+---
+
 # GitHub Actions
 
 > **Version**: Latest (2026) | **Source**: [docs.github.com/en/actions](https://docs.github.com/en/actions)

@@ -1,3 +1,45 @@
+---
+name: ile-cobol-docs
+version: "7.4"
+tags:
+  - cobol
+  - ile cobol
+  - ibm i
+  - as400
+  - iseries
+  - business programming
+  - mainframe
+  - enterprise
+  - file handling
+  - database
+  - db2
+  - compiler
+  - debugging
+  - activation group
+  - service program
+  - module
+  - binding
+  - commitment control
+  - nested programs
+  - recursive
+  - picture clause
+  - usage clause
+  - occurs clause
+  - redefines
+  - indexed file
+  - sequential file
+  - relative file
+  - declaratives
+  - intrinsic function
+  - copy
+  - process statement
+  - strdbg
+  - crtbndcbl
+  - crtcblmod
+description: |
+  IBM ILE COBOL 7.4/7.5 — language structure, four divisions, data description, file handling, DB2, debugging.
+---
+
 # ILE COBOL Language Skill
 
 ## Overview

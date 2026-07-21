@@ -1,3 +1,66 @@
+---
+name: bazel-docs
+version: "9.x"
+tags:
+  - bazel
+  - build system
+  - starlark
+  - bzlmod
+  - MODULE.bazel
+  - WORKSPACE
+  - BUILD files
+  - rules
+  - macros
+  - aspects
+  - toolchains
+  - platforms
+  - depsets
+  - providers
+  - remote execution
+  - remote caching
+  - RBE
+  - BEP
+  - BES
+  - query
+  - aquery
+  - cquery
+  - hermeticity
+  - sandboxing
+  - cc_library
+  - java_library
+  - py_library
+  - proto_library
+  - genrule
+  - filegroup
+  - config_setting
+  - select
+  - glob
+  - bazelrc
+  - persistent workers
+  - dynamic execution
+  - docker sandbox
+  - code coverage
+  - cross-compilation
+  - incremental builds
+  - action graph
+  - dependency graph
+  - labels
+  - visibility
+  - repository rules
+  - module extensions
+  - Bazel Central Registry
+  - LTS releases
+  - buildifier
+  - stardoc
+  - analysis_test
+  - transitions
+  - execution groups
+  - constraint settings
+  - constraint values
+description: |
+  Bazel 9.x — fast, hermetic, multi-platform build system. BUILD files, rules, macros, Bzlmod, remote execution.
+---
+
 # Bazel 9.x — Build System Documentation
 
 > **Source**: [bazel.build/docs](https://bazel.build/docs) | [bazel.build/start](https://bazel.build/start) | [bazel.build/reference](https://bazel.build/reference) | [bazel.build/extending](https://bazel.build/extending) | [bazel.build/community](https://bazel.build/community)

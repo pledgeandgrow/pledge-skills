@@ -1,3 +1,49 @@
+---
+name: prettier-docs
+version: "3.9.5"
+tags:
+  - prettier
+  - formatter
+  - code-formatter
+  - javascript
+  - typescript
+  - jsx
+  - css
+  - html
+  - json
+  - graphql
+  - markdown
+  - yaml
+  - angular
+  - vue
+  - flow
+  - scss
+  - less
+  - mdx
+  - lwc
+  - mjml
+  - handlebars
+  - ember
+  - opinionated
+  - code-style
+  - linting
+  - eslint
+  - stylelint
+  - cli
+  - api
+  - browser
+  - ci
+  - plugins
+  - configuration
+  - editorconfig
+  - pre-commit
+  - husky
+  - lint-staged
+  - git-hooks
+description: |
+  Prettier 3.9.5 — opinionated code formatter. CLI, API, config, plugins, editor integration, CI.
+---
+
 # Prettier — Code Formatter
 
 > Opinionated code formatter that enforces a consistent style across your entire codebase.

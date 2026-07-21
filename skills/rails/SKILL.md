@@ -1,3 +1,25 @@
+---
+name: rails-docs
+version: "8.1"
+tags:
+  - rails
+  - ruby
+  - web-framework
+  - mvc
+  - active-record
+  - action-view
+  - action-controller
+  - hotwire
+  - turbo
+  - stimulus
+  - solid-queue
+  - solid-cache
+  - solid-cable
+  - kamal
+description: |
+  Ruby on Rails 8.1 — Active Record, Action View/Controller, routing, Active Support, testing, security, caching.
+---
+
 # Ruby on Rails 8.1 — Skill Documentation
 
 ## Metadata

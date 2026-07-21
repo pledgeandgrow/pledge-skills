@@ -1,3 +1,38 @@
+---
+name: babel-docs
+version: "Babel 7.x/8.x"
+tags:
+  - babel
+  - javascript
+  - compiler
+  - transpiler
+  - es2015
+  - es6
+  - jsx
+  - react
+  - typescript
+  - flow
+  - ast
+  - babel-plugin
+  - babel-preset
+  - babel-core
+  - babel-cli
+  - babel-parser
+  - babel-generator
+  - babel-traverse
+  - babel-types
+  - babel-template
+  - babel-standalone
+  - babel-register
+  - babel-eslint-parser
+  - preset-env
+  - polyfill
+  - core-js
+  - codemod
+description: |
+  Babel 7.x/8.x — plugins, presets, config, @babel/core, parser, traverse, types, CLI, preset-env.
+---
+
 # Babel
 
 > Babel is a JavaScript compiler — a toolchain mainly used to convert ECMAScript 2015+ code into backwards-compatible JavaScript in current and older browsers or environments.

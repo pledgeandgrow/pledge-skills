@@ -1,3 +1,170 @@
+---
+name: PostgreSQL
+version: "17.x"
+tags:
+  - postgresql
+  - postgres
+  - database
+  - rdbms
+  - sql
+  - relational database
+  - object-relational
+  - acid
+  - mvcc
+  - transactions
+  - indexes
+  - b-tree
+  - hash
+  - gist
+  - sp-gist
+  - gin
+  - brin
+  - full text search
+  - tsvector
+  - tsquery
+  - json
+  - jsonb
+  - arrays
+  - ranges
+  - partitioning
+  - replication
+  - streaming replication
+  - logical replication
+  - hot standby
+  - high availability
+  - backup
+  - pg_dump
+  - pg_basebackup
+  - pitr
+  - plpgsql
+  - triggers
+  - extensions
+  - foreign data wrapper
+  - postgres_fdw
+  - pg_stat_statements
+  - pgcrypto
+  - hstore
+  - pg_trgm
+  - ltree
+  - citext
+  - dblink
+  - uuid-ossp
+  - unaccent
+  - vacuum
+  - analyze
+  - explain
+  - parallel query
+  - window functions
+  - cte
+  - common table expressions
+  - recursive queries
+  - roles
+  - privileges
+  - row level security
+  - pg_hba.conf
+  - scram-sha-256
+  - ssl
+  - wal
+  - checkpoints
+  - autovacuum
+  - connection pooling
+  - psql
+  - initdb
+  - pg_ctl
+  - pg_upgrade
+  - advisory locks
+  - deadlocks
+  - isolation levels
+  - serializable
+  - repeatable read
+  - read committed
+  - merge
+  - on conflict
+  - upsert
+  - returning
+  - copy
+  - identity columns
+  - generated columns
+  - exclusion constraints
+  - foreign keys
+  - inheritance
+  - schemas
+  - search path
+  - domains
+  - composite types
+  - enum types
+  - geometric types
+  - network address types
+  - bit strings
+  - xml
+  - money
+  - serial
+  - bigserial
+  - numeric
+  - timestamp
+  - interval
+  - date
+  - time
+  - boolean
+  - bytea
+  - uuid
+  - oid
+  - pg_lsn
+  - polymorphic types
+  - user-defined functions
+  - user-defined types
+  - user-defined operators
+  - user-defined aggregates
+  - event triggers
+  - rule system
+  - pltcl
+  - plperl
+  - plpython
+  - spi
+  - logical decoding
+  - jit
+  - llvm
+  - collation
+  - locale
+  - internationalization
+  - performance tuning
+  - statistics
+  - extended statistics
+  - cost-based vacuum
+  - background writer
+  - checkpointer
+  - logging
+  - csvlog
+  - jsonlog
+  - monitoring
+  - pg_stat_activity
+  - progress reporting
+  - dynamic tracing
+  - incremental backup
+  - pg_combinebackup
+  - replication slots
+  - cascading replication
+  - synchronous replication
+  - failover
+  - publication
+  - subscription
+  - row filters
+  - column lists
+  - conflicts
+  - prepared statements
+  - cursors
+  - listen
+  - notify
+  - locks
+  - tablespaces
+  - large objects
+  - information schema
+  - system catalogs
+  - system views
+description: |
+  PostgreSQL 17.x — data types, DDL, DML, queries, indexes, full text search, concurrency, performance, functions.
+---
+
 # PostgreSQL 17 Documentation Skill
 
 ## Overview

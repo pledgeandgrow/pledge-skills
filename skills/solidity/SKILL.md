@@ -1,3 +1,60 @@
+---
+name: solidity-language-docs
+version: "0.8.36"
+tags:
+  - solidity
+  - smart contracts
+  - ethereum
+  - evm
+  - blockchain
+  - web3
+  - solidity 0.8
+  - yul
+  - abi
+  - natspec
+  - smtchecker
+  - compiler
+  - security
+  - reentrancy
+  - inheritance
+  - libraries
+  - interfaces
+  - modifiers
+  - events
+  - custom errors
+  - gas
+  - storage layout
+  - memory layout
+  - calldata
+  - transient storage
+  - delegatecall
+  - create2
+  - unchecked arithmetic
+  - function types
+  - mapping
+  - structs
+  - enums
+  - bytes
+  - address payable
+  - keccak256
+  - ecrecover
+  - selfdestruct
+  - fallback
+  - receive
+  - pure
+  - view
+  - payable
+  - virtual
+  - override
+  - abstract contracts
+  - using for
+  - inline assembly
+  - smt
+  - formal verification
+description: |
+  Solidity 0.8.36 — smart contracts, types, functions, modifiers, events, inheritance, libraries, assembly, ABI.
+---
+
 # Solidity — Smart Contract Programming Language
 
 **Version:** 0.8.36

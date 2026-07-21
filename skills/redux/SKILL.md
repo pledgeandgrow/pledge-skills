@@ -1,3 +1,51 @@
+---
+name: redux-docs
+version: "5.x"
+tags:
+  - redux
+  - state management
+  - redux toolkit
+  - rtk
+  - react-redux
+  - redux store
+  - reducer
+  - action
+  - dispatch
+  - selector
+  - middleware
+  - thunk
+  - createSlice
+  - configureStore
+  - createAsyncThunk
+  - createEntityAdapter
+  - immer
+  - reselect
+  - createSelector
+  - redux devtools
+  - flux standard action
+  - combineReducers
+  - applyMiddleware
+  - bindActionCreators
+  - compose
+  - createStore
+  - replaceReducer
+  - undo history
+  - code splitting
+  - server rendering
+  - typescript
+  - testing
+  - normalization
+  - memoization
+  - rtk query
+  - listener middleware
+  - pure functions
+  - immutability
+  - single source of truth
+  - one-way data flow
+description: |
+  Redux 5.x + Redux Toolkit 2.x — store, reducers, actions, middleware, slices, async thunks, TypeScript, testing.
+---
+
 # Redux Skill
 
 > **Redux** — A JS library for predictable and maintainable global state management.

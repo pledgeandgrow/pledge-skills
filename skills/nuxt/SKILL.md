@@ -1,3 +1,116 @@
+---
+name: nuxt-docs
+version: "4.x"
+tags:
+  - nuxt
+  - nuxt 4
+  - vue
+  - vue 3
+  - ssr
+  - server-side rendering
+  - full-stack
+  - nitro
+  - vite
+  - file-based routing
+  - auto-imports
+  - useFetch
+  - useAsyncData
+  - useState
+  - useRuntimeConfig
+  - useHead
+  - useSeoMeta
+  - NuxtLink
+  - definePageMeta
+  - createError
+  - navigateTo
+  - $fetch
+  - routeRules
+  - hybrid rendering
+  - prerendering
+  - pinia
+  - nuxt config
+  - nuxt.config.ts
+  - app.config.ts
+  - server routes
+  - api routes
+  - nuxt modules
+  - nuxt layers
+  - nuxt testing
+  - nuxt deployment
+  - nuxt experimental
+  - h3
+  - ofetch
+  - unhead
+  - nuxt generate
+  - nuxt build
+  - nuxt dev
+  - composition api
+  - script setup
+  - typescript
+  - eslint
+  - devonly
+  - nuxtclientfallback
+  - nuxtpicture
+  - nuxtimg
+  - teleport
+  - nuxttime
+  - nuxtannouncer
+  - nuxtwelcome
+  - createuseasyncdata
+  - onprehydrate
+  - useannouncer
+  - useerror
+  - usehydration
+  - uselayout
+  - uselazyasyncdata
+  - uselazyfetch
+  - usenuxtdata
+  - userequestheader
+  - useruntimehook
+  - nuxt lifecycle
+  - nuxt transitions
+  - nuxt views
+  - nuxt upgrade
+  - nuxt mcp
+  - nuxt llms.txt
+  - nuxt module authoring
+  - nuxt custom events
+  - nuxt features config
+  - nuxt hydration
+  - nuxt performance
+  - nuxt code style
+  - nuxt cli
+  - nuxt commands
+  - nuxt kit
+  - defineNuxtModule
+  - installModule
+  - addPlugin
+  - addComponent
+  - addServerHandler
+  - useNitro
+  - useNuxt
+  - extendPages
+  - extendRouteRules
+  - getLayerDirectories
+  - useRouteAnnouncer
+  - updateAppConfig
+  - nuxt preview
+  - nuxt typecheck
+  - nuxt prepare
+  - nuxt analyze
+  - nuxt cleanup
+  - nuxt devtools
+  - nuxt build-module
+  - nuxt test
+  - nuxt module add
+  - nuxt add
+  - create nuxt
+  - nuxt .env
+  - nuxt package.json
+description: |
+  Nuxt 4.x — full-stack Vue.js framework. File-based routing, auto-imports, SSR, Nitro, layers, modules.
+---
+
 # Nuxt 4.x Skill
 
 ## Overview

@@ -1,3 +1,30 @@
+---
+name: eslint-docs
+version: "ESLint 10.x"
+tags:
+  - eslint
+  - linter
+  - javascript
+  - linting
+  - code-quality
+  - flat-config
+  - rules
+  - plugins
+  - formatters
+  - parsers
+  - processors
+  - shareable-configs
+  - nodejs-api
+  - rule-tester
+  - cli
+  - static-analysis
+  - code-style
+  - eslint-plugin
+  - eslint-config
+description: |
+  ESLint 10.x — flat config, rules, plugins, formatters, parsers, CLI, Node.js API, custom rules, migration.
+---
+
 # ESLint
 
 > ESLint is a pluggable and configurable JavaScript linter for identifying and reporting on patterns in JavaScript code. Maintain your code quality with ease.
