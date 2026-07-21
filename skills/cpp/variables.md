@@ -344,3 +344,92 @@ Point pt{10, 20};
 auto& [px, py] = pt;  // by reference
 px = 100;  // modifies pt.x
 ```
+
+## Initialization (Detailed)
+
+```cpp
+// Default initialization — no initializer, value is indeterminate (for non-class types)
+int x;          // indeterminate value (UB to read)
+std::string s;  // default-constructed (empty string)
+std::vector<int> v;  // default-constructed (empty)
+
+// Value initialization — zero-initialized or default-constructed
+int x2{};           // 0
+int* p{};           // nullptr
+std::string s2{};   // empty string
+std::vector<int> v2{};  // empty
+
+// Zero initialization — sets to zero
+int x3 = 0;         // zero-init
+int x4{};            // zero-init (value-init for scalar)
+static int x5;       // zero-init (static storage duration)
+T();                 // zero-init then default-construct
+
+// Copy initialization — copy from another value
+int a = 42;
+int b = a;
+std::string s3 = "hello";
+auto c = 3.14;
+
+// Direct initialization — construct directly (no copy)
+int d(42);
+std::string s4("hello");
+std::vector<int> v3(10, 42);  // 10 elements of 42
+
+// List initialization (C++11) — brace-enclosed
+int e{42};
+std::string s5{"hello"};
+std::vector<int> v4{1, 2, 3, 4, 5};
+// Narrowing conversions prevented:
+// int x{3.14};  // error: narrowing from double to int
+
+// Aggregate initialization — for aggregates (arrays, simple structs)
+struct Point { int x, y; };
+Point p1{10, 20};
+Point p2 = {10, 20};  // copy-list-init
+int arr[]{1, 2, 3, 4, 5};
+
+// Designated initializers (C++20)
+struct Config { int port; bool verbose; std::string host; };
+Config cfg{.port = 8080, .host = "localhost", .verbose = true};
+// Must be in declaration order
+
+// Constant initialization — compile-time initialization
+constexpr int ci = 42;
+constinit int gi = 100;  // C++20: compile-time initialized, mutable
+
+// Reference initialization
+int val = 42;
+int& ref = val;           // lvalue reference
+const int& cref = 42;     // const ref to temporary (extends lifetime)
+int&& rref = std::move(val);  // rvalue reference
+
+// Initialization order
+// 1. Static/thread-local: constant init → zero init → dynamic init
+// 2. Members: in declaration order (not initializer list order!)
+// 3. Base classes before members
+// 4. Virtual base classes before non-virtual bases
+
+// Member initializer list
+class Widget {
+    int a, b, c;
+public:
+    Widget() : a(1), b(2), c(3) {}  // init in declaration order (a, b, c)
+    // Widget() : b(2), a(1), c(3) {}  // warning: order mismatch
+};
+
+// Delegating constructor
+class Foo {
+public:
+    Foo() : Foo(42) {}        // delegate to Foo(int)
+    Foo(int x) : Foo(x, 0) {} // delegate to Foo(int, int)
+    Foo(int x, int y) : a(x), b(y) {}
+private:
+    int a, b;
+};
+
+// Inheriting constructor (C++11)
+struct Derived : Base {
+    using Base::Base;  // inherit all Base constructors
+};
+```

@@ -96,6 +96,34 @@ std::numbers::log10e;       // 0.43429448190325182765
 std::numbers::pi_v<double>; // template version
 ```
 
+## std::lerp (C++20)
+
+```cpp
+#include <cmath>
+
+// std::lerp(a, b, t) — linear interpolation: a + t*(b-a)
+// Handles edge cases correctly (NaN, infinity, t outside [0,1])
+
+float  r1 = std::lerp(0.0f, 100.0f, 0.5f);   // 50.0
+double r2 = std::lerp(0.0, 10.0, 0.25);       // 2.5
+double r3 = std::lerp(0.0, 10.0, 1.0);        // 10.0
+double r4 = std::lerp(0.0, 10.0, 2.0);        // 20.0 (extrapolation)
+
+// Common use: animation, color blending, easing
+double ease(double t) { return std::lerp(0.0, 1.0, t * t * (3 - 2 * t)); }
+
+// std::midpoint (C++20) — safe midpoint of two values
+int m1 = std::midpoint(1, 10);        // 5 (rounds toward a for integers)
+double m2 = std::midpoint(1.0, 10.0); // 5.5
+
+// std::assume_aligned (C++20) — hint pointer alignment to compiler
+#include <memory>
+void process(int* p) {
+    int* aligned = std::assume_aligned<32>(p);  // assume 32-byte aligned
+    // compiler can generate vectorized code
+}
+```
+
 ## std::complex
 
 ```cpp
@@ -318,4 +346,193 @@ std::rotl(0b1010u, 2);
 std::rotr(0b1010u, 2);
 std::byteswap(0x1234u); // 0x3412 (C++23)
 std::bit_cast<float>(0x40490FDBu); // 3.14159... (reinterpret bits)
+```
+
+## Extended Floating-Point Types (C++23 `<stdfloat>`)
+
+```cpp
+#include <stdfloat>  // C++23
+
+// Fixed-width floating-point types (optional, implementation-defined)
+// These match IEEE 754 formats when available
+
+std::float16_t  f16;  // half precision     — 16 bits (IEEE 754 binary16)
+std::float32_t  f32;  // single precision   — 32 bits (IEEE 754 binary32, typically same as float)
+std::float64_t  f64;  // double precision   — 64 bits (IEEE 754 binary64, typically same as double)
+std::float128_t f128; // quad precision     — 128 bits (IEEE 754 binary128)
+std::bfloat16_t bf16; // brain float        — 16 bits (alternative to float16)
+
+// Usage
+std::float16_t half = 1.0f16;  // half-precision literal (if supported)
+std::float32_t single = 3.14f32;
+std::float64_t dbl = 2.718281828f64;
+
+// Numeric limits work with these types
+std::numeric_limits<std::float16_t>::max();
+std::numeric_limits<std::float16_t>::epsilon();
+std::numeric_limits<std::float16_t>::digits;  // 11 (mantissa bits)
+
+// Conversions
+float f = static_cast<float>(f16);
+std::float16_t h = static_cast<std::float16_t>(3.14f);
+
+// Use cases:
+// - Machine learning (bfloat16, float16)
+// - Graphics/GPU (float16)
+// - High-precision scientific computing (float128)
+// - Portable code needing exact widths
+
+// Note: not all compilers support all types
+// Check with feature test macros:
+// __STDCPP_FLOAT16_T__, __STDCPP_FLOAT32_T__,
+// __STDCPP_FLOAT64_T__, __STDCPP_FLOAT128_T__, __STDCPP_BFLOAT16_T__
+```
+
+## Floating-Point Environment (`<cfenv>`)
+
+```cpp
+#include <cfenv>
+
+// Access floating-point environment (rounding mode, exceptions)
+// Note: may be disabled with -ffast-math or /fp:fast
+
+// Rounding modes
+std::fesetround(FE_DOWNWARD);    // toward -∞
+std::fesetround(FE_TONEAREST);   // to nearest (default)
+std::fesetround(FE_TOWARDZERO);  // toward 0
+std::fesetround(FE_UPWARD);      // toward +∞
+
+int round_mode = std::fegetround();
+
+// Floating-point exceptions
+std::feclearexcept(FE_ALL_EXCEPT);
+// ... do computation ...
+if (std::fetestexcept(FE_DIVBYZERO)) {
+    std::cout << "Division by zero occurred\n";
+}
+if (std::fetestexcept(FE_OVERFLOW)) {
+    std::cout << "Overflow occurred\n";
+}
+if (std::fetestexcept(FE_INVALID)) {
+    std::cout << "Invalid operation\n";
+}
+
+// Exception flags: FE_DIVBYZERO, FE_INEXACT, FE_INVALID, FE_OVERFLOW, FE_UNDERFLOW
+
+// Save/restore environment
+std::fenv_t env;
+std::fegetenv(&env);
+// ... modify environment ...
+std::fesetenv(&env);  // restore
+```
+
+## Mathematical Special Functions (C++17)
+
+```cpp
+#include <cmath>
+
+// Associated Laguerre polynomials
+std::assoc_laguerre(2, 1, 0.5);  // double
+std::assoc_laguerref(2, 1, 0.5f); // float
+
+// Associated Legendre polynomials
+std::assoc_legendre(3, 2, 0.5);
+
+// Beta function
+std::beta(1.0, 2.0);
+
+// Complete elliptic integrals
+std::comp_ellint_1(0.5);  // K(k)
+std::comp_ellint_2(0.5);  // E(k)
+std::comp_ellint_3(0.5, 0.3);  // Π(k, ν)
+
+// Hermite polynomials
+std::hermite(3, 1.5);
+
+// Laguerre polynomials
+std::laguerre(3, 1.5);
+
+// Legendre polynomials
+std::legendre(3, 0.5);
+
+// Spherical associated Legendre polynomials
+std::sph_legendre(3, 2, 1.5);
+
+// Spherical Bessel functions
+std::sph_bessel(2, 1.5);
+std::sph_neumann(2, 1.5);
+
+// Cylindrical Bessel functions
+std::cyl_bessel_j(2, 1.5);  // Jν(x)
+std::cyl_bessel_i(2, 1.5);  // Iν(x) (modified)
+std::cyl_bessel_k(2, 1.5);  // Kν(x) (modified, 2nd kind)
+std::cyl_neumann(2, 1.5);   // Yν(x) (2nd kind)
+
+// Incomplete elliptic integrals
+std::ellint_1(0.5, 1.0);  // F(k, φ)
+std::ellint_2(0.5, 1.0);  // E(k, φ)
+std::ellint_3(0.5, 0.3, 1.0);  // Π(k, ν, φ)
+
+// Exponential integral
+std::expint(1.5);
+
+// Zeta function (Riemann)
+std::riemann_zeta(2.0);  // π²/6 ≈ 1.6449...
+
+// Note: float and long double versions available with f/l suffix
+// std::riemann_zetaf(2.0f);
+// std::riemann_zetal(2.0L);
+```
+
+## Linear Algebra (`<linalg>`, C++26)
+
+```cpp
+#include <linalg>    // C++26
+#include <mdspan>    // required for mdspan views
+
+// std::linalg — BLAS-like linear algebra on mdspan
+// Works with std::mdspan (multidimensional array views)
+
+// Matrix-vector multiply: y = A * x
+std::mdspan<double, std::extents<size_t, 3, 3>> A(A_data);
+std::mdspan<double, std::extents<size_t, 3>> x(x_data);
+std::mdspan<double, std::extents<size_t, 3>> y(y_data);
+std::linalg::matrix_vector_product(A, x, y);
+
+// Matrix-matrix multiply: C = A * B
+std::mdspan<double, std::extents<size_t, 3, 3>> B(B_data);
+std::mdspan<double, std::extents<size_t, 3, 3>> C(C_data);
+std::linalg::matrix_matrix_product(A, B, C);
+
+// Dot product
+double dot = std::linalg::dot(x, y);
+
+// GEMM: C = alpha * A * B + beta * C
+std::linalg::matrix_matrix_product(A, B, C, alpha, beta);
+
+// Scaling: x = alpha * x
+std::linalg::scale(alpha, x);
+
+// AXPY: y = alpha * x + y
+std::linalg::axpy(alpha, x, y);
+
+// Transpose
+std::linalg::transpose(A, A_transposed);
+
+// Symmetric matrix operations
+std::linalg::symmetric_matrix_rank_1_update(x, A);
+std::linalg::symmetric_matrix_rank_2_update(x, y, A);
+
+// Triangular solve
+std::linalg::triangular_matrix_vector_solve(A, x, y);
+std::linalg::triangular_matrix_matrix_solve(A, B, C);
+
+// Norms
+double n1 = std::linalg::vector_norm2(x);       // L2 norm
+double n2 = std::linalg::vector_norm1(x);       // L1 norm
+double n3 = std::linalg::vector_norm_inf(x);    // L∞ norm
+
+// Note: std::linalg is based on BLAS (Basic Linear Algebra Subprograms)
+// Uses std::mdspan for data access — no copying needed
+// Works with any element type (float, double, complex, etc.)
 ```

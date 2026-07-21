@@ -341,4 +341,40 @@ std::cout << task.get();  // 10 (0+1+2+3+4)
 // C++23 std::generator is not yet in all implementations
 // Use the custom Generator above or check compiler support
 // C++26: std::generator may be available in <generator>
+
+// std::noop_coroutine (C++20) — returns a coroutine handle that does nothing
+// Useful as a default/empty coroutine handle
+std::coroutine_handle<> noop = std::noop_coroutine();
+noop.resume();  // no-op, returns immediately
+noop.done();    // true (always done)
+
+// std::coroutine_traits (C++20) — maps return type to promise_type
+// The compiler uses coroutine_traits<R, Args...>::promise_type
+// to find the promise type for a coroutine returning R
+// Specialize for custom coroutine return types:
+template<typename T, typename... Args>
+struct std::coroutine_traits<MyTask<T>, Args...> {
+    using promise_type = MyTaskPromise<T>;
+};
+
+// std::coroutine_handle methods:
+// from_promise(p)     — get handle from promise
+// handle.promise()    — get promise from handle
+// handle.resume()     — resume execution
+// handle.done()       — check if completed
+// handle.destroy()    — destroy coroutine frame
+// handle.address()    — raw void* address
+// from_address(ptr)   — reconstruct handle from void*
+
+// std::generator (C++23/26) — standard library generator
+// #include <generator>  // C++26
+// std::generator<int> naturals() {
+//     int n = 0;
+//     while (true) co_yield n++;
+// }
+// Features:
+// - Recursive: co_yield inner_generator (yields all elements)
+// - Range-based: for (auto x : naturals()) { ... }
+// - Allocators: custom allocator for coroutine frame
+// - Element type: reference type configurable (can yield references)
 ```

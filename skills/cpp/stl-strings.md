@@ -319,7 +319,24 @@ std::format_to_n(std::back_inserter(buf), 10, "{}", 12345);
 // vformat — runtime format string
 std::string fmt = "{}, {}!";
 std::string s4 = std::vformat(fmt, std::make_format_args("Hello", "World"));
-```
+
+// std::format_string (C++20) — compile-time checked format string
+// std::format() uses format_string internally for compile-time validation
+void log(std::format_string<int, double> fmt, int x, double y) {
+    std::cout << std::format(fmt, x, y);
+}
+log("x={}, y={:.2f}", 42, 3.14);  // compile-time checked
+
+// std::runtime_format (C++23) — runtime format string for std::format
+// Replaces vformat + make_format_args boilerplate
+std::string user_fmt = "{}, {}!";
+std::string s5 = std::format(std::runtime_format(user_fmt), "Hello", "World");
+// No compile-time check (user-provided format string)
+
+// format_string vs runtime_format:
+// format_string:   compile-time check, throws std::format_error if mismatch
+// runtime_format:  no compile-time check, for runtime format strings
+// vformat:         lower-level, used internally by runtime_format
 
 ## Wide Strings and Character Sets
 
@@ -337,7 +354,112 @@ std::u8string u8s = u8"hello";  // C++20
 std::u8string utf8 = u8"Hello, 世界";
 std::string_view sv = u8"hello";  // char8_t (C++20)
 
+// std::char_traits — defines character properties for basic_string/basic_string_view
+// std::string  = std::basic_string<char, std::char_traits<char>>
+// std::wstring = std::basic_string<wchar_t, std::char_traits<wchar_t>>
+// std::u16string = std::basic_string<char16_t, std::char_traits<char16_t>>
+// std::u32string = std::basic_string<char32_t, std::char_traits<char32_t>>
+// std::u8string  = std::basic_string<char8_t, std::char_traits<char8_t>>
+
+// char_traits provides:
+// char_type, int_type, off_type, pos_type, state_type
+// assign(c, c2), eq(c1, c2), lt(c1, c2)
+// length(s), compare(s1, s2, n), copy, move, find
+// to_char_type(i), to_int_type(c), eof(), not_eof(i)
+
+// Custom char_traits example — case-insensitive string
+struct ci_char_traits : std::char_traits<char> {
+    static char to_upper(char c) { return std::toupper(static_cast<unsigned char>(c)); }
+    static bool eq(char c1, char c2) { return to_upper(c1) == to_upper(c2); }
+    static bool lt(char c1, char c2) { return to_upper(c1) < to_upper(c2); }
+    static int compare(const char* s1, const char* s2, size_t n) {
+        for (size_t i = 0; i < n; ++i) {
+            if (to_upper(s1[i]) < to_upper(s2[i])) return -1;
+            if (to_upper(s1[i]) > to_upper(s2[i])) return 1;
+        }
+        return 0;
+    }
+    static const char* find(const char* s, size_t n, char c) {
+        for (size_t i = 0; i < n; ++i)
+            if (to_upper(s[i]) == to_upper(c)) return s + i;
+        return nullptr;
+    }
+};
+
+using ci_string = std::basic_string<char, ci_char_traits>;
+ci_string a = "Hello";
+ci_string b = "HELLO";
+// a == b  // true (case-insensitive comparison)
+
 // Conversions (use ICU or platform APIs for production)
 // C++26: std::text_encoding, std::codecvt alternatives
 // For now, use third-party libraries like ICU or utfcpp
+```
+
+## std::to_chars / std::from_chars (C++17 `<charconv>`)
+
+```cpp
+#include <charconv>
+
+// to_chars — write number to buffer (no allocation, no exceptions, locale-independent)
+char buf[32];
+
+// Integer
+auto [ptr, ec] = std::to_chars(buf, buf + sizeof(buf), 42);
+// ptr points past the last written character, ec is std::errc{} on success
+if (ec == std::errc{}) {
+    *ptr = '\0';
+    std::cout << buf;  // "42"
+}
+
+// Integer with base
+std::to_chars(buf, buf + sizeof(buf), 255, 16);  // "ff"
+std::to_chars(buf, buf + sizeof(buf), 8, 8);     // "10"
+std::to_chars(buf, buf + sizeof(buf), 10, 2);    // "1010"
+
+// Floating-point (C++17 basic, C++23 full)
+std::to_chars(buf, buf + sizeof(buf), 3.14);              // "3.14" (shortest)
+std::to_chars(buf, buf + sizeof(buf), 3.14159, 
+              std::chars_format::scientific);              // "3.141590e+00"
+std::to_chars(buf, buf + sizeof(buf), 3.14159,
+              std::chars_format::fixed, 2);                // "3.14"
+std::to_chars(buf, buf + sizeof(buf), 3.14159,
+              std::chars_format::hex, 4);                  // "1.9220p+1"
+
+// from_chars — parse number from buffer (fast, no allocation, no exceptions)
+std::string s = "42";
+int value;
+auto [ptr2, ec2] = std::from_chars(s.data(), s.data() + s.size(), value);
+if (ec2 == std::errc{}) {
+    std::cout << value;  // 42
+    // ptr2 points past the parsed characters
+}
+
+// from_chars with base
+std::string hex = "ff";
+int hexValue;
+std::from_chars(hex.data(), hex.data() + hex.size(), hexValue, 16);  // 255
+
+// from_chars for floating-point
+std::string f = "3.14";
+double d;
+auto [ptr3, ec3] = std::from_chars(f.data(), f.data() + f.size(), d);
+if (ec3 == std::errc{}) {
+    std::cout << d;  // 3.14
+}
+
+// from_chars with format
+std::from_chars(f.data(), f.data() + f.size(), d, std::chars_format::scientific);
+
+// Error handling
+// ec == std::errc{} — success
+// ec == std::errc::invalid_argument — no parse (empty or non-numeric)
+// ec == std::errc::result_out_of_range — value too large/small
+
+// Advantages over std::stoi / std::to_string:
+// - No allocation (writes to caller buffer)
+// - No exceptions (uses std::errc)
+// - Locale-independent (always uses "C" locale)
+// - Faster (often 5-10x faster than stoi/to_string)
+// - Round-trip guarantee (to_chars then from_chars recovers exact value)
 ```

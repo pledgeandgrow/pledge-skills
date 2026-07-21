@@ -376,3 +376,103 @@ static_assert(sizeof(int) == 4, "int must be 4 bytes");
 template<typename... Args>
 void print(Args... args) { /* ... */ }
 ```
+
+## History of C++
+
+```
+1979 — Bjarne Stroustrup begins "C with Classes" at Bell Labs
+       Adds classes, derived classes, strong typing, inline functions,
+       default arguments, constructors/destructors to C
+
+1983 — Renamed to C++
+       First implementation: Cfront (C++ to C translator)
+       Added virtual functions, operator overloading, references, const
+
+1985 — "The C++ Programming Language" (1st edition) published
+       Cfront 1.0 released
+
+1989 — Cfront 2.0: multiple inheritance, abstract classes,
+       static member functions, const member functions, protected members
+
+1998 — ISO/IEC 14882:1998 (C++98)
+       Standard library: STL, strings, iostream, complex, valarray
+       Exceptions, namespaces, RTTI, bool, mutable, explicit
+       Templates, dynamic_cast, typeid
+
+2003 — ISO/IEC 14882:2003 (C++03)
+       Bug fix release, no new features
+       Value initialization fix
+
+2011 — ISO/IEC 14882:2011 (C++11)
+       Major revision: auto, lambdas, move semantics, rvalue references,
+       smart pointers, threads, mutexes, futures, constexpr,
+       variadic templates, nullptr, range-for, initializer lists,
+       uniform initialization, decltype, trailing return types,
+       user-defined literals, static_assert, override/final,
+       std::atomic, std::thread, std::chrono, std::regex,
+       std::tuple, std::array, std::unordered_map/set
+
+2014 — ISO/IEC 14882:2014 (C++14)
+       Incremental: generic lambdas, return type deduction,
+       variable templates, binary literals, digit separators,
+       std::make_unique, decltype(auto), relaxed constexpr
+
+2017 — ISO/IEC 14882:2017 (C++17)
+       Major: structured bindings, if constexpr, fold expressions,
+       class template argument deduction (CTAD), mandatory copy elision,
+       std::optional/variant/any, std::string_view, std::filesystem,
+       std::parallel algorithms, std::byte, inline variables,
+       nested namespaces, constexpr if, std::launder
+
+2020 — ISO/IEC 14882:2020 (C++20)
+       Biggest since C++11: concepts, ranges, coroutines, modules,
+       std::format, std::span, three-way comparison (<=>),
+       designated initializers, consteval, constinit,
+       std::jthread, std::stop_token, std::counting_semaphore,
+       std::latch, std::barrier, std::source_location,
+       std::bit, std::numbers, calendar/timezone in chrono,
+       std::osyncstream, feature test macros
+
+2023 — ISO/IEC 14882:2023 (C++23)
+       std::print/println, std::expected, std::mdspan, std::flat_map/set,
+       deducing this, if consteval, std::generator, std::spanstream,
+       std::stacktrace, std::text_encoding, std::to_underlying,
+       std::unreachable, std::byteswap, monadic optional,
+       range adaptors: stride, chunk, slide, zip, enumerate, adjacent,
+       #warning, #elifdef/#elifndef, constexpr improvements
+
+2026 — ISO/IEC 14882:2026 (C++26, upcoming)
+       Contracts, reflection, std::simd, std::hive, std::inplace_vector,
+       hazard pointers, RCU, std::is_debugger_present,
+       pack indexing, template for expansion statement,
+       std::linalg (linear algebra), senders/receivers (std::execution),
+       std::powi, more freestanding support
+```
+
+## C++ Acronyms and Terminology
+
+```
+ADL    — Argument-Dependent Lookup (Koenig lookup)
+AFO    — As-if Rule (compiler optimization principle)
+CPO    — Customization Point Object (e.g., std::ranges::begin)
+CRTP   — Curiously Recurring Template Pattern
+EBO    — Empty Base Optimization
+IFNDR  — Ill-Formed, No Diagnostic Required
+NDR    — No Diagnostic Required (same as IFNDR)
+NRVO   — Named Return Value Optimization
+NTBS   — Null-Terminated Byte String
+NTTP   — Non-Type Template Parameter
+ODR    — One Definition Rule
+PIMPL  — Pointer to Implementation (compilation firewall)
+RAII   — Resource Acquisition Is Initialization
+RAO    — Resource-Aware Object
+RVO    — Return Value Optimization
+SFINAE — Substitution Failure Is Not An Error
+SOCCC  — Strictly-Ordered Consistent Concurrency Control
+TMP    — Template Metaprogramming
+TU     — Translation Unit
+UDL    — User-Defined Literal
+UB     — Undefined Behavior
+URVO   — Unnamed Return Value Optimization
+XValue — Expiring Value (a.k.a. expiring lvalue)
+```

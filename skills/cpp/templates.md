@@ -448,3 +448,110 @@ struct Size<TypeList<Ts...>> {
 
 constexpr auto sz = Size<TypeList<int, double, char>>::value;  // 3
 ```
+
+## Variable Templates (C++14)
+
+```cpp
+// Variable template — parameterized variable
+template<typename T>
+constexpr T pi = T(3.14159265358979);
+
+// Usage
+double dpi = pi<double>;       // 3.14159265358979
+float fpi = pi<float>;         // 3.14159...
+int ipi = pi<int>;             // 3
+
+// With non-type parameters
+template<typename T, int N>
+constexpr T power_of_2 = T(1) << N;
+
+auto p8 = power_of_2<int, 8>;    // 256
+auto p16 = power_of_2<long, 16>; // 65536
+
+// Variable template with concept (C++20)
+template<std::floating_point T>
+constexpr T epsilon = std::numeric_limits<T>::epsilon();
+
+auto deps = epsilon<double>;  // 2.22045e-16
+auto feps = epsilon<float>;   // 1.19209e-07
+
+// Variable template specialization
+template<typename T>
+constexpr bool is_integral_v = false;
+
+template<>
+constexpr bool is_integral_v<int> = true;
+
+template<>
+constexpr bool is_integral_v<long> = true;
+
+// This is how std::is_integral_v etc. are implemented
+```
+
+## Class Member Templates
+
+```cpp
+// Member function template
+class Container {
+public:
+    template<typename T>
+    void add(const T& value) {
+        data.push_back(std::to_string(value));
+    }
+private:
+    std::vector<std::string> data;
+};
+
+// Template constructor (enables conversion from any container)
+class Vector {
+    T* data;
+    size_t size;
+public:
+    // Template constructor — not a copy constructor
+    template<typename U>
+    Vector(const Vector<U>& other) {
+        // Convert element by element
+    }
+
+    // Template assignment — not a copy assignment
+    template<typename U>
+    Vector& operator=(const Vector<U>& other) {
+        return *this;
+    }
+};
+```
+
+## `template for` (C++26)
+
+```cpp
+// C++26: expansion statement (template for)
+// Iterates over a pack at compile time
+
+void print_all(auto... args) {
+    template for (auto arg : args) {
+        std::cout << arg << ' ';
+    }
+    // Equivalent to:
+    // ((std::cout << args << ' '), ...);
+}
+
+// With types
+template<typename... Ts>
+void process_types() {
+    template for (constexpr auto info : {^^Ts...}) {
+        // Reflection-based iteration over types
+        std::cout << std::meta::name_of(info) << '\n';
+    }
+}
+
+// Practical: iterate over tuple elements
+template<typename... Ts>
+void print_tuple(const std::tuple<Ts...>& t) {
+    template for (auto& elem : t) {
+        std::cout << elem << ' ';
+    }
+}
+
+// Note: syntax is still being finalized (P1306R3)
+// Check: __cpp_expansion_statements (proposed)
+```

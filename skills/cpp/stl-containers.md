@@ -471,3 +471,176 @@ std::flat_map<int, int, std::less<>, std::vector<int>, std::vector<int>> fcm;
 | Cache-friendly sorted map | `flat_map` (C++23) |
 | Multiple values per key | `multimap` / `unordered_multimap` |
 | Multiple same elements | `multiset` / `unordered_multiset` |
+
+## inplace_vector (C++26)
+
+```cpp
+#include <inplace_vector>
+
+// Fixed-capacity vector — no heap allocation, elements stored inline
+// Capacity is fixed at compile time, size can vary 0..N
+std::inplace_vector<int, 10> iv;
+iv.push_back(1);   // OK (size < capacity)
+iv.push_back(2);
+iv.size();         // 2
+iv.capacity();     // 10 (fixed)
+iv[0];             // 1
+
+// push_back when full — throws std::bad_alloc (or terminates if noexcept)
+std::inplace_vector<int, 2> iv2;
+iv2.push_back(1);
+iv2.push_back(2);
+// iv2.push_back(3);  // throws std::bad_alloc (capacity exceeded)
+
+// try_push_back — returns nullptr if full (no throw)
+auto result = iv2.try_push_back(3);  // nullptr (full)
+
+// unchecked_push_back — UB if full (no bounds check)
+iv2.unchecked_push_back(3);  // UB! capacity exceeded
+
+// All vector operations supported (except reserve/shrink_to_fit)
+iv.pop_back();
+iv.clear();
+iv.insert(iv.begin(), 42);
+iv.erase(iv.begin());
+
+// Use case: embedded, real-time, no-heap environments
+// Stack allocation, predictable performance
+```
+
+## hive (C++26)
+
+```cpp
+#include <hive>
+
+// std::hive — colony container (P0447)
+// Linked blocks of elements, not contiguous
+// Optimized for: frequent insertion/erasure, traversal, pointer stability
+// Better cache performance than std::list for small elements
+
+std::hive<int> h;
+h.insert(42);
+h.insert(10);
+h.insert(20);
+
+// Iterators remain valid after insert/erase (pointer stability)
+auto it = h.begin();
+h.insert(99);
+*it;  // still valid (42)
+
+// Erase
+h.erase(it);  // iterator to next element returned
+
+// Splice (move elements between hives)
+std::hive<int> h2;
+h2.splice(h2.end(), h);
+
+// Properties:
+// - O(1) insertion, O(1) erasure
+// - Pointers/iterators to elements remain valid after insert/erase
+// - Better cache locality than list (block-based storage)
+// - Non-contiguous (unlike vector)
+// - Use case: game objects, particles, entities with frequent add/remove
+```
+
+## std::mdspan (C++23)
+
+```cpp
+#include <mdspan>  // C++23
+
+// std::mdspan — multidimensional non-owning array view
+// Generalization of std::span to N dimensions
+
+// 2D matrix view
+double data[3][4];
+std::mdspan<double, std::extents<size_t, 3, 4>> mat(data);
+mat[0, 0] = 1.0;  // C++23 multidimensional subscript
+mat[2, 3] = 9.0;
+
+// Dynamic extents (runtime-sized dimensions)
+std::mdspan<double, std::dextents<size_t, 2>> dyn(data, rows, cols);
+dyn[r, c] = value;
+
+// Mixed static and dynamic extents
+std::mdspan<double, std::extents<size_t, std::dynamic_extent, 4>> mixed(data, rows);
+// rows is runtime, cols is fixed at 4
+
+// 3D tensor
+std::mdspan<float, std::dextents<size_t, 3>> tensor(data, N, M, K);
+tensor[i, j, k] = 0.0f;
+
+// Layouts
+// std::layout_right — row-major (C/C++ default): last index varies fastest
+// std::layout_left  — column-major (Fortran): first index varies fastest
+// std::layout_stride — arbitrary strides
+
+std::mdspan<double, std::dextents<size_t, 2>, std::layout_left> col_major(data, rows, cols);
+
+// Submdspan (C++26) — slice a subview
+auto sub = std::submdspan(mat, std::pair{1, 3}, std::full_extent);
+// sub is rows 1-2, all columns
+
+// Properties:
+// - Non-owning view (like span)
+// - Zero overhead — just pointer + extents
+// - Works with any contiguous data (array, vector, raw pointer)
+// - Supports custom layouts and accessors
+// - Integrates with std::linalg (C++26)
+```
+
+## std::flat_map / std::flat_set (C++23)
+
+```cpp
+#include <flat_map>   // C++23
+#include <flat_set>   // C++23
+
+// std::flat_map — sorted associative container backed by contiguous storage
+// Drop-in replacement for std::map with better cache locality
+
+std::flat_map<int, std::string> fm;
+fm[1] = "one";
+fm[3] = "three";
+fm[2] = "two";
+// Internally: sorted vector of pairs
+
+// Iteration is sorted
+for (const auto& [k, v] : fm) {
+    std::cout << k << ": " << v << '\n';  // 1:one 2:two 3:three
+}
+
+// Lookup — O(log n) binary search, but faster than map (cache-friendly)
+auto it = fm.find(2);
+bool has = fm.contains(3);
+
+// Insert — O(n) (may shift elements)
+fm.insert({4, "four"});
+
+// Erase — O(n)
+fm.erase(1);
+
+// Underlying storage access
+auto& underlying = fm.sorted_keys();  // access sorted key storage
+
+// Construct from sorted range (O(n))
+std::vector<std::pair<int, std::string>> sorted_data = {{1, "a"}, {2, "b"}, {3, "c"}};
+std::flat_map<int, std::string> fm2(std::sorted_unique, sorted_data);
+
+// std::flat_set — same but for keys only
+std::flat_set<int> fs = {3, 1, 4, 1, 5};  // {1, 3, 4, 5}
+
+// Advantages over std::map:
+// - Better cache locality (contiguous storage)
+// - Less memory overhead (no tree nodes)
+// - Faster iteration
+// - Better for small-to-medium sizes
+
+// Disadvantages:
+// - Insert/erase is O(n) (shifts elements)
+// - Not stable for iterators on insert/erase
+
+// Use flat_map when:
+// - Read-heavy workloads
+// - Small maps (< ~100 elements)
+// - Cache locality matters
+// - Need contiguous memory
+```

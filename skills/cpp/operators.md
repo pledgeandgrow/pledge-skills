@@ -74,7 +74,26 @@ auto result = a <=> b;
 if (a <=> b < 0) std::cout << "a < b";
 if (a <=> b == 0) std::cout << "a == b";
 if (a <=> b > 0) std::cout << "a > b";
-```
+
+// Comparison helper functions (C++20 <compare>)
+std::is_eq(a <=> b);      // a == b
+std::is_neq(a <=> b);     // a != b
+std::is_lt(a <=> b);      // a < b
+std::is_lteq(a <=> b);    // a <= b
+std::is_gt(a <=> b);      // a > b
+std::is_gteq(a <=> b);    // a >= b
+
+// Named comparison functions
+std::strong_order(a, b);    // returns strong_ordering
+std::weak_order(a, b);      // returns weak_ordering
+std::partial_order(a, b);   // returns partial_ordering
+
+// Convert between orderings
+std::strong_ordering::less;     // less
+std::strong_ordering::equal;    // equal
+std::strong_ordering::greater;  // greater
+// weak_ordering: less, equivalent, greater
+// partial_ordering: less, equivalent, greater, unordered
 
 ## Logical Operators
 

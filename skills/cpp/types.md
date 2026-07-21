@@ -132,6 +132,102 @@ void func(std::nullptr_t) {}
 func(nullptr); // calls nullptr_t overload
 ```
 
+## Literals
+
+```cpp
+// Integer literals
+42;          // decimal
+042;         // octal (leading 0) → 34 decimal
+0x2A;        // hexadecimal (leading 0x) → 42 decimal
+0b101010;    // binary (leading 0b, C++14) → 42 decimal
+
+// Integer literal suffixes
+42U;         // unsigned int
+42L;         // long
+42LL;        // long long (C++11)
+42ULL;       // unsigned long long (C++11)
+0xFFULL;     // unsigned long long hex
+
+// Digit separators (C++14)
+1'000'000;       // 1000000
+0xFF'FF'FF'FF;   // 0xFFFFFFFF
+0b1010'1010;     // 170
+
+// Floating-point literals
+3.14;        // double
+3.14f;       // float
+3.14L;       // long double
+3e2;         // 300.0 (exponent)
+3.14e-2;     // 0.0314
+0x1.8p1;     // hex float (C++17): 1.5 * 2^1 = 3.0
+
+// Character literals
+'A';         // char (int value 65)
+'\n';        // newline (10)
+'\t';        // tab (9)
+'\0';        // null character
+'\x41';      // hex escape → 'A'
+'\101';      // octal escape → 'A'
+u8'A';       // char (C++20, UTF-8)
+u'A';        // char16_t (UTF-16)
+U'A';        // char32_t (UTF-32)
+L'A';        // wchar_t
+
+// String literals
+"hello";         // const char[6]
+L"hello";        // const wchar_t[6]
+u8"hello";       // const char[6] (C++20: const char8_t[6] in C++17)
+u"hello";        // const char16_t[6]
+U"hello";        // const char32_t[6]
+
+// Raw string literals (C++11)
+R"(hello)";              // "hello" (no escape processing)
+R"("quoted")";           // "\"quoted\"" (quotes inside)
+R"(
+multi
+line
+)";                      // multi-line string
+
+// Raw string with custom delimiter
+R"DELIM(raw "string" here)DELIM";  // delimiter: DELIM
+
+// String literal concatenation
+"hello " "world";    // "hello world" (adjacent literals)
+"line 1\n"
+"line 2\n";          // multi-line string
+
+// Boolean literals
+true;    // bool, value 1
+false;   // bool, value 0
+
+// Pointer literal
+nullptr;  // std::nullptr_t, null pointer (C++11)
+
+// User-defined literals (UDL)
+42_km;    // calls operator""_km(42)
+3.14_rad; // calls operator""_rad(3.14)
+"hello"_s; // calls operator""_s("hello", 5)
+
+// Standard library UDLs
+using namespace std::string_literals;
+"hello"s;    // std::string
+
+using namespace std::chrono_literals;
+1h; 30min; 15s; 100ms;  // chrono durations
+
+using namespace std::complex_literals;
+3.0 + 4.0i;  // std::complex<double>
+
+// Literal type deduction
+auto a = 42;       // int
+auto b = 42U;      // unsigned int
+auto c = 42.0;     // double
+auto d = 42.0f;    // float
+auto e = 'A';      // char
+auto f = "hello";  // const char*
+auto g = "hello"s; // std::string
+```
+
 ## Type Inference
 
 ### `auto`
@@ -354,4 +450,114 @@ Vec<std::string> vs; // std::vector<std::string>
 // Alias with allocator
 template<typename T>
 using VecAlloc = std::vector<T, std::allocator<T>>;
+```
+
+## RTTI (Run-Time Type Information)
+
+```cpp
+#include <typeinfo>
+
+// typeid — get type_info for an expression
+// For polymorphic types: returns dynamic type (actual type at runtime)
+// For non-polymorphic types: returns static type (compile-time type)
+
+struct Base { virtual ~Base() = default; };
+struct Derived : Base { void foo() {} };
+
+Base* b = new Derived;
+
+// type_info — non-copyable, returned by typeid
+const std::type_info& ti = typeid(*b);
+ti.name();       // mangled name (implementation-defined, e.g., "7Derived")
+ti.hash_code();  // hash value (same type → same hash within program)
+ti.before(typeid(Derived));  // ordering (for sorting, not intuitive)
+
+// Type comparison
+if (typeid(*b) == typeid(Derived)) {
+    std::cout << "b is actually a Derived\n";
+}
+
+// Compare with type_info
+bool sameType = (typeid(int) == typeid(42));  // true
+
+// type_index — wrapper for type_info usable as key in containers (C++11)
+#include <typeindex>
+std::unordered_map<std::type_index, std::string> typeNames;
+typeNames[std::type_index(typeid(int))] = "int";
+typeNames[std::type_index(typeid(double))] = "double";
+typeNames[std::type_index(typeid(std::string))] = "string";
+
+// Demangling (GCC/Clang)
+#include <cxxabi.h>
+int status;
+const char* demangled = abi::__cxa_demangle(typeid(*b).name(), nullptr, nullptr, &status);
+if (status == 0) {
+    std::cout << demangled;  // "Derived"
+    free(demangled);
+}
+
+// RTTI requires polymorphic type (at least one virtual function)
+struct NonPoly { int x; };
+NonPoly np;
+// typeid(np) gives static type (NonPoly), not dynamic
+// dynamic_cast on NonPoly* is compile error
+
+// Disabling RTTI: -fno-rtti (GCC/Clang), /GR- (MSVC)
+// typeid still works but only for static types
+```
+
+## Usual Arithmetic Conversions
+
+```cpp
+// When binary operators are applied to operands of different types,
+// implicit conversions bring them to a common type.
+
+// Rules (in order of priority):
+// 1. If either is long double, both → long double
+// 2. If either is double, both → double
+// 3. If either is float, both → float
+// 4. Integer promotions (see below)
+// 5. If both are same type after promotion, done
+// 6. If both are signed or both unsigned: lesser → greater
+// 7. If unsigned is >= rank of signed: signed → unsigned
+// 8. If signed can represent all unsigned values: unsigned → signed
+// 9. Otherwise: both → unsigned version of signed type
+
+// Integer promotions (small types → int):
+// char, signed char, unsigned char, char8_t, char16_t → int (or unsigned int)
+// char32_t → unsigned int (or larger)
+// short, unsigned short → int (or unsigned int)
+
+// Examples:
+int i = 1;
+double d = 2.0;
+auto r1 = i + d;     // double (rule 2: int → double)
+
+float f = 1.0f;
+auto r2 = f + d;     // double (rule 2: float → double)
+
+unsigned u = 10;
+long l = 20;
+auto r3 = u + l;     // long or unsigned long (depends on sizes)
+
+int si = -1;
+unsigned ui = 1;
+auto r4 = si + ui;   // unsigned int! (-1 → huge number, classic bug)
+// r4 == 4294967295 on 32-bit int — classic signed/unsigned bug
+
+// Avoiding the signed/unsigned bug:
+auto r5 = static_cast<long>(si) + static_cast<long>(ui);  // 0 (long)
+
+// Comparison pitfall
+std::vector<int> v;
+for (int i = 0; i < v.size(); ++i) {  // warning: signed/unsigned mismatch
+    // i is int, v.size() is size_t (unsigned)
+    // if i < 0, comparison may be wrong
+}
+// Fix: use size_t
+for (size_t i = 0; i < v.size(); ++i) { }
+// Or: use range-for
+for (auto& elem : v) { }
+// Or: use std::ssize (C++20)
+for (int i = 0; i < std::ssize(v); ++i) { }
 ```

@@ -197,6 +197,17 @@ std::sample(v.begin(), v.end(), dst.begin(), 3, g);  // pick 3 random elements
 std::swap(a, b);
 std::swap_ranges(v1.begin(), v1.end(), v2.begin());
 std::iter_swap(it1, it2);
+
+// Clamp (C++17) — constrain value to [lo, hi]
+std::clamp(15, 0, 10);   // 10 (above range)
+std::clamp(-5, 0, 10);   // 0 (below range)
+std::clamp(5, 0, 10);    // 5 (in range)
+std::clamp(x, 0.0, 1.0, std::less<>());  // with comparator
+
+// Min/Max with initializer list (C++11)
+std::min({3, 1, 4, 1, 5});   // 1
+std::max({3, 1, 4, 1, 5});   // 5
+std::minmax({3, 1, 4, 1, 5}); // pair(1, 5)
 ```
 
 ### Sorting Algorithms

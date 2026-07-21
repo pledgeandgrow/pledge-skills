@@ -548,3 +548,83 @@ auto sum_cpp(Args... args) { return (args + ... + 0); }
 <cwchar>       — wchar_t, wprintf, wcscpy, etc.
 <cwctype>      — iswalpha, iswdigit, towupper, etc.
 ```
+
+## C++ Localization (`<locale>`)
+
+```cpp
+#include <locale>
+
+// std::locale — C++ locale (more powerful than C's setlocale)
+std::locale loc;                    // default (classic "C" locale)
+std::locale globalLoc("");          // system global locale
+std::locale french("fr_FR.UTF-8");  // specific locale
+std::locale::global(globalLoc);     // set global locale
+
+// Classic locale (always "C")
+std::locale::classic();
+
+// Named locales
+std::locale loc1("en_US.UTF-8");
+std::locale loc2("de_DE.UTF-8");
+std::locale loc3("ja_JP.UTF-8");
+
+// Combine locales (facet-by-facet)
+std::locale combined(std::locale("en_US.UTF-8"),
+                     std::locale("de_DE.UTF-8"), std::locale::ctype);
+// English locale with German character classification
+
+// Use locale with streams
+std::cout.imbue(std::locale("en_US.UTF-8"));
+std::cout << 1234567.89;  // "1,234,567.89" (locale-specific formatting)
+
+// Use with string
+std::locale loc4;
+bool isAlpha = std::isalpha('a', loc4);  // locale-aware character classification
+char upper = std::toupper('a', loc4);
+
+// Facets — specialized locale components
+// std::ctype<char> — character classification
+// std::ctype<wchar_t> — wide character classification
+// std::numpunct<char> — numeric punctuation (thousands_sep, decimal_point)
+// std::moneypunct<char> — monetary punctuation
+// std::time_put<char> — time/date formatting
+// std::collate<char> — string collation (sorting)
+// std::messages<char> — message retrieval (i18n)
+// std::codecvt<char, char, mbstate_t> — character conversion (deprecated C++17)
+
+// Access facet
+auto& facet = std::use_facet<std::numpunct<char>>(loc);
+facet.decimal_point();    // '.' or ','
+facet.thousands_sep();    // ',' or '.' or ' '
+facet.grouping();         // grouping pattern
+
+// Collate — locale-aware string comparison
+auto& coll = std::use_facet<std::collate<char>>(loc);
+bool before = coll.compare("apple", "apple+5", "banana", "banana+6") < 0;
+std::string hash = coll.transform("hello", "hello+5");  // for sorting
+
+// ctype — character classification
+auto& ct = std::use_facet<std::ctype<char>>(loc);
+ct.is('a', std::ctype_base::alpha);  // true if 'a' is alpha in this locale
+ct.toupper('a');  // 'A'
+ct.tolower('A');  // 'a'
+const char* range = ct.is(s.begin(), s.end(), std::ctype_base::digit);
+
+// time_put — format time
+auto& tp = std::use_facet<std::time_put<char>>(loc);
+std::tm t = {};
+t.tm_year = 2024 - 1900; t.tm_mon = 0; t.tm_mday = 15;
+std::ostringstream os;
+os.imbue(loc);
+std::use_facet<std::time_put<char>>(loc).put(os, os, ' ', &t, 'F');
+// "2024-01-15" (locale-specific date format)
+
+// Custom facet
+class UpperCaseFacet : public std::ctype<char> {
+public:
+    char do_widen(char c) const override {
+        return std::toupper(static_cast<unsigned char>(c));
+    }
+};
+std::locale upperLoc(std::locale(), new UpperCaseFacet);
+```

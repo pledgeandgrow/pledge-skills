@@ -77,6 +77,16 @@ std::make_unsigned_t<T>;
 std::common_type_t<T, U>;       // common type for T and U
 std::common_reference_t<T, U>;  // common reference (C++20)
 
+// type_identity (C++20) — identity type transformation
+// Useful for non-deduced context in function templates
+template<typename T> void func(std::type_identity_t<T> arg);
+// Without type_identity, T would be deduced from arg;
+// With it, T must be explicitly specified, arg is not used for deduction
+
+// unwrap_reference / unwrap_ref_decay (C++20)
+std::unwrap_reference_t<std::reference_wrapper<int>>;  // int&
+std::unwrap_ref_decay_t<std::reference_wrapper<int>&>; // int&
+
 // Operations (C++11/14/17/20)
 std::is_constructible_v<T, Args...>;
 std::is_trivially_constructible_v<T, Args...>;
@@ -346,4 +356,35 @@ struct has_serialize<T, std::void_t<decltype(
 
 template<typename T>
 constexpr bool has_serialize_v = has_serialize<T>::value;
+
+// std::integer_sequence (C++14) — compile-time integer list
+#include <utility>
+
+// index_sequence — sequence of size_t
+template<size_t... Is>
+void print_indices(std::index_sequence<Is...>) {
+    ((std::cout << Is << ' '), ...);  // fold expression
+}
+
+print_indices(std::make_index_sequence<5>{});  // 0 1 2 3 4
+
+// Unpack tuple with integer_sequence
+template<typename Tuple, size_t... Is>
+void print_tuple(const Tuple& t, std::index_sequence<Is...>) {
+    ((std::cout << std::get<Is>(t) << ' '), ...);
+}
+
+template<typename... Ts>
+void print_tuple(const std::tuple<Ts...>& t) {
+    print_tuple(t, std::make_index_sequence<sizeof...(Ts)>{});
+}
+
+std::tuple<int, double, std::string> tp{1, 2.0, "hello"};
+print_tuple(tp);  // 1 2.0 hello
+
+// integer_sequence vs index_sequence:
+// std::integer_sequence<int, 0, 1, 2> — any integer type
+// std::index_sequence<0, 1, 2> — size_t (alias)
+// make_integer_sequence<T, N> — T, 0..N-1
+// make_index_sequence<N> — size_t, 0..N-1
 ```

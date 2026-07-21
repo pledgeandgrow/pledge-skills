@@ -166,6 +166,16 @@ int* p = &x;
 int** pp = &p;
 **pp = 100;  // modifies x
 
+// std::to_address (C++20) — get raw pointer from pointer-like type
+#include <memory>
+std::allocator<int> alloc;
+auto ptr = alloc.allocate(1);
+int* raw = std::to_address(ptr);  // works on raw pointers, fancy pointers
+
+// Works with any pointer-like type (raw, allocator, iterator)
+// Unlike addressof, doesn't require dereference — safe for dangling
+// Useful in generic code that needs raw pointer from allocator/iterator
+
 // References — alias, cannot be null, cannot be reseated
 int x = 42;
 int& ref = x;  // ref is alias for x
@@ -275,6 +285,27 @@ std::vector<int, std::pmr::polymorphic_allocator<int>> v2({1, 2, 3}, &pool);
 // std::pmr::unsynchronized_pool_resource — non-thread-safe pool
 // std::pmr::get_default_resource() — default resource
 // std::pmr::set_default_resource(r) — set default
+
+// allocator_traits — uniform interface to allocators
+// You don't call allocator methods directly; containers use allocator_traits
+// std::allocator_traits<Alloc>::allocate(a, n);
+// std::allocator_traits<Alloc>::deallocate(a, p, n);
+// std::allocator_traits<Alloc>::construct(a, p, args...);
+// std::allocator_traits<Alloc>::destroy(a, p);
+// std::allocator_traits<Alloc>::max_size(a);
+// This allows custom allocators to only implement what they need —
+// traits provide defaults for the rest.
+
+// scoped_allocator_adaptor — propagate allocator to nested containers
+#include <scoped_allocator>
+std::vector<std::vector<int, std::pmr::polymorphic_allocator<int>>,
+            std::pmr::polymorphic_allocator<int>> nested;
+// Inner vector automatically uses same allocator as outer
+// Without scoped_allocator, inner container would use default allocator
+
+// Simpler with PMR:
+std::pmr::vector<std::pmr::vector<int>> pmr_nested;
+// Both inner and outer use same PMR resource
 ```
 
 ## Memory Layout and Alignment
@@ -302,6 +333,39 @@ struct AlignedBuffer {
 
 // std::start_lifetime_as (C++23)
 // Implicitly create objects in buffer
+// std::start_lifetime_as<T>(ptr) — starts lifetime of T at ptr
+// std::start_lifetime_as_array<T>(ptr, n) — starts lifetime of T[n] at ptr
+
+// Before C++23: placement new required
+alignas(int) unsigned char buf[sizeof(int) * 4];
+int* ip1 = new (buf) int(42);          // placement new
+// Accessing buf as int* without this was UB (strict aliasing)
+
+// C++23: std::start_lifetime_as
+int* ip2 = std::start_lifetime_as<int>(buf);
+*ip2 = 42;
+
+int* arr = std::start_lifetime_as_array<int>(buf, 4);
+arr[0] = 1; arr[1] = 2; arr[2] = 3; arr[3] = 4;
+
+// Difference from placement new:
+// - start_lifetime_as does NOT call constructors (trivial types only)
+// - start_lifetime_as returns pointer without needing #include <new>
+// - For non-trivial types, still use placement new
+
+// std::launder (C++17) — prevent UB after placement new on same storage
+// Required when object has const/reference members and you reuse storage
+struct X { const int n; };
+X x{1};
+new (&x) X{2};               // replace object at same address
+// x.n is still 1 (UB!) — compiler may cache const value
+std::launder(&x)->n;         // 2 — correct, forces reload
+
+// Required when:
+// - Object has const or reference members
+// - You reuse storage via placement new
+// - You access through old pointer/reference
+// Not needed for start_lifetime_as (C++23) or trivial types
 ```
 
 ## Memory Order and Atomics (see concurrency.md for full details)
@@ -378,4 +442,125 @@ std::unique_ptr<Animal> createAnimal(const std::string& type) {
 auto openFile(const char* path) {
     return std::unique_ptr<FILE, decltype(&fclose)>(fopen(path, "r"), fclose);
 }
+```
+
+## Replacement Functions (operator new/delete)
+
+```cpp
+// You can replace global operator new and operator delete
+// This intercepts all dynamic allocation in the program
+
+// Replacement for single-object new
+void* operator new(std::size_t size) {
+    void* p = std::malloc(size);
+    if (!p) throw std::bad_alloc();
+    std::cout << "new: " << size << " bytes at " << p << '\n';
+    return p;
+}
+
+// Replacement for single-object delete
+void operator delete(void* p) noexcept {
+    std::cout << "delete: " << p << '\n';
+    std::free(p);
+}
+
+// Replacement for array new
+void* operator new[](std::size_t size) {
+    return ::operator new(size);  // call single-object version
+}
+
+// Replacement for array delete
+void operator delete[](void* p) noexcept {
+    ::operator delete(p);
+}
+
+// Aligned versions (C++17)
+void* operator new(std::size_t size, std::align_val_t align) {
+    void* p = std::aligned_alloc(static_cast<size_t>(align), size);
+    if (!p) throw std::bad_alloc();
+    return p;
+}
+
+void operator delete(void* p, std::align_val_t) noexcept {
+    std::free(p);
+}
+
+// Nothrow versions (called when new(nothrow) is used)
+void* operator new(std::size_t size, const std::nothrow_t&) noexcept {
+    return std::malloc(size);  // return nullptr on failure
+}
+
+void operator delete(void* p, const std::nothrow_t&) noexcept {
+    std::free(p);
+}
+
+// Class-specific new/delete
+class MyClass {
+public:
+    static void* operator new(std::size_t size) {
+        // Custom allocation for MyClass
+        return ::operator new(size);
+    }
+    static void operator delete(void* p) {
+        ::operator delete(p);
+    }
+    // Can also override new[]/delete[]
+};
+
+// Use cases:
+// - Memory tracking / leak detection
+// - Custom allocators (pool, arena)
+// - Debugging (fill memory with pattern)
+// - Statistics (count allocations, track peak usage)
+```
+
+## Extending `namespace std`
+
+```cpp
+// You CANNOT add new declarations to namespace std
+// You CAN specialize std templates for user-defined types
+
+// Allowed: full specialization of existing std template
+namespace std {
+    template<>
+    struct hash<MyType> {
+        size_t operator()(const MyType& t) const noexcept {
+            return std::hash<int>{}(t.value);
+        }
+    };
+}
+
+// Allowed: specializing std::less, std::equal_to, etc.
+namespace std {
+    template<>
+    struct less<MyType> {
+        bool operator()(const MyType& a, const MyType& b) const {
+            return a.value < b.value;
+        }
+    };
+}
+
+// NOT allowed: adding new functions/classes to std
+// namespace std {
+//     void myFunction() {}  // UB: undefined behavior
+// }
+
+// NOT allowed: partial specialization of function templates
+// Must use overloading or class template specialization
+
+// Allowed: overload operators in global namespace (found via ADL)
+std::ostream& operator<<(std::ostream& os, const MyType& t) {
+    return os << t.value;
+}
+
+// C++20: specializing std::formatter for custom types
+template<>
+struct std::formatter<MyType> {
+    constexpr auto parse(std::format_parse_context& ctx) {
+        return ctx.begin();
+    }
+    auto format(const MyType& t, std::format_context& ctx) const {
+        return std::format_to(ctx.out(), "{}", t.value);
+    }
+};
 ```

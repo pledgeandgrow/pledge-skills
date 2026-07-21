@@ -513,3 +513,548 @@ auto dur = 1h + 30min + 15s;  // std::chrono::duration
 using namespace std::complex_literals;
 auto z = 3.0 + 4.0i;  // std::complex<double>
 ```
+
+## Unions
+
+```cpp
+// Union — all members share the same memory location
+union Data {
+    int i;
+    float f;
+    char s[4];
+};
+
+Data d;
+d.i = 42;
+std::cout << d.i;  // 42
+d.f = 3.14f;
+// d.i is now undefined (only one member active at a time)
+std::cout << d.f;  // 3.14
+
+// Anonymous union — members are directly accessible
+struct Variant {
+    union {
+        int i;
+        float f;
+    };
+    enum Type { INT, FLOAT } type;
+};
+
+Variant v;
+v.type = Variant::INT;
+v.i = 42;
+
+// Union with non-trivial members (C++11 — requires explicit destructor)
+union StringUnion {
+    int i;
+    std::string s;  // non-trivial destructor
+
+    StringUnion() : i(0) {}
+    ~StringUnion() {}  // must handle s's destructor manually
+};
+
+StringUnion su;
+new (&su.s) std::string("hello");
+std::cout << su.s;
+su.s.~basic_string();  // explicit destructor
+
+// std::variant is preferred over unions in modern C++
+std::variant<int, float, std::string> v2 = 42;
+```
+
+## Bit Fields
+
+```cpp
+// Bit fields — specify exact number of bits for a member
+struct Flags {
+    unsigned int a : 1;    // 1 bit  (0-1)
+    unsigned int b : 3;    // 3 bits (0-7)
+    unsigned int c : 4;    // 4 bits (0-15)
+    unsigned int   : 0;    // alignment: next field starts at next word
+    unsigned int d : 8;    // 8 bits (0-255)
+};
+
+Flags f;
+f.a = 1;
+f.b = 5;
+f.c = 10;
+f.d = 200;
+// sizeof(Flags) is typically 4 or 8 bytes depending on packing
+
+// Practical: hardware register layout
+struct UARTRegister {
+    volatile uint32_t data       : 8;
+    volatile uint32_t parity     : 1;
+    volatile uint32_t stop_bits  : 2;
+    volatile uint32_t            : 5;  // reserved
+    volatile uint32_t enable     : 1;
+    volatile uint32_t interrupt  : 1;
+    volatile uint32_t            : 14; // padding to 32 bits
+};
+
+// Bit fields and bit manipulation
+struct Color {
+    unsigned r : 8;  // red
+    unsigned g : 8;  // green
+    unsigned b : 8;  // blue
+    unsigned a : 8;  // alpha
+};
+
+Color c{255, 128, 0, 255};
+// Cannot take address of bit field: &c.r is illegal
+```
+
+## Enumerations
+
+```cpp
+// Unscoped enum (C-style) — values leak into enclosing scope
+enum Color { Red, Green, Blue };
+Color c = Red;  // no scope qualifier needed
+int x = Red;    // implicit conversion to int (can be surprising)
+
+// Scoped enum (C++11) — values are scoped
+enum class Color2 { Red, Green, Blue };
+Color2 c2 = Color2::Red;  // must qualify
+// int x2 = Color2::Red;  // error: no implicit conversion
+int x2 = static_cast<int>(Color2::Red);  // explicit cast required
+
+// Specify underlying type
+enum class Status : uint8_t {
+    Ok = 0,
+    Error = 1,
+    Pending = 2,
+    Timeout = 255
+};
+// sizeof(Status) == 1
+
+enum class Flags : unsigned int {
+    None = 0,
+    Read = 1,
+    Write = 2,
+    Execute = 4
+};
+
+// Bitwise operations on enums (need operator overloads or C++23)
+Flags f1 = Flags::Read | Flags::Write;  // needs operator| defined
+// C++23: std::to_underlying
+int val = std::to_underlying(Flags::Read);  // 1
+
+// using enum (C++20) — bring enum values into scope
+enum class Direction { Up, Down, Left, Right };
+void move(Direction d) {
+    using enum Direction;
+    switch (d) {
+        case Up:    break;
+        case Down:  break;
+        case Left:  break;
+        case Right: break;
+    }
+}
+
+// Enum with custom values
+enum class HttpStatus : int {
+    OK = 200,
+    NotFound = 404,
+    InternalError = 500
+};
+
+// Enum to string (common pattern)
+enum class Fruit { Apple, Banana, Cherry };
+
+constexpr std::string_view fruitToString(Fruit f) {
+    switch (f) {
+        case Fruit::Apple:  return "Apple";
+        case Fruit::Banana: return "Banana";
+        case Fruit::Cherry: return "Cherry";
+    }
+    return "Unknown";
+}
+
+// String to enum (C++26: reflection may automate this)
+constexpr std::optional<Fruit> stringToFruit(std::string_view s) {
+    if (s == "Apple")  return Fruit::Apple;
+    if (s == "Banana") return Fruit::Banana;
+    if (s == "Cherry") return Fruit::Cherry;
+    return std::nullopt;
+}
+
+// Iterate over enum values
+for (int i = 0; i <= static_cast<int>(Fruit::Cherry); ++i) {
+    auto f = static_cast<Fruit>(i);
+    std::cout << fruitToString(f) << '\n';
+}
+
+// I/O for scoped enums
+std::ostream& operator<<(std::ostream& os, Fruit f) {
+    return os << fruitToString(f);
+}
+std::cout << Fruit::Apple;  // "Apple"
+
+// Enum as template parameter
+template<Fruit F>
+struct FruitInfo {
+    static constexpr std::string_view name = fruitToString(F);
+};
+
+// std::is_scoped_enum (C++23)
+static_assert(std::is_scoped_enum_v<Fruit>);  // true
+static_assert(!std::is_scoped_enum_v<Color>); // false (unscoped)
+```
+
+## std::initializer_list
+
+```cpp
+#include <initializer_list>
+
+// initializer_list — lightweight proxy for brace-enclosed list
+std::initializer_list<int> il = {1, 2, 3, 4, 5};
+il.size();   // 5
+il.begin();  // pointer to first element
+il.end();    // pointer past last element
+
+// Iterate
+for (auto x : il) { std::cout << x; }
+
+// Constructor taking initializer_list
+class Vector {
+public:
+    Vector(std::initializer_list<int> init) {
+        data.reserve(init.size());
+        for (auto x : init) data.push_back(x);
+    }
+private:
+    std::vector<int> data;
+};
+
+Vector v = {1, 2, 3, 4, 5};
+Vector v2{1, 2, 3};  // direct list init
+
+// initializer_list takes priority over other constructors in list init
+class Widget {
+public:
+    Widget(int a, int b) { std::cout << "two ints"; }
+    Widget(std::initializer_list<int> il) { std::cout << "init list"; }
+};
+
+Widget w1(1, 2);   // "two ints" (direct init, not list init)
+Widget w2{1, 2};   // "init list" (list init prefers initializer_list)
+Widget w3 = {1, 2}; // "init list" (copy list init)
+
+// Empty braces call default constructor, not empty initializer_list
+Widget w4{};  // default constructor (not initializer_list with 0 elements)
+
+// initializer_list of pairs
+std::map<std::string, int> m = {
+    {"one", 1},
+    {"two", 2},
+    {"three", 3}
+};
+
+// Nested initializer_list
+class Matrix {
+public:
+    Matrix(std::initializer_list<std::initializer_list<int>> rows) {
+        for (auto row : rows) {
+            for (auto val : row) { std::cout << val << ' '; }
+            std::cout << '\n';
+        }
+    }
+};
+
+Matrix mat = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
+```
+
+## Type Classification: POD, Standard-Layout, Trivial
+
+```cpp
+#include <type_traits>
+
+// POD (Plain Old Data) — deprecated C++20, use standard-layout + trivial instead
+// A POD type is both trivial and standard-layout
+
+// Trivial type:
+// - Trivial default constructor, copy constructor, move constructor
+// - Trivial copy/move assignment operators
+// - Trivial destructor
+// - No virtual functions, no virtual base classes
+
+// Standard-layout type:
+// - No virtual functions, no virtual base classes
+// - All non-static data members have same access control
+// - No non-standard-layout non-static data members
+// - No reference members
+// - Same class as first non-static data member (no diamond)
+
+struct Point { int x; int y; };  // POD, trivial, standard-layout
+static_assert(std::is_trivial_v<Point>);
+static_assert(std::is_standard_layout_v<Point>);
+static_assert(std::is_pod_v<Point>);  // deprecated C++20
+
+struct NonTrivial {
+    std::string s;  // std::string has non-trivial destructor
+    // Not trivial, not POD
+};
+static_assert(!std::is_trivial_v<NonTrivial>);
+
+struct NonStandardLayout {
+private:
+    int a;
+public:
+    int b;  // different access control → not standard-layout
+};
+static_assert(!std::is_standard_layout_v<NonStandardLayout>);
+
+// Practical implications:
+// - memcpy is safe for trivially copyable types
+// - C-compatible layout for standard-layout types
+// - Can interact with C APIs
+static_assert(std::is_trivially_copyable_v<Point>);
+std::memcpy(&dst, &src, sizeof(Point));  // safe for trivially copyable
+
+// Aggregate — array or class with:
+// - No private/protected non-static data members
+// - No user-declared constructors (C++14) / no user-provided constructors (C++17)
+// - No virtual, no private/protected base classes
+// - No virtual functions
+struct Aggregate {
+    int a;
+    double b;
+    std::string c;
+};
+Aggregate ag{1, 2.0, "hello"};  // aggregate initialization
+
+// C++17: aggregate with base classes
+struct Base { int x; };
+struct Derived : Base { int y; };
+Derived d{{1}, 2};  // base then derived members
+
+// C++20: no user-declared constructors allowed for aggregate
+// C++17: no user-provided constructors (explicitly defaulted is OK)
+```
+
+## Empty Base Optimization (EBO)
+
+```cpp
+// EBO — empty base class takes no space in derived class
+// Empty class: no non-static data members, no virtual functions
+
+struct Empty {};
+
+// Without EBO: sizeof would be at least 2 (two empty objects)
+struct WithoutEBO {
+    Empty e;
+    int x;
+};
+// sizeof(WithoutEBO) may be 8 (padding after Empty)
+
+// With EBO: empty base shares address with derived
+struct WithEBO : Empty {
+    int x;
+};
+// sizeof(WithEBO) may be 4 (Empty shares address)
+
+// EBO is required for:
+// - Empty base classes that are not most-derived
+// - No padding between base and first member
+
+// EBO is NOT applied when:
+// - Base is the first non-static data member (same type)
+// - Multiple bases of same empty type (must have distinct addresses)
+struct A {};
+struct B : A {};
+struct C : A, B {};  // two A subobjects — EBO can't apply to both
+
+// Common use: empty comparators, empty allocators, empty policies
+template<typename Compare = std::less<int>>
+struct SortedSet : Compare {
+    // Compare is empty (stateless) — EBO saves space
+    int data[100];
+};
+// sizeof(SortedSet<>) ≈ sizeof(int[100]) — comparator is free
+
+// [[no_unique_address]] (C++20) — like EBO for members
+struct WithNoUniqueAddress {
+    [[no_unique_address]] Empty e;
+    int x;
+};
+// sizeof(WithNoUniqueAddress) may be 4 — e shares address with x
+```
+
+## Elaborated Type Specifiers
+
+```cpp
+// Elaborated type specifier — class/struct/union/enum keyword + name
+class MyClass obj;       // elaborated: class keyword
+struct Point pt;         // elaborated: struct keyword
+union MyUnion u;         // elaborated: union keyword
+enum Color c;            // elaborated: enum keyword
+
+// Use cases:
+// 1. Forward declaration usage
+class Forward;  // forward declaration
+class Forward* ptr;  // elaborated (redundant but valid)
+
+// 2. Resolving name hiding
+class Thread {};       // a class named Thread
+void func() {
+    int Thread = 42;   // hides class Thread
+    // Thread t;       // error: Thread is an int
+    class Thread t;    // OK: elaborated type specifier
+}
+
+// 3. Declaring a class in a friend declaration
+class A {
+    friend class B;    // B is a class (forward-declared if not yet seen)
+};
+
+// 4. Inheriting from a base with the same name as a member
+struct Base {};
+struct Derived : Base {
+    int Base;  // member named Base (hides base class)
+    // OK: Base is both a base class and a member name
+};
+```
+
+## Injected Class Names
+
+```cpp
+// Injected class name — the class name is available inside its own definition
+class MyClass {
+    // Inside MyClass, "MyClass" refers to the class itself
+    MyClass* next;       // self-referential pointer
+    MyClass(const MyClass&);  // copy constructor
+
+    // In templates, injected name is different from template name
+    // (template name requires template arguments, injected name doesn't)
+};
+
+// Template injected class name
+template<typename T>
+class Template {
+    // "Template" here means Template<T> (injected)
+    Template* ptr;       // same as Template<T>*
+    Template(const Template&);  // same as Template<T>(const Template<T>&)
+};
+
+// Outside the class, you need Template<int>, not just Template
+// Template<int>* p;  // OK
+// Template* p;       // error (outside class)
+
+// Injected class name in constructor
+class Widget {
+    Widget();  // "Widget" is the injected class name
+    // No return type, even though "Widget" is a type elsewhere
+};
+```
+
+## Converting Constructors and `explicit`
+
+```cpp
+// Converting constructor — can be used for implicit conversions
+class String {
+public:
+    String(const char* s);  // converting constructor (no explicit)
+    String(int n, char c);  // converting constructor
+};
+
+// Implicit conversion via constructor
+String s1 = "hello";  // implicit: const char* → String
+String s2 = String(5, 'x');  // direct
+
+void func(String s);
+func("hello");  // implicit conversion: const char* → String
+
+// explicit — prevents implicit conversions
+class ExplicitString {
+public:
+    explicit ExplicitString(const char* s);
+};
+
+// ExplicitString es = "hello";  // error: explicit constructor
+ExplicitString es("hello");      // OK: direct initialization
+ExplicitString es2 = ExplicitString("hello");  // OK: explicit conversion
+
+// C++11: explicit conversion operators
+class Bool {
+    bool value;
+public:
+    explicit operator bool() const { return value; }
+};
+Bool b;
+// if (b) {}  // OK: explicit conversion in boolean context
+// bool x = b;  // error: explicit conversion not allowed here
+
+// C++20: explicit(bool) — conditional explicitness
+template<typename T>
+class Wrapper {
+public:
+    explicit(!std::is_convertible_v<T, int>)
+    Wrapper(T v) : value(v) {}
+private:
+    T value;
+};
+// explicit if T is not convertible to int
+```
+
+## Copy Elision (RVO/NRVO)
+
+```cpp
+// Copy elision — compiler skips copy/move when returning by value
+// C++17: guaranteed copy elision for prvalues (mandatory)
+
+// URVO (Unnamed Return Value Optimization) — returning a prvalue
+std::string makeString() {
+    return std::string("hello");  // C++17: no copy (guaranteed)
+    // return "hello";            // C++17: no copy (guaranteed)
+}
+std::string s = makeString();  // constructed in place
+
+// NRVO (Named Return Value Optimization) — returning a named local
+std::string makeString2() {
+    std::string result = "hello";
+    // ... modify result ...
+    return result;  // NRVO: may be elided (not mandatory)
+}
+// NRVO is not guaranteed, but most compilers do it
+
+// C++17: guaranteed elision for:
+// - return of a prvalue (URVO)
+// - initialization from a prvalue: T x = T(args);
+// - returning a braced-init-list
+
+// C++17: NOT guaranteed for:
+// - NRVO (named local variable)
+// - Returning a function parameter by value
+// - Returning a member by value
+
+// When NRVO is not applied, move constructor is used (not copy)
+std::string makeString3(std::string param) {
+    return param;  // move (not copy) if NRVO not applied
+    // return std::move(param);  // actually WORSE: inhibits NRVO
+}
+
+// Don't use std::move on return of local variables — it prevents NRVO!
+std::string makeString4() {
+    std::string result = "hello";
+    return std::move(result);  // BAD: inhibits NRVO, forces move
+    // return result;          // GOOD: NRVO or move
+}
+
+// Constructor elision
+struct A {
+    A() { std::cout << "default\n"; }
+    A(const A&) { std::cout << "copy\n"; }
+    A(A&&) { std::cout << "move\n"; }
+};
+
+A makeA() {
+    return A();  // C++17: only "default" printed (no move/copy)
+}
+
+A a = makeA();  // only "default" — guaranteed elision
+
+// Practical impact:
+// - Safe to return large objects by value
+// - No need for output parameters or smart pointer returns
+// - Factory functions are efficient
+```

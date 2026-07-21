@@ -20,11 +20,16 @@ description: |
   (function templates, class templates, variadic templates, concepts, SFINAE), smart pointers
   (unique_ptr, shared_ptr, weak_ptr), raw pointers and references, exceptions (try/catch/throw,
   noexcept, exception hierarchy), STL containers (vector, array, deque, list, map, unordered_map,
-  set, stack, queue, span), STL algorithms and iterators, ranges, strings (string, string_view),
-  utilities (pair, tuple, optional, variant, any, function), concurrency (thread, mutex,
-  condition_variable, future/promise, async, atomic, memory order), I/O (iostream, fstream,
-  format), chrono, numerics, coroutines, modules, metaprogramming, type traits, build systems
-  (CMake, compiler flags), and what's new in C++26/23/20/17/14/11.
+  set, stack, queue, span, flat_map), STL algorithms and iterators, ranges, strings (string,
+  string_view, to_chars, from_chars), utilities (pair, tuple, optional, variant, any, function),
+  concurrency (thread, mutex, condition_variable, future/promise, async, atomic, memory order,
+  latch, barrier, semaphore), I/O (iostream, fstream, format, print, filesystem, syncstream,
+  stacktrace), chrono (calendar, time zones), numerics (math, complex, random, valarray, bit
+  operations), coroutines (co_await, co_yield, generator, task), regular expressions (std::regex),
+  modules, metaprogramming (type traits, concepts, CRTP), idioms and patterns (RAII, Pimpl, NVI,
+  type erasure, ADL, ODR, design patterns), C compatibility (C headers, C I/O, signals, locale),
+  testing (Google Test, Catch2, doctest, benchmarking), keywords and standard library reference,
+  and what's new in C++26/23/20/17/14/11.
   Use whenever the user mentions C++, STL, templates, CMake, RAII, smart pointers, lambdas,
   concepts, ranges, coroutines, or needs help with any C++ code, library, or build system.
 ---
@@ -64,6 +69,7 @@ description: |
 | C standard library compatibility (C headers, C I/O, C memory, C strings, signals, assertions, errno, locale, wide chars) | `c-compat.md` |
 | Testing and benchmarking (Google Test, Catch2, doctest, Google Benchmark, mocks, fuzzing, CMake integration) | `testing.md` |
 | Keywords, operators, escape sequences, standard library headers, predefined macros, attributes, integer type ranks | `keywords-reference.md` |
+| Advanced topics (contracts, named requirements, freestanding, SIMD, reflection, evaluation order, debugging, safe reclamation, inplace_vector, hive) | `advanced-topics.md` |
 | C++26/23/20/17/14/11 new features and migration | `whats-new.md` |
 
 ## Core Philosophy

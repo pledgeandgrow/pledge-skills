@@ -217,6 +217,19 @@ else if (status == std::future_status::deferred) { /* not started */ }
 f.wait();  // block until ready
 f.wait_for(std::chrono::seconds(5));  // wait up to 5 seconds
 f.wait_until(std::chrono::steady_clock::now() + std::chrono::seconds(5));
+
+// std::packaged_task — wrap callable as future-producing task
+std::packaged_task<int(int)> task([](int x) { return x * 2; });
+std::future<int> fut2 = task.get_future();
+std::thread t2(std::move(task), 21);
+t2.join();
+int r2 = fut2.get();  // 42
+
+// packaged_task vs std::async:
+// - async: creates thread for you, eager or lazy
+// - packaged_task: you control thread creation, task is move-only
+// - promise: you set value manually, more flexible
+// - All three produce std::future
 ```
 
 ## Atomic
@@ -460,4 +473,72 @@ std::for_each(std::execution::par, v.begin(), v.end(), [](int& x) { x *= 2; });
 
 // Parallel fill
 std::fill(std::execution::par, v.begin(), v.end(), 0);
+```
+
+## Senders and Receivers (`<execution>`, C++26)
+
+```cpp
+#include <execution>  // C++26 — senders/receivers (P2300)
+// Note: also includes parallel algorithm execution policies (C++17)
+
+// Senders/receivers — structured concurrency framework
+// Composable, lazy, cancellable async operations
+
+// Basic pipeline with pipe syntax
+auto work = std::execution::schedule(scheduler)
+    | std::execution::then([]() { return 42; })
+    | std::execution::then([](int x) { return x * 2; });
+
+// Start and wait for result
+auto [result] = std::this_thread::sync_wait(std::move(work));
+// result == 84
+
+// Error handling
+auto work2 = std::execution::schedule(scheduler)
+    | std::execution::then([]() -> int { throw std::runtime_error("fail"); })
+    | std::execution::upon_error([](std::exception_ptr e) {
+        try { std::rethrow_exception(e); }
+        catch (const std::exception& ex) {
+            std::cerr << "Error: " << ex.what() << '\n';
+            return -1;
+        }
+    });
+
+// When_all — run multiple senders concurrently
+auto [a, b, c] = std::this_thread::sync_wait(
+    std::execution::when_all(
+        std::execution::schedule(s1) | std::execution::then([] { return 1; }),
+        std::execution::schedule(s2) | std::execution::then([] { return 2; }),
+        std::execution::schedule(s3) | std::execution::then([] { return 3; })
+    )
+);
+// a=1, b=2, c=3
+
+// Transfer — switch scheduler mid-pipeline
+auto work3 = std::execution::schedule(cpu_scheduler)
+    | std::execution::then([]() { return compute(); })
+    | std::execution::transfer(gpu_scheduler)  // switch to GPU
+    | std::execution::then([](auto data) { return gpu_process(data); });
+
+// Start detached (fire and forget)
+std::execution::start_detached(
+    std::execution::schedule(scheduler)
+    | std::execution::then([]() { std::cout << "async\n"; })
+);
+
+// Custom sender — compose lower-level operations
+// Senders: describe work to be done (lazy)
+// Receivers: consume results (set_value, set_error, set_stopped)
+// Schedulers: create senders for execution contexts
+
+// Key concepts:
+// - Lazy: work doesn't start until receiver is connected and started
+// - Composable: pipe operator | chains operations
+// - Cancellable: stop_token integration
+// - Structured: clear ownership and lifecycle
+// - Heterogeneous: CPU, GPU, network, I/O schedulers
+
+// vs std::async:
+// - std::async: eager, limited, no cancellation
+// - senders/receivers: lazy, composable, cancellable, heterogeneous
 ```

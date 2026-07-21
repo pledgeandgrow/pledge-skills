@@ -342,3 +342,261 @@ std::string s = "hello, \"world\"";
 std::cout << std::quoted(s);  // "hello, \"world\"" (with quotes and escapes)
 std::cin >> std::quoted(s);   // reads quoted string, removes quotes
 ```
+
+## Synchronized Output (C++20 `<syncstream>`)
+
+```cpp
+#include <syncstream>
+
+// std::osyncstream — buffered, synchronized output stream
+// Prevents interleaved output from multiple threads
+
+// Basic usage
+std::osyncstream synced(std::cout);
+synced << "Hello, " << "World!\n";
+// output flushed on destruction (or call .emit())
+
+// Thread-safe logging
+void log(int threadId, const std::string& msg) {
+    std::osyncstream(std::cout) << "[Thread " << threadId << "] " << msg << '\n';
+}
+// Each call is atomic — no interleaving
+
+// Explicit emit
+{
+    std::osyncstream sync(std::cout);
+    sync << "Part 1 ";
+    sync << "Part 2 ";
+    sync.emit();  // flush to underlying stream
+    sync << "Part 3";
+    // emit() called again on destruction
+}
+
+// Get underlying stream
+std::osyncstream sync(std::cout);
+sync.get_wrapped();  // returns std::ostream& (the wrapped stream)
+
+// Cancel (discard buffered content)
+{
+    std::osyncstream sync(std::cout);
+    sync << "This will be discarded";
+    sync.rdbuf()->set_emit_on_sync(false);
+    // content discarded on destruction if emit() not called
+}
+```
+
+## Stacktrace (C++23 `<stacktrace>`)
+
+```cpp
+#include <stacktrace>
+
+// Get current stack trace
+std::stacktrace st = std::stacktrace::current();
+std::cout << std::to_string(st);  // formatted stack trace
+
+// Iterate frames
+for (const auto& frame : st) {
+    std::cout << frame << '\n';
+    // or individual fields:
+    frame.description();    // function name
+    frame.source_file();    // source file path
+    frame.source_line();    // source line number
+    frame.address();        // frame address
+}
+
+// Current entry (single frame)
+std::stacktrace_entry entry = std::stacktrace::current()[0];
+
+// Check if empty
+st.empty();
+
+// Size
+st.size();
+
+// Get specific frame
+st[0];  // first frame (deepest)
+
+// Practical: exception handler with stack trace
+try {
+    riskyOperation();
+} catch (const std::exception& e) {
+    std::cerr << "Error: " << e.what() << '\n';
+    std::cerr << "Stack trace:\n" << std::to_string(std::stacktrace::current()) << '\n';
+}
+
+// Practical: assertion with stack trace
+#define ASSERT_WITH_TRACE(cond) \
+    if (!(cond)) { \
+        std::cerr << "Assertion failed: " #cond "\n" \
+                  << std::to_string(std::stacktrace::current()) << '\n'; \
+        std::abort(); \
+    }
+```
+
+## spanstream (C++23)
+
+```cpp
+#include <spanstream>  // C++23
+
+// std::spanstream — stream over a fixed buffer (no allocation)
+// Read and write to a pre-allocated buffer using stream interface
+
+// Write to buffer
+char buf[256];
+std::ospanstream os(std::span<char>(buf));
+os << "Hello, " << 42 << " world!";
+auto written = os.span();  // span of written data
+// buf now contains "Hello, 42 world!"
+
+// Read from buffer
+std::string_view sv = "42 3.14 hello";
+std::ispanstream is(std::span<const char>(sv.data(), sv.size()));
+int i;
+double d;
+std::string s;
+is >> i >> d >> s;  // i=42, d=3.14, s="hello"
+
+// Bidirectional spanstream
+char buf2[256];
+std::spanstream ss(std::span<char>(buf2));
+ss << 42;       // write
+ss.seekg(0);    // seek to beginning for reading
+int val;
+ss >> val;      // read 42
+
+// Advantages over stringstream:
+// - No heap allocation (uses provided buffer)
+// - Deterministic memory usage
+// - Suitable for embedded/real-time systems
+
+// Advantages over strstream (deprecated):
+// - Safe (no manual null-termination management)
+// - Uses std::span (bounds-safe)
+// - Standard C++23
+```
+
+## Deprecated/Removed Stream Headers
+
+```cpp
+// <strstream> — deprecated since C++98, removed in C++26
+// Legacy in-memory stream (pre-stringstream)
+// Replaced by std::stringstream and std::spanstream
+
+#include <strstream>  // deprecated, avoid
+std::ostrstream os;   // deprecated
+os << "hello" << std::ends;  // must add null terminator manually
+os.str();  // const char* (not std::string)
+
+// <codecvt> — deprecated in C++17, removed in C++26
+// Was used for character set conversions (UTF-8 ↔ UTF-16, etc.)
+// Replaced by third-party libraries (ICU, utfcpp) or manual conversion
+
+#include <codecvt>  // deprecated, removed in C++26
+std::wstring_convert<std::codecvt_utf8_utf16<wchar_t>> conv;
+std::string utf8 = conv.to_bytes(L"hello");
+std::wstring utf16 = conv.from_bytes("hello");
+
+// Modern alternatives for character conversion:
+// - ICU library (comprehensive Unicode support)
+// - utfcpp library (lightweight UTF-8)
+// - Manual conversion using <cuchar> (mbrtoc16, c16rtomb)
+// - C++26: std::text_encoding for detection (not conversion)
+```
+
+## `<version>` Header (C++20)
+
+```cpp
+#include <version>  // C++20
+
+// <version> — feature test macros for standard library
+// No types or functions, just macros
+
+// Language feature test macros (sample):
+// __cpp_constexpr           — constexpr support level
+// __cpp_concepts            — concepts (C++20)
+// __cpp_coroutines          — coroutines (C++20)
+// __cpp_modules             — modules (C++20)
+// __cpp_ranges              — ranges (C++20)
+
+// Library feature test macros (sample):
+// __cpp_lib_format          — std::format (C++20)
+// __cpp_lib_print           — std::print (C++23)
+// __cpp_lib_expected        — std::expected (C++23)
+// __cpp_lib_span            — std::span (C++20)
+// __cpp_lib_stacktrace      — std::stacktrace (C++23)
+// __cpp_lib_syncstream      — std::syncstream (C++20)
+
+// Usage
+#if __cpp_lib_format >= 202207L
+    // Use std::format with latest features
+#endif
+
+#if __cpp_lib_expected >= 202211L
+    // Use std::expected
+#endif
+
+// Check C++ standard
+#if __cplusplus >= 202002L
+    // C++20 or later
+#endif
+
+// MSVC: use _MSVC_LANG instead of __cplusplus
+#if _MSVC_LANG >= 202002L
+    // C++20 or later (MSVC)
+#endif
+```
+
+## Stream Buffer Hierarchy
+
+```cpp
+// Stream buffer classes (low-level I/O, no formatting)
+// std::streambuf — base class for all stream buffers
+//   std::filebuf      — file-backed buffer (used by fstream)
+//   std::stringbuf    — string-backed buffer (used by sstream)
+//   std::spanbuf      — span-backed buffer (C++23, used by spanstream)
+
+// Stream classes use streambuf internally:
+// std::istream → std::streambuf (input)
+// std::ostream → std::streambuf (output)
+// std::iostream → std::streambuf (bidirectional)
+
+// Access underlying stream buffer
+std::ifstream in("file.txt");
+std::streambuf* buf = in.rdbuf();
+buf->sgetc();   // peek at next char (no advance)
+buf->sbumpc();  // get char and advance
+buf->sputc('x'); // write char
+buf->pubseekpos(0); // seek to beginning
+
+// Custom stream buffer (override for custom I/O)
+class LogBuf : public std::streambuf {
+    std::string buffer;
+protected:
+    int_type overflow(int_type c) override {
+        if (c != traits_type::eof()) {
+            buffer += static_cast<char>(c);
+            if (c == '\n') { flushLog(); buffer.clear(); }
+        }
+        return c;
+    }
+    void flushLog() { /* write buffer to log */ }
+};
+
+// ios_base — base class for all streams
+// Format flags: std::ios::dec, hex, oct, fixed, scientific, boolalpha, showbase
+// std::ios::left, right, internal (alignment)
+// std::ios::skipws, unitbuf, uppercase
+// Manipulators set these flags:
+// std::hex → setf(ios::hex, ios::basefield)
+// std::setw(n) → width(n) (resets after each insertion)
+// std::setprecision(n) → precision(n)
+// std::setfill(c) → fill(c)
+
+// Stream state:
+// good() — no errors
+// eof()  — end of input reached
+// fail() — operation failed (format error)
+// bad()  — critical error (stream corrupted)
+// rdstate() — get all state flags
+// clear()   — reset state
+```

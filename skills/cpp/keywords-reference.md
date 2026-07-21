@@ -202,6 +202,8 @@ Precedence  Operator              Description              Associativity
 <charconv>      — std::to_chars, std::from_chars (C++17)
 <format>        — std::format (C++20)
 <print>         — std::print, std::println (C++23)
+<spanstream>    — std::spanstream, std::ispanstream, std::ospanstream (C++23)
+<stdfloat>      — std::float16_t, std::float32_t, std::float64_t, std::float128_t, std::bfloat16_t (C++23)
 <regex>         — std::regex (C++11)
 ```
 
@@ -280,18 +282,23 @@ Precedence  Operator              Description              Associativity
 <charconv>      — std::to_chars, std::from_chars (C++17)
 <format>        — std::format (C++20)
 <print>         — std::print, std::println (C++23)
+<spanstream>    — std::spanstream (C++23)
+<stdfloat>      — std::float16_t, std::bfloat16_t, etc. (C++23)
 <text_encoding> — std::text_encoding (C++26)
 <debugging>     — std::is_debugger_present (C++26)
 <linalg>        — linear algebra (C++26)
 <execution>     — senders/receivers (C++26)
 <hazard_pointer> — hazard pointers (C++26)
 <rcu>           — RCU (C++26)
+<syncstream>    — std::osyncstream (C++20)
+<mdspan>        — std::mdspan (C++23)
+<flat_map>      — std::flat_map, std::flat_set (C++23)
 ```
 
 ### Localization
 
 ```
-<locale>        — std::locale, std::ctype, etc.
+<locale>        — std::locale, std::ctype, std::numpunct, std::collate, etc.
 <clocale>       — setlocale, localeconv
 <codecvt>       — deprecated C++17, removed C++26
 ```
@@ -303,6 +310,7 @@ Precedence  Operator              Description              Associativity
 <stdexcept>     — std::runtime_error, std::logic_error, etc.
 <system_error>  — std::error_code, std::system_error (C++11)
 <cerrno>        — errno
+<stacktrace>    — std::stacktrace, std::stacktrace_entry (C++23)
 ```
 
 ### C compatibility
